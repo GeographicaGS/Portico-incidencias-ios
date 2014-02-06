@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="12F45" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="XV7-a7-GhW">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
+    </dependencies>
+    <scenes>
+        <!--Loging View Controller-->
+        <scene sceneID="e67-9m-ihN">
+            <objects>
+                <viewController id="XV7-a7-GhW" customClass="LogingViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hdn-fl-XB6"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wun-50-u1l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="YZm-mI-udP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dR9-1f-dhd">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="POR_logo_dipu_login.png" translatesAutoresizingMaskIntoConstraints="NO" id="2uh-Dr-0d2">
+                                        <rect key="frame" x="120" y="50" width="80" height="80"/>
+                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="KWt-LT-swN"/>
+                                            <constraint firstAttribute="height" constant="80" id="hZ2-JT-vIN"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K0b-ab-xkJ">
+                                        <rect key="frame" x="20" y="282" width="280" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="Dg7-dF-FNY"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fJe-9q-svr">
+                                        <rect key="frame" x="20" y="335" width="280" height="45"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="DrT-Js-pW4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hco-dP-XNK">
+                                        <rect key="frame" x="20" y="388" width="280" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.36078431372549019" green="0.31372549019607843" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="R4k-A2-JgP"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="login:" destination="XV7-a7-GhW" eventType="touchDown" id="KvX-7n-dHX"/>
+                                        </connections>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="POR_logo_portico_login.png" translatesAutoresizingMaskIntoConstraints="NO" id="LLk-l4-Qik">
+                                        <rect key="frame" x="15" y="197" width="290" height="65"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="290" id="Uv1-rU-AL6"/>
+                                            <constraint firstAttribute="height" constant="65" id="h8o-8c-q5o"/>
+                                        </constraints>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UQw-cp-GRA">
+                                        <rect key="frame" x="20" y="488" width="280" height="49"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="49" id="EVK-CM-Vnu"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Button">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstItem="hco-dP-XNK" firstAttribute="top" secondItem="fJe-9q-svr" secondAttribute="bottom" constant="8" id="6Qm-F8-akN"/>
+                                    <constraint firstItem="K0b-ab-xkJ" firstAttribute="leading" secondItem="dR9-1f-dhd" secondAttribute="leading" constant="20" symbolic="YES" id="85w-33-fBs"/>
+                                    <constraint firstItem="LLk-l4-Qik" firstAttribute="centerX" secondItem="dR9-1f-dhd" secondAttribute="centerX" id="E80-MB-0cI"/>
+                                    <constraint firstItem="K0b-ab-xkJ" firstAttribute="top" secondItem="LLk-l4-Qik" secondAttribute="bottom" constant="20" id="Fot-od-SpL"/>
+                                    <constraint firstAttribute="trailing" secondItem="K0b-ab-xkJ" secondAttribute="trailing" constant="20" symbolic="YES" id="FqO-J7-sHR"/>
+                                    <constraint firstItem="fJe-9q-svr" firstAttribute="trailing" secondItem="hco-dP-XNK" secondAttribute="trailing" id="GWh-m2-leY"/>
+                                    <constraint firstItem="fJe-9q-svr" firstAttribute="leading" secondItem="hco-dP-XNK" secondAttribute="leading" id="IhU-3h-zVt"/>
+                                    <constraint firstItem="K0b-ab-xkJ" firstAttribute="trailing" secondItem="fJe-9q-svr" secondAttribute="trailing" id="JoI-fx-xUm"/>
+                                    <constraint firstItem="UQw-cp-GRA" firstAttribute="trailing" secondItem="hco-dP-XNK" secondAttribute="trailing" id="Lvq-Qo-fIk"/>
+                                    <constraint firstItem="2uh-Dr-0d2" firstAttribute="top" secondItem="dR9-1f-dhd" secondAttribute="top" constant="50" id="P9n-OU-HeQ"/>
+                                    <constraint firstItem="UQw-cp-GRA" firstAttribute="top" secondItem="hco-dP-XNK" secondAttribute="bottom" constant="60" id="Skz-zO-Wng"/>
+                                    <constraint firstItem="fJe-9q-svr" firstAttribute="leading" secondItem="K0b-ab-xkJ" secondAttribute="leading" id="T72-Ku-jJc"/>
+                                    <constraint firstItem="LLk-l4-Qik" firstAttribute="top" secondItem="2uh-Dr-0d2" secondAttribute="bottom" constant="67" id="THW-oK-Ojm"/>
+                                    <constraint firstItem="hco-dP-XNK" firstAttribute="leading" secondItem="UQw-cp-GRA" secondAttribute="leading" id="asu-1o-gg0"/>
+                                    <constraint firstAttribute="bottom" secondItem="UQw-cp-GRA" secondAttribute="bottom" constant="20" symbolic="YES" id="geF-h9-27w"/>
+                                    <constraint firstItem="2uh-Dr-0d2" firstAttribute="centerX" secondItem="LLk-l4-Qik" secondAttribute="centerX" id="jWy-Wv-l9j"/>
+                                    <constraint firstItem="fJe-9q-svr" firstAttribute="top" secondItem="K0b-ab-xkJ" secondAttribute="bottom" constant="8" id="wjZ-bD-0or"/>
+                                    <constraint firstItem="LLk-l4-Qik" firstAttribute="centerX" secondItem="K0b-ab-xkJ" secondAttribute="centerX" id="yrU-LE-tjX"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="gaF-gp-WGC" appends="YES" id="DKC-Vz-CWd"/>
+                                </connections>
+                            </scrollView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="ErB-57-ic1">
+                                <rect key="frame" x="141" y="266" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="dR9-1f-dhd" secondAttribute="trailing" id="2Di-i7-cEa"/>
+                            <constraint firstItem="ErB-57-ic1" firstAttribute="leading" secondItem="YZm-mI-udP" secondAttribute="leading" constant="141" id="K12-uH-SwM"/>
+                            <constraint firstAttribute="bottom" secondItem="dR9-1f-dhd" secondAttribute="bottom" id="WvF-Xf-9cN"/>
+                            <constraint firstItem="dR9-1f-dhd" firstAttribute="top" secondItem="YZm-mI-udP" secondAttribute="top" id="eK7-M2-bbM"/>
+                            <constraint firstItem="dR9-1f-dhd" firstAttribute="leading" secondItem="YZm-mI-udP" secondAttribute="leading" id="ea7-jh-A8s"/>
+                            <constraint firstItem="ErB-57-ic1" firstAttribute="centerY" secondItem="dR9-1f-dhd" secondAttribute="centerY" id="tPB-NH-fc5"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="botonComunicarProblema" destination="UQw-cp-GRA" id="gle-69-mHb"/>
+                        <outlet property="botonIniciarSesion" destination="hco-dP-XNK" id="34y-WU-J7V"/>
+                        <outlet property="scrollView" destination="dR9-1f-dhd" id="eza-4l-gTF"/>
+                        <outlet property="spinner" destination="ErB-57-ic1" id="t3u-Yg-Xlv"/>
+                        <outlet property="userName" destination="K0b-ab-xkJ" id="Brt-yA-enZ"/>
+                        <outlet property="userPassword" destination="fJe-9q-svr" id="2Mk-LZ-NBQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8z4-Ee-W30" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="gaF-gp-WGC">
+                    <connections>
+                        <action selector="backgroundTouched:" destination="XV7-a7-GhW" id="59E-KM-JOp"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="127" y="136"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="POR_logo_dipu_login.png" width="160" height="160"/>
+        <image name="POR_logo_portico_login.png" width="580" height="130"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
+</document>
