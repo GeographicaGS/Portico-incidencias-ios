@@ -8,4 +8,8 @@
 
 #import "Constants.h"
 #import "DownloadJsonHelper.h"
+#import "UserHelper.h"
+#import "TableHelper.h"
+#import "TimerHelper.h"
+#import "LocationHelper.h"
 

@@ -13,14 +13,17 @@
 @interface DownloadJsonHelper : NSObject
 
 @property (strong, nonatomic) NSOperationQueue *operationQueue;
+@property (nonatomic) BOOL allTasksPaused;
 
 + (id)getInstance;
 
--(void)downloadJson:(NSString *)url funcion:(SEL)func fromObject:(id) object;
-/*-(void)cancelDownload:(MDDownload *)download;
+-(void)downloadJson:(NSString *)url user:(NSString*)user password:(NSString*)password llamada:(NSString*)llamada funcion:(SEL)func fromObject:(id) object;
+-(void)cancelDownload:(NSString *)url;
 -(void)cleanDownloads;
 
 -(void)pauseDownloads;
--(void)resumeDownloads;*/
+-(void)resumeDownloads;
+
++ (NSString *)md5:(NSString *) string;
 
 @end

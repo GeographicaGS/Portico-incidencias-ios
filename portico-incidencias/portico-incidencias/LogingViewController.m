@@ -9,16 +9,16 @@
 #import "Header.h"
 #import "UserModel.h"
 #import "LogingViewController.h"
+#import "ListIncidencesViewController.h"
+//#import "PruebaViewController.h"
 
 
 /*@interface LogingViewController ()
 {
-    UITextField *userName;
-    UITextField *userPassword;
+    UINavigationController *navController;
 }
 
 @end*/
-
 
 
 @implementation LogingViewController
@@ -40,10 +40,13 @@
     
     [super viewWillAppear:YES];
     
+    
+    userName.text = @"hector.garcia@geographica.gs";
+    userPassword.text = @"yesterday";
    
 }
 
-- (void) textFieldDidBeginEditing:(UITextField *)textField
+- (void)textFieldDidBeginEditing:(UITextField *)textField
 {
     [scrollView setContentOffset:CGPointMake(0,85) animated:YES] ;
 }
@@ -52,8 +55,6 @@
 {
     [textField resignFirstResponder];
     [scrollView setContentOffset:CGPointMake(0,0) animated:YES];
-    
-    
     return YES;
 }
 
@@ -66,7 +67,44 @@
 
 -(IBAction)login:(id)sender
 {
-    [UserModel initSesion:userName.text password:userPassword.text];
+    [[UserHelper getInstance]setUsuario:userName.text];
+    [[UserHelper getInstance]setContrasenia:userPassword.text];
+    [scrollView setAlpha:0.1];
+    [spinner setHidden:FALSE];
+    [UserModel initSesion:userName.text password:userPassword.text funcion:@selector(afterInitSesion:) fromObject:self];
+}
+
+-(void) afterInitSesion: (NSDictionary*) json
+{
+    [scrollView setAlpha:1];
+    [spinner setHidden:TRUE];
+    
+    if([json objectForKey:@"error"])
+    {
+        userName.text = @"";
+        userPassword.text = @"";
+    }
+    else
+    {
+        UITabBarController *tabBarController = [self.storyboard instantiateViewControllerWithIdentifier:@"tabBarController"];
+        
+        UITabBar *tabBar = tabBarController.tabBar;
+        UITabBarItem *tabBarItem1 = [tabBar.items objectAtIndex:0];
+        UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
+        UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
+        
+        tabBarItem1.title = NSLocalizedString(@"incidencias", nil);
+        tabBarItem2.title = NSLocalizedString(@"###municipios###", nil);
+        tabBarItem3.title = NSLocalizedString(@"###usuario###", nil);
+       
+        [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_OFF.png"]];
+        [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_OFF.png"]];
+        [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_OFF.png"]];
+       
+        [self presentViewController:tabBarController animated:YES completion:nil];
+        
+    }
+
 }
 
 @end

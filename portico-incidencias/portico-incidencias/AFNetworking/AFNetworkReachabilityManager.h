@@ -163,7 +163,7 @@ typedef NS_ENUM(NSInteger, AFNetworkReachabilityStatus) {
  `AFNetworkReachabilityStatusReachableViaWiFi`
  The `baseURL` host can be reached via a Wi-Fi connection.
 
- ### Keys for Notification UserInfo Dictionary
+  Keys for Notification UserInfo Dictionary
 
  Strings that are used as keys in a `userInfo` dictionary in a network reachability status change notification.
 

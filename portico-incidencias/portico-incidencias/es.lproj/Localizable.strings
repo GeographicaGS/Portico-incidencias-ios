@@ -8,6 +8,13 @@
 
 
 "###correoElectronico###" = "Correo electrónico";
-"###contraseña###" = "Contraseña";
+"###contraseña###" = "contraseña";
 "###inciarSesion###" = "Iniciar sesión";
 "###comunicarProblema###" = "Comunicar un problema";
+"###nueva###" = "Nueva";
+"###incidencias###" = "Incidencias";
+"###recientes###" = "Recientes";
+"###cercanas###" = "Cercanas";
+"###usuario###" = "Usuario";
+"###municipios###" = "Municipios";
+

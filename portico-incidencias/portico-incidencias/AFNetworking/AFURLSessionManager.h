@@ -38,19 +38,19 @@
  
  `AFURLSessionManager` implements the following delegate methods:
  
- ### `NSURLSessionDelegate`
+  `NSURLSessionDelegate`
  
  - `URLSession:didBecomeInvalidWithError:`
  - `URLSession:didReceiveChallenge:completionHandler:`
 
- ### `NSURLSessionTaskDelegate`
+  `NSURLSessionTaskDelegate`
  
  - `URLSession:willPerformHTTPRedirection:newRequest:completionHandler:`
  - `URLSession:task:didReceiveChallenge:completionHandler:`
  - `URLSession:task:didSendBodyData:totalBytesSent:totalBytesExpectedToSend:`
  - `URLSession:task:didCompleteWithError:`
 
- ### `NSURLSessionDataDelegate`
+  `NSURLSessionDataDelegate`
  
  - `URLSession:dataTask:didReceiveResponse:completionHandler:`
  - `URLSession:dataTask:didBecomeDownloadTask:`
@@ -58,7 +58,7 @@
  - `URLSession:dataTask:willCacheResponse:completionHandler:`
  - `URLSessionDidFinishEventsForBackgroundURLSession:`
 
- ### `NSURLSessionDownloadDelegate`
+  `NSURLSessionDownloadDelegate`
 
  - `URLSession:downloadTask:didFinishDownloadingToURL:`
  - `URLSession:downloadTask:didWriteData:totalBytesWritten:totalBytesWritten:totalBytesExpectedToWrite:`

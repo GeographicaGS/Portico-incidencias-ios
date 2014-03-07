@@ -68,12 +68,12 @@
 
  `AFURLConnectionOperation` conforms to the `NSCoding` and `NSCopying` protocols, allowing operations to be archived to disk, and copied in memory, respectively. However, because of the intrinsic limitations of capturing the exact state of an operation at a particular moment, there are some important caveats to keep in mind:
 
- ### NSCoding Caveats
+  NSCoding Caveats
 
  - Encoded operations do not include any block or stream properties. Be sure to set `completionBlock`, `outputStream`, and any callback blocks as necessary when using `-initWithCoder:` or `NSKeyedUnarchiver`.
  - Operations are paused on `encodeWithCoder:`. If the operation was encoded while paused or still executing, its archived state will return `YES` for `isReady`. Otherwise, the state of an operation when encoding will remain unchanged.
 
- ### NSCopying Caveats
+  NSCopying Caveats
 
  - `-copy` and `-copyWithZone:` return a new operation with the `NSURLRequest` of the original. So rather than an exact copy of the operation at that particular instant, the copying mechanism returns a completely new instance, which can be useful for retrying operations.
  - A copy of an operation will not include the `outputStream` of the original.
@@ -319,7 +319,7 @@
  - `NSString * const AFNetworkingOperationFailingURLRequestErrorKey`
  - `NSString * const AFNetworkingOperationFailingURLResponseErrorKey`
 
- ### Constants
+  Constants
 
  `AFNetworkingOperationFailingURLRequestErrorKey`
  The corresponding value is an `NSURLRequest` containing the request of the operation associated with an error. This key is only present in the `AFNetworkingErrorDomain`.
@@ -333,7 +333,7 @@
 
  - `NSString * const AFNetworkingErrorDomain`
 
- ### Constants
+  Constants
 
  `AFNetworkingErrorDomain`
  AFNetworking errors. Error codes for `AFNetworkingErrorDomain` correspond to codes in `NSURLErrorDomain`.

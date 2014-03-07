@@ -17,7 +17,14 @@
 @property (strong, nonatomic) IBOutlet UIButton *botonComunicarProblema;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
+
+
+
+
+
 - (IBAction)backgroundTouched:(id)sender;
 - (IBAction)login:(id)sender;
+
+-(void) afterInitSesion: (NSDictionary*) json;
 
 @end

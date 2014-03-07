@@ -15,16 +15,11 @@
 
 @implementation UserModel
 
-+ (BOOL) initSesion:(NSString*)user password:(NSString*)password
++ (BOOL) initSesion:(NSString*)user password:(NSString*)password funcion:(SEL)func fromObject:(id) object
 {
-    [[DownloadJsonHelper getInstance]downloadJson: [basePath stringByAppendingString:@"user/login"] funcion:@selector(afterInitSesion:) fromObject:self];
+    [[DownloadJsonHelper getInstance]downloadJson:[basePath stringByAppendingString:@"user/login"] user:user password:password llamada:@"POST" funcion:func fromObject:object];
     
     return TRUE;
-}
-
-+(void) afterInitSesion: (NSDictionary*) json
-{
-    NSLog(@"Entro en prueba");
 }
 
 @end
