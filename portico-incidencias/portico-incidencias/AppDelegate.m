@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "Header.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation AppDelegate
 
@@ -26,6 +27,8 @@
   //  [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"home_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"home.png"]];
   //  [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"maps_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"maps.png"]];
   //  [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"myplan_selected.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"myplan.png"]];
+    
+    [GMSServices provideAPIKey:@"AIzaSyD7w4FmZklA7Vyeekf6xQisnAsMhuongG0"];
     
     return YES;
 }

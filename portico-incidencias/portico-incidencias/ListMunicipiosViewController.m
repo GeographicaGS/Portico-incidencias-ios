@@ -17,7 +17,7 @@ TableHelperMunicipios *tablaHelperMunicipios;
 
 @implementation ListMunicipiosViewController
 
-@synthesize tablaMunicipios, searchBar, spinnerCentral, spinnerViewInferior;
+@synthesize tablaMunicipios, searchBar, spinnerCentral, spinnerViewInferior, labelNavigationBar;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -32,7 +32,8 @@ TableHelperMunicipios *tablaHelperMunicipios;
 {
     [super viewDidLoad];
     
-    [spinnerCentral setHidden:true];
+    [labelNavigationBar setText:NSLocalizedString(@"###municipios###", nil)];
+    [spinnerCentral setHidden:false];
     tablaHelperMunicipios = [[TableHelperMunicipios alloc]init];
     tablaHelperMunicipios.spinnerViewInferior = spinnerViewInferior;
     tablaHelperMunicipios.spinnerCentral = spinnerCentral;
@@ -40,6 +41,7 @@ TableHelperMunicipios *tablaHelperMunicipios;
     tablaHelperMunicipios.tablaDatos = tablaMunicipios;
     tablaMunicipios.delegate = tablaHelperMunicipios;
     tablaMunicipios.dataSource = tablaHelperMunicipios;
+    searchBar.delegate = tablaHelperMunicipios;
     [tablaHelperMunicipios cargarDatos];
 }
 
@@ -48,5 +50,6 @@ TableHelperMunicipios *tablaHelperMunicipios;
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 
 @end

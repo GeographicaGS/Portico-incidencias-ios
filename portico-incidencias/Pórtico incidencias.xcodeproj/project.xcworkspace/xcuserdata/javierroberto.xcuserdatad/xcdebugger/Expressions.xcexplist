@@ -3,45 +3,18 @@
    version = "1.0">
    <ContextStates>
       <ContextState
-         contextName = "-[ListIncidencesViewController scrollViewDidScroll:]:ListIncidencesViewController.m">
+         contextName = "-[DownloadJsonHelper cancelDownload:]:DownloadJsonHelper.m">
          <PersistentStrings>
             <PersistentString
-               value = "scrollView.contentOffset">
+               value = "op.request.URL">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[ListIncidencesViewController tableView:cellForRowAtIndexPath:]:ListIncidencesViewController.m">
+         contextName = "-[AppDelegate application:didFinishLaunchingWithOptions:]:AppDelegate.m">
          <PersistentStrings>
             <PersistentString
-               value = "prueba == [NSNull null]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "__68-[DownloadJsonHelper downloadJson:user:password:funcion:fromObject:]_block_invoke43:DownloadJsonHelper.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[LocationHelper locationManager:didUpdateToLocation:fromLocation:]:LocationHelper.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "currentLocation.coordinate.longitude">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "+[IncidenceModel getIncidenciasPorFecha:fromObject:offset:]:IncidenceModel.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "user">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "+[IncidenceModel getIncidenciasPorFecha:fromObject:offset:search:]:IncidenceModel.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "[search length] == 0">
+               value = "tabBarController.tabBar">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -49,48 +22,10 @@
          contextName = "__68-[DownloadJsonHelper downloadJson:user:password:funcion:fromObject:]_block_invoke:DownloadJsonHelper.m">
       </ContextState>
       <ContextState
-         contextName = "-[LocationHelper locationManager:didUpdateLocations:]:LocationHelper.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "[[locations lastObject]coordinate]">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[TableHelperIncidencias tableView:willDisplayCell:forRowAtIndexPath:]:TableHelperIncidencias.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.finLista">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
          contextName = "-[ListIncidencesViewController firstSegmenteSelect:]:ListIncidencesViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "[segment selectedSegmentIndex];">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[TableHelper afterGetIncidencias:]:TableHelper.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "offset">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[TableHelperIncidencias tableView:cellForRowAtIndexPath:]:TableHelperIncidencias.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "cell.icon.frame">
-            </PersistentString>
-            <PersistentString
-               value = "self.arrayDatos">
-            </PersistentString>
-            <PersistentString
-               value = "[format stringFromNumber:[NSNumber numberWithFloat:distancia]]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -111,26 +46,178 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[DownloadJsonHelper cancelDownload:]:DownloadJsonHelper.m">
+         contextName = "-[ListIncidencesViewController tableView:numberOfRowsInSection:]:ListIncidencesViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "op.request.URL">
+               value = "self.arrayIncidencias">
+            </PersistentString>
+            <PersistentString
+               value = "[arrayIncidencias count]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[DownloadJsonHelper downloadJson:funcion:fromObject:]:DownloadJsonHelper.m">
+         contextName = "-[LocationHelper locationManager:didUpdateLocations:]:LocationHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[[locations lastObject]coordinate]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TableHelper afterGetIncidencias:]:TableHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "arrayDatos">
+            </PersistentString>
+            <PersistentString
+               value = "offset">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "+[IncidenceModel getIncidenciasPorFecha:fromObject:offset:]:IncidenceModel.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "user">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TableHelperMunicipios tableView:cellForRowAtIndexPath:]:TableHelperMunicipios.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ListIncidencesViewController afterGetIncidencias:]:ListIncidencesViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[[json objectForKey:@&quot;results&quot;]objectForKey:@&quot;titulo&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LogingViewController afterInitSesion:]:LogingViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[json objectForKey:@&quot;error&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TableHelperIncidencias cargarDatos]:TableHelperIncidencias.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.currentLocation.coordinate.longitude">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TableHelperIncidencias tableView:numberOfRowsInSection:]:TableHelperIncidencias.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.arrayDatos">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ListIncidencesViewController scrollViewDidScroll:]:ListIncidencesViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.contentOffset">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[DownloadJsonHelper downloadJson:user:password:llamada:funcion:fromObject:]:DownloadJsonHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MapViewController afterGetCurrentLocation:]:MapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentLocation.coordinate.longitude">
+            </PersistentString>
+            <PersistentString
+               value = "currentLocation.coordinate.latitude">
+            </PersistentString>
+            <PersistentString
+               value = "mapView.zoom">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MapViewController afterGetGeoJson:]:MapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[lonstring doubleValue]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ListIncidencesViewController tableView:cellForRowAtIndexPath:]:ListIncidencesViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "prueba == [NSNull null]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LocationHelper locationManager:didUpdateToLocation:fromLocation:]:LocationHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "currentLocation.coordinate.longitude">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TableHelperIncidencias tableView:willDisplayCell:forRowAtIndexPath:]:TableHelperIncidencias.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.finLista">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "+[IncidenceModel getIncidenciasPorFecha:fromObject:offset:search:]:IncidenceModel.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[search length] == 0">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[ListIncidencesViewController scrollViewWillEndDragging:withVelocity:targetContentOffset:]:ListIncidencesViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.contentOffset.y">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TableHelperIncidencias tableView:cellForRowAtIndexPath:]:TableHelperIncidencias.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.icon.frame">
+            </PersistentString>
+            <PersistentString
+               value = "[format stringFromNumber:[NSNumber numberWithFloat:distancia]]">
+            </PersistentString>
+            <PersistentString
+               value = "self.arrayDatos">
+            </PersistentString>
+            <PersistentString
+               value = "CACurrentMediaTime()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TableHelperMunicipios cargarDatos]:TableHelperMunicipios.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[numbers count]">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "__76-[DownloadJsonHelper downloadJson:user:password:llamada:funcion:fromObject:]_block_invoke:DownloadJsonHelper.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[ListIncidencesViewController tableView:willDisplayCell:forRowAtIndexPath:]:ListIncidencesViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "indexPath.row">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[ListIncidencesViewController viewDidLoad]:ListIncidencesViewController.m">
@@ -144,61 +231,30 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[ListIncidencesViewController afterGetIncidencias:]:ListIncidencesViewController.m">
+         contextName = "-[ListIncidencesViewController tableView:willDisplayCell:forRowAtIndexPath:]:ListIncidencesViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "[[json objectForKey:@&quot;results&quot;]objectForKey:@&quot;titulo&quot;]">
+               value = "indexPath.row">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[AppDelegate application:didFinishLaunchingWithOptions:]:AppDelegate.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "tabBarController.tabBar">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "-[TableHelperMunicipios tableView:numberOfRowsInSection:]:TableHelperMunicipios.m">
       </ContextState>
       <ContextState
-         contextName = "-[LogingViewController afterInitSesion:]:LogingViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "[json objectForKey:@&quot;error&quot;]">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "-[DownloadJsonHelper downloadJson:funcion:fromObject:]:DownloadJsonHelper.m">
       </ContextState>
       <ContextState
-         contextName = "-[ListIncidencesViewController scrollViewWillEndDragging:withVelocity:targetContentOffset:]:ListIncidencesViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "scrollView.contentOffset.y">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "__68-[DownloadJsonHelper downloadJson:user:password:funcion:fromObject:]_block_invoke43:DownloadJsonHelper.m">
       </ContextState>
       <ContextState
-         contextName = "-[ListIncidencesViewController tableView:numberOfRowsInSection:]:ListIncidencesViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.arrayIncidencias">
-            </PersistentString>
-            <PersistentString
-               value = "[arrayIncidencias count]">
-            </PersistentString>
-         </PersistentStrings>
+         contextName = "__76-[DownloadJsonHelper downloadJson:user:password:llamada:funcion:fromObject:]_block_invoke49:DownloadJsonHelper.m">
       </ContextState>
       <ContextState
          contextName = "-[ListIncidencesViewController segmentEvent:]:ListIncidencesViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "[segment selectedSegmentIndex];">
-            </PersistentString>
-         </PersistentStrings>
-      </ContextState>
-      <ContextState
-         contextName = "-[TableHelperIncidencias cargarDatos]:TableHelperIncidencias.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.currentLocation.coordinate.longitude">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

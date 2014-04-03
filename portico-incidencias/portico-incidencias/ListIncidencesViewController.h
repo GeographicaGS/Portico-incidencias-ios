@@ -20,10 +20,12 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *spinnerViewInferior;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinnerCentral;
+@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinnerInferior;
 
 - (IBAction)segmentEvent:(id)sender;
+- (IBAction)segmentEvenUser:(id)sender;
 - (void) afterGetCurrentLocation: (CLLocation*) currentLocation;
-
+- (void) afterGetCurrentLocationUser: (CLLocation*) currentLocation;
 
 
 @end

@@ -17,6 +17,19 @@
 		A315636418A3CC210052D9E7 /* AFURLResponseSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = A315635A18A3CC210052D9E7 /* AFURLResponseSerialization.m */; };
 		A315636518A3CC210052D9E7 /* AFURLSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A315635C18A3CC210052D9E7 /* AFURLSessionManager.m */; };
 		A315636818A3CDEB0052D9E7 /* DownloadJsonHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A315636718A3CDEB0052D9E7 /* DownloadJsonHelper.m */; };
+		A319DD7418EACCDE00C51A7A /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A319DD7318EACCDE00C51A7A /* GoogleMaps.framework */; };
+		A319DD7618EACD2700C51A7A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A319DD7518EACD2700C51A7A /* AVFoundation.framework */; };
+		A319DD7818EACD3200C51A7A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A319DD7718EACD3200C51A7A /* CoreData.framework */; };
+		A31D2CC718EDABE900244AB7 /* POR_globo_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A31D2CC518EDABE900244AB7 /* POR_globo_bg@2x.png */; };
+		A31D2CC818EDABE900244AB7 /* POR_icon_acceso_flecha@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A31D2CC618EDABE900244AB7 /* POR_icon_acceso_flecha@2x.png */; };
+		A33D34F618EACD6900FACA3A /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D34F518EACD6900FACA3A /* CoreText.framework */; };
+		A33D34F818EACD7200FACA3A /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D34F718EACD7200FACA3A /* GLKit.framework */; };
+		A33D34FA18EACD7900FACA3A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D34F918EACD7900FACA3A /* ImageIO.framework */; };
+		A33D34FC18EACD8200FACA3A /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D34FB18EACD8200FACA3A /* libc++.dylib */; };
+		A33D34FE18EACD8F00FACA3A /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D34FD18EACD8F00FACA3A /* libicucore.dylib */; };
+		A33D350018EACD9C00FACA3A /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A33D34FF18EACD9C00FACA3A /* OpenGLES.framework */; };
+		A33D350118EACDB000FACA3A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F824C818A2BAF6002B6A9C /* SystemConfiguration.framework */; };
+		A33D358818EAD2CA00FACA3A /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A33D358718EAD2CA00FACA3A /* GoogleMaps.bundle */; };
 		A3534B4018ACD9B9005846AD /* CellIncidenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3534B3F18ACD9B9005846AD /* CellIncidenceModel.m */; };
 		A3534B4318ACE6BE005846AD /* IncidenceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3534B4218ACE6BE005846AD /* IncidenceModel.m */; };
 		A3534B4618ACF201005846AD /* UserHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A3534B4518ACF201005846AD /* UserHelper.m */; };
@@ -33,7 +46,7 @@
 		A3731B17189BC3D2002E0B3E /* portico-incidencias-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A3731B16189BC3D2002E0B3E /* portico-incidencias-Info.plist */; };
 		A388B1B718A0F27F00778394 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A388B1B918A0F27F00778394 /* Localizable.strings */; };
 		A388B1D118A1558B00778394 /* POR_icon_bg_thumbnail@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A388B1BC18A1558B00778394 /* POR_icon_bg_thumbnail@2x.png */; };
-		A388B1D218A1558B00778394 /* POR_icon_cab_lista.png in Resources */ = {isa = PBXBuildFile; fileRef = A388B1BD18A1558B00778394 /* POR_icon_cab_lista.png */; };
+		A388B1D218A1558B00778394 /* POR_icon_cab_lista@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A388B1BD18A1558B00778394 /* POR_icon_cab_lista@2x.png */; };
 		A388B1D318A1558B00778394 /* POR_icon_cab_mapa@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A388B1BE18A1558B00778394 /* POR_icon_cab_mapa@2x.png */; };
 		A388B1D418A1558B00778394 /* POR_icon_cab_volver.png in Resources */ = {isa = PBXBuildFile; fileRef = A388B1BF18A1558B00778394 /* POR_icon_cab_volver.png */; };
 		A388B1D518A1558B00778394 /* POR_icon_camara.png in Resources */ = {isa = PBXBuildFile; fileRef = A388B1C018A1558B00778394 /* POR_icon_camara.png */; };
@@ -55,6 +68,10 @@
 		A388B1E518A1558B00778394 /* POR_menu_icon_usuario_ON@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A388B1D018A1558B00778394 /* POR_menu_icon_usuario_ON@2x.png */; };
 		A3979F7E18B21167005F5F96 /* ListMunicipiosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3979F7D18B21167005F5F96 /* ListMunicipiosViewController.m */; };
 		A3979F8118B215FB005F5F96 /* TableHelperMunicipios.m in Sources */ = {isa = PBXBuildFile; fileRef = A3979F8018B215FB005F5F96 /* TableHelperMunicipios.m */; };
+		A39913A018E97D1A00CC63F2 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A399139F18E97D1A00CC63F2 /* MapViewController.m */; };
+		A39913A318E9805900CC63F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39913A218E9805900CC63F2 /* QuartzCore.framework */; };
+		A39913A518E9806800CC63F2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A39913A418E9806800CC63F2 /* libsqlite3.dylib */; };
+		A39913A618E9807200CC63F2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F824CC18A2BB1F002B6A9C /* libz.dylib */; };
 		A3B35EE518C4A0DF00B412FC /* TimerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B35EE418C4A0DF00B412FC /* TimerHelper.m */; };
 		A3B35EE718C4D88300B412FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B35EE618C4D88300B412FC /* CoreLocation.framework */; };
 		A3B35EEA18C4D8A200B412FC /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B35EE918C4D8A200B412FC /* LocationHelper.m */; };
@@ -98,6 +115,18 @@
 		A315635C18A3CC210052D9E7 /* AFURLSessionManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		A315636618A3CDEB0052D9E7 /* DownloadJsonHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloadJsonHelper.h; sourceTree = "<group>"; };
 		A315636718A3CDEB0052D9E7 /* DownloadJsonHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloadJsonHelper.m; sourceTree = "<group>"; };
+		A319DD7318EACCDE00C51A7A /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMaps.framework; path = "portico-incidencias/GoogleMaps.framework"; sourceTree = "<group>"; };
+		A319DD7518EACD2700C51A7A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		A319DD7718EACD3200C51A7A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		A31D2CC518EDABE900244AB7 /* POR_globo_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "POR_globo_bg@2x.png"; path = "imgs/POR_globo_bg@2x.png"; sourceTree = "<group>"; };
+		A31D2CC618EDABE900244AB7 /* POR_icon_acceso_flecha@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "POR_icon_acceso_flecha@2x.png"; path = "imgs/POR_icon_acceso_flecha@2x.png"; sourceTree = "<group>"; };
+		A33D34F518EACD6900FACA3A /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		A33D34F718EACD7200FACA3A /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		A33D34F918EACD7900FACA3A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		A33D34FB18EACD8200FACA3A /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		A33D34FD18EACD8F00FACA3A /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		A33D34FF18EACD9C00FACA3A /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		A33D358718EAD2CA00FACA3A /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		A3534B3E18ACD9B9005846AD /* CellIncidenceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellIncidenceModel.h; sourceTree = "<group>"; };
 		A3534B3F18ACD9B9005846AD /* CellIncidenceModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellIncidenceModel.m; sourceTree = "<group>"; };
 		A3534B4118ACE6BE005846AD /* IncidenceModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IncidenceModel.h; sourceTree = "<group>"; };
@@ -123,7 +152,7 @@
 		A388B1BA18A0F29100778394 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A388B1BB18A0F29100778394 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A388B1BC18A1558B00778394 /* POR_icon_bg_thumbnail@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "POR_icon_bg_thumbnail@2x.png"; path = "imgs/POR_icon_bg_thumbnail@2x.png"; sourceTree = "<group>"; };
-		A388B1BD18A1558B00778394 /* POR_icon_cab_lista.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = POR_icon_cab_lista.png; path = imgs/POR_icon_cab_lista.png; sourceTree = "<group>"; };
+		A388B1BD18A1558B00778394 /* POR_icon_cab_lista@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "POR_icon_cab_lista@2x.png"; path = "imgs/POR_icon_cab_lista@2x.png"; sourceTree = "<group>"; };
 		A388B1BE18A1558B00778394 /* POR_icon_cab_mapa@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "POR_icon_cab_mapa@2x.png"; path = "imgs/POR_icon_cab_mapa@2x.png"; sourceTree = "<group>"; };
 		A388B1BF18A1558B00778394 /* POR_icon_cab_volver.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = POR_icon_cab_volver.png; path = imgs/POR_icon_cab_volver.png; sourceTree = "<group>"; };
 		A388B1C018A1558B00778394 /* POR_icon_camara.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = POR_icon_camara.png; path = imgs/POR_icon_camara.png; sourceTree = "<group>"; };
@@ -147,6 +176,11 @@
 		A3979F7D18B21167005F5F96 /* ListMunicipiosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListMunicipiosViewController.m; sourceTree = "<group>"; };
 		A3979F7F18B215FB005F5F96 /* TableHelperMunicipios.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableHelperMunicipios.h; sourceTree = "<group>"; };
 		A3979F8018B215FB005F5F96 /* TableHelperMunicipios.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableHelperMunicipios.m; sourceTree = "<group>"; };
+		A399139C18E97BBE00CC63F2 /* Mapbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mapbox.framework; path = "portico-incidencias/Mapbox.framework"; sourceTree = "<group>"; };
+		A399139E18E97D1A00CC63F2 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
+		A399139F18E97D1A00CC63F2 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		A39913A218E9805900CC63F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		A39913A418E9806800CC63F2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		A3B35EE318C4A0DF00B412FC /* TimerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerHelper.h; sourceTree = "<group>"; };
 		A3B35EE418C4A0DF00B412FC /* TimerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerHelper.m; sourceTree = "<group>"; };
 		A3B35EE618C4D88300B412FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -177,6 +211,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A33D350118EACDB000FACA3A /* SystemConfiguration.framework in Frameworks */,
+				A39913A318E9805900CC63F2 /* QuartzCore.framework in Frameworks */,
+				A33D350018EACD9C00FACA3A /* OpenGLES.framework in Frameworks */,
+				A33D34FE18EACD8F00FACA3A /* libicucore.dylib in Frameworks */,
+				A33D34FC18EACD8200FACA3A /* libc++.dylib in Frameworks */,
+				A33D34FA18EACD7900FACA3A /* ImageIO.framework in Frameworks */,
+				A33D34F818EACD7200FACA3A /* GLKit.framework in Frameworks */,
+				A33D34F618EACD6900FACA3A /* CoreText.framework in Frameworks */,
+				A319DD7818EACD3200C51A7A /* CoreData.framework in Frameworks */,
+				A319DD7618EACD2700C51A7A /* AVFoundation.framework in Frameworks */,
+				A319DD7418EACCDE00C51A7A /* GoogleMaps.framework in Frameworks */,
+				A39913A618E9807200CC63F2 /* libz.dylib in Frameworks */,
+				A39913A518E9806800CC63F2 /* libsqlite3.dylib in Frameworks */,
 				A3B35EE718C4D88300B412FC /* CoreLocation.framework in Frameworks */,
 				A3731AE0189BC198002E0B3E /* UIKit.framework in Frameworks */,
 				A3731ADC189BC198002E0B3E /* Foundation.framework in Frameworks */,
@@ -243,6 +290,18 @@
 		A3731ADA189BC198002E0B3E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A33D34FF18EACD9C00FACA3A /* OpenGLES.framework */,
+				A33D34FD18EACD8F00FACA3A /* libicucore.dylib */,
+				A33D34FB18EACD8200FACA3A /* libc++.dylib */,
+				A33D34F918EACD7900FACA3A /* ImageIO.framework */,
+				A33D34F718EACD7200FACA3A /* GLKit.framework */,
+				A33D34F518EACD6900FACA3A /* CoreText.framework */,
+				A319DD7718EACD3200C51A7A /* CoreData.framework */,
+				A319DD7518EACD2700C51A7A /* AVFoundation.framework */,
+				A319DD7318EACCDE00C51A7A /* GoogleMaps.framework */,
+				A39913A418E9806800CC63F2 /* libsqlite3.dylib */,
+				A39913A218E9805900CC63F2 /* QuartzCore.framework */,
+				A399139C18E97BBE00CC63F2 /* Mapbox.framework */,
 				A3B35EE618C4D88300B412FC /* CoreLocation.framework */,
 				A3F824CC18A2BB1F002B6A9C /* libz.dylib */,
 				A3F824CA18A2BB02002B6A9C /* MobileCoreServices.framework */,
@@ -309,6 +368,8 @@
 				A3D0ABA318A947A600C721AE /* ListIncidencesViewController.m */,
 				A3979F7C18B21167005F5F96 /* ListMunicipiosViewController.h */,
 				A3979F7D18B21167005F5F96 /* ListMunicipiosViewController.m */,
+				A399139E18E97D1A00CC63F2 /* MapViewController.h */,
+				A399139F18E97D1A00CC63F2 /* MapViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -316,6 +377,7 @@
 		A3731B22189BCD57002E0B3E /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				A33D358718EAD2CA00FACA3A /* GoogleMaps.bundle */,
 				A3731B26189BCEAA002E0B3E /* Interface Builder */,
 				A3731B23189BCD65002E0B3E /* Images */,
 			);
@@ -325,8 +387,10 @@
 		A3731B23189BCD65002E0B3E /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A31D2CC518EDABE900244AB7 /* POR_globo_bg@2x.png */,
+				A31D2CC618EDABE900244AB7 /* POR_icon_acceso_flecha@2x.png */,
 				A388B1BC18A1558B00778394 /* POR_icon_bg_thumbnail@2x.png */,
-				A388B1BD18A1558B00778394 /* POR_icon_cab_lista.png */,
+				A388B1BD18A1558B00778394 /* POR_icon_cab_lista@2x.png */,
 				A388B1BE18A1558B00778394 /* POR_icon_cab_mapa@2x.png */,
 				A388B1BF18A1558B00778394 /* POR_icon_cab_volver.png */,
 				A388B1C018A1558B00778394 /* POR_icon_camara.png */,
@@ -481,7 +545,7 @@
 				A388B1E318A1558B00778394 /* POR_menu_icon_municipios_ON@2x.png in Resources */,
 				A388B1E418A1558B00778394 /* POR_menu_icon_usuario_OFF@2x.png in Resources */,
 				A3731B17189BC3D2002E0B3E /* portico-incidencias-Info.plist in Resources */,
-				A388B1D218A1558B00778394 /* POR_icon_cab_lista.png in Resources */,
+				A388B1D218A1558B00778394 /* POR_icon_cab_lista@2x.png in Resources */,
 				A3731AF7189BC198002E0B3E /* Images.xcassets in Resources */,
 				A388B1DF18A1558B00778394 /* POR_logo_portico_login.png in Resources */,
 				A388B1D318A1558B00778394 /* POR_icon_cab_mapa@2x.png in Resources */,
@@ -490,10 +554,13 @@
 				A388B1E518A1558B00778394 /* POR_menu_icon_usuario_ON@2x.png in Resources */,
 				A3731AE6189BC198002E0B3E /* InfoPlist.strings in Resources */,
 				A388B1D418A1558B00778394 /* POR_icon_cab_volver.png in Resources */,
+				A31D2CC718EDABE900244AB7 /* POR_globo_bg@2x.png in Resources */,
+				A31D2CC818EDABE900244AB7 /* POR_icon_acceso_flecha@2x.png in Resources */,
 				A388B1DD18A1558B00778394 /* POR_icon_ubicacion@2x.png in Resources */,
 				A388B1D118A1558B00778394 /* POR_icon_bg_thumbnail@2x.png in Resources */,
 				A388B1E218A1558B00778394 /* POR_menu_icon_municipios_OFF@2x.png in Resources */,
 				A388B1DA18A1558B00778394 /* POR_icon_incidencias_congeladas.png in Resources */,
+				A33D358818EAD2CA00FACA3A /* GoogleMaps.bundle in Resources */,
 				A388B1E018A1558B00778394 /* POR_menu_icon_incidencias_OFF@2x.png in Resources */,
 				A3731AEF189BC198002E0B3E /* Main.storyboard in Resources */,
 				A388B1DB18A1558B00778394 /* POR_icon_stick.png in Resources */,
@@ -526,6 +593,7 @@
 				A3C2B42C189FC957001E69D8 /* LogingViewController.m in Sources */,
 				A3E8BF5A18AE221F00C397B8 /* TableHelper.m in Sources */,
 				A3E8BF5D18AE32FB00C397B8 /* TableHelperIncidencias.m in Sources */,
+				A39913A018E97D1A00CC63F2 /* MapViewController.m in Sources */,
 				A315635E18A3CC210052D9E7 /* AFHTTPRequestOperationManager.m in Sources */,
 				A315636218A3CC210052D9E7 /* AFURLConnectionOperation.m in Sources */,
 				A315635D18A3CC210052D9E7 /* AFHTTPRequestOperation.m in Sources */,
@@ -630,6 +698,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -662,6 +731,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -674,9 +744,19 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "portico-incidencias/Pórtico incidencias-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "portico-incidencias/portico-incidencias-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/A",
+					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/Current",
+				);
 				PRODUCT_NAME = "Pórtico incidencias";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
@@ -690,9 +770,19 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "portico-incidencias/Pórtico incidencias-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "portico-incidencias/portico-incidencias-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/A",
+					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/Current",
+				);
 				PRODUCT_NAME = "Pórtico incidencias";
 				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;

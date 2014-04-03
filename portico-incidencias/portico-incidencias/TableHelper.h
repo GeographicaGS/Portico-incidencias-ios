@@ -11,6 +11,7 @@
 @interface TableHelper : NSObject <UITableViewDataSource,UITableViewDelegate, UISearchBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *spinnerViewInferior;
+@property (weak, nonatomic) IBOutlet UIView *spinnerInferior;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinnerCentral;
 @property (weak, nonatomic) IBOutlet UITableView *tablaDatos;
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;

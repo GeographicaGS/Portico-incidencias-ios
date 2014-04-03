@@ -16,7 +16,7 @@
 
 @implementation TableHelper
 
-@synthesize spinnerCentral, spinnerViewInferior, arrayDatos, tablaDatos, searchBar, offset, buscando, finLista;
+@synthesize spinnerCentral, spinnerViewInferior, arrayDatos, tablaDatos, searchBar, offset, buscando, finLista, spinnerInferior;
 
 - (void) cargarDatos
 {
@@ -37,6 +37,7 @@
     bool recarga = false;
     [spinnerCentral setHidden:true];
     [spinnerViewInferior setHidden:true];
+    [spinnerInferior setHidden:true];
     if([json objectForKey:@"error"])
     {
         
@@ -58,6 +59,9 @@
             finLista = true;
         }
         [tablaDatos reloadData];
+        if(![self.searchBar isHidden]){
+            [self.tablaDatos setContentOffset:CGPointMake(0,-45) animated:YES];
+        }
     }
 }
 
@@ -68,8 +72,13 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [arrayDatos count];
+    return [self.arrayDatos count];
 }
+
+/*- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return [arrayDatos count];
+}*/
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -173,6 +182,5 @@
         [scrollView setContentOffset:CGPointMake(0,0) animated:YES];
     }
 }
-
 
 @end

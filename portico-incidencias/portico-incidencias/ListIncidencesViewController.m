@@ -20,7 +20,7 @@ TableHelperIncidencias *tablaHelperUsuarios;
 
 @implementation ListIncidencesViewController
 
-@synthesize navigationBar, botonNuevaIncidencia, labelNavigationBar, tablaIncidencias, tablaIncidenciaUsuario, segment, searchBar, spinnerCentral, spinnerViewInferior;
+@synthesize navigationBar, botonNuevaIncidencia, labelNavigationBar, tablaIncidencias, tablaIncidenciaUsuario, segment, searchBar, spinnerCentral, spinnerViewInferior, spinnerInferior;
 
 - (void)viewDidLoad
 {
@@ -64,6 +64,7 @@ TableHelperIncidencias *tablaHelperUsuarios;
         tablaHelperUsuarios.tablaDatos = tablaIncidenciaUsuario;
         tablaIncidenciaUsuario.delegate = tablaHelperUsuarios;
         tablaIncidenciaUsuario.dataSource = tablaHelperUsuarios;
+        searchBar.delegate = tablaHelperUsuarios;
         [tablaHelperUsuarios cargarDatos];
     }
 }
@@ -74,6 +75,7 @@ TableHelperIncidencias *tablaHelperUsuarios;
     
     tablaHelper = [[TableHelperIncidencias alloc]init];
     tablaHelper.spinnerViewInferior = spinnerViewInferior;
+    tablaHelper.spinnerInferior = spinnerInferior;
     tablaHelper.spinnerCentral = spinnerCentral;
     tablaHelper.searchBar = searchBar;
     
@@ -82,7 +84,7 @@ TableHelperIncidencias *tablaHelperUsuarios;
 
 
 - (IBAction)segmentEvent:(id)sender {
-    
+    [spinnerInferior setHidden:true];
     [tablaHelperIncidencias.arrayDatos removeAllObjects];
     [tablaIncidencias reloadData];
     [tablaHelperIncidencias.spinnerCentral setHidden:false];
@@ -101,11 +103,38 @@ TableHelperIncidencias *tablaHelperUsuarios;
     }
 }
 
+- (IBAction)segmentEvenUser:(id)sender {
+    [spinnerInferior setHidden:true];
+    [tablaHelperUsuarios.arrayDatos removeAllObjects];
+    [tablaIncidenciaUsuario reloadData];
+    [tablaHelperUsuarios.spinnerCentral setHidden:false];
+    tablaHelperUsuarios.finLista = false;
+    tablaHelperUsuarios.offset = 0;
+    
+    if([segment selectedSegmentIndex] == 0)
+    {
+        tablaHelperUsuarios.tipoListado = INCIDENCIAS_USUARIO_RECIENTES;
+        [tablaHelperUsuarios cargarDatos];
+        
+    }
+    else
+    {
+        [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocationUser:) fromObject:self];
+    }
+}
+
 - (void) afterGetCurrentLocation: (CLLocation*) currentLocation
 {
     tablaHelperIncidencias.currentLocation = currentLocation;
     tablaHelperIncidencias.tipoListado = INDICENCIAS_CERCANAS;
     [tablaHelperIncidencias cargarDatos];
+}
+
+- (void) afterGetCurrentLocationUser: (CLLocation*) currentLocation
+{
+    tablaHelperUsuarios.currentLocation = currentLocation;
+    tablaHelperUsuarios.tipoListado = INCIDENCIAS_USUARIO_CERCANAS;
+    [tablaHelperUsuarios cargarDatos];
 }
 
 @end

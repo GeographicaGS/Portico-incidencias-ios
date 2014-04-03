@@ -14,5 +14,6 @@
 @property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
 @property (weak, nonatomic) IBOutlet UIView *spinnerViewInferior;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinnerCentral;
+@property (weak, nonatomic) IBOutlet UILabel *labelNavigationBar;
 
 @end

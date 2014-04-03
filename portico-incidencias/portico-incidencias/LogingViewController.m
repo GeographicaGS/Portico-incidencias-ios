@@ -43,7 +43,6 @@
     
     userName.text = @"hector.garcia@geographica.gs";
     userPassword.text = @"yesterday";
-   
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField

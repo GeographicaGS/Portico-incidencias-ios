@@ -32,10 +32,10 @@
             
             break;
         case INCIDENCIAS_USUARIO_RECIENTES:
-            [IncidenceModel getIncidenciasPorUsuario:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset]];
+            [IncidenceModel getIncidenciasPorUsuario:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset] search: self.searchBar.text];
             break;
         case INCIDENCIAS_USUARIO_CERCANAS:
-            
+            [IncidenceModel getIncidenciasByDistByUser:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset] latitud:self.currentLocation.coordinate.latitude longitud:self.currentLocation.coordinate.longitude search: self.searchBar.text];
             break;
             
         default:
@@ -48,6 +48,7 @@
 {
     if ((!self.finLista) && ([self.arrayDatos count] != 0) && (indexPath.row == [self.arrayDatos count] -1))
     {
+        [self.spinnerInferior setHidden:false];
         [self cargarDatos];
     }
 }
@@ -143,7 +144,7 @@
             cell.municipioIncidencia.frame = frame;
             
             frame = cell.icon.frame;
-            frame.origin.x = 260;
+            frame.origin.x = 255;
             cell.icon.frame = frame;
             cell.icon.image = [UIImage imageNamed:@"POR_icon_hora.png"];
             
@@ -152,9 +153,37 @@
             frame.size.width = 45;
             cell.infoIncidencia.frame = frame;
             
+            
             cell.infoIncidencia.text= [NSString  stringWithFormat:@"%@%@",  [[[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"dias"]stringValue],@"d"];
             break;
         case INCIDENCIAS_USUARIO_CERCANAS:
+           
+            frame = cell.tituloIncidencia.frame;
+            frame.size.width = 160;
+            cell.tituloIncidencia.frame = frame;
+            
+            frame = cell.municipioIncidencia.frame;
+            frame.size.width = 160;
+            cell.municipioIncidencia.frame = frame;
+            
+            frame = cell.icon.frame;
+            frame.origin.x = 245;
+            cell.icon.frame = frame;
+            cell.icon.image = [UIImage imageNamed:@"POR_icon_ubicacion.png"];
+            
+            frame = cell.infoIncidencia.frame;
+            frame.origin.x = 250;
+            frame.size.width = 65;
+            cell.infoIncidencia.frame = frame;
+            
+            
+            distancia = [[[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"distance"]floatValue];
+            if(distancia < 1000){
+                cell.infoIncidencia.text= [NSString  stringWithFormat:@"%@%@",  [format stringFromNumber:[NSNumber numberWithFloat:distancia]] ,@"m"];
+            }else{
+                distancia /= 1000;
+                cell.infoIncidencia.text= [NSString  stringWithFormat:@"%@%@",  [format stringFromNumber:[NSNumber numberWithFloat:distancia]] ,@"km"];
+            }
             
             break;
             
@@ -176,7 +205,6 @@
     self.offset = 0;
     [[TimerHelper getInstance]start:1 funcion:@selector(cargarDatos) fromObject:self];
 }
-
 
 
 @end
