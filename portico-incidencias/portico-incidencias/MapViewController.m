@@ -163,20 +163,6 @@
         infoWindow.frame= rect;
     [CATransaction commit];*/
     
-    CAKeyframeAnimation *trans = [CAKeyframeAnimation animationWithKeyPath:@"transform.translation.x"];
-    
-    NSArray *values = @[@(-300),@(30),@(0)];
-    trans.values = values;
-    
-    NSArray *times = @[@(0.0),@(0.85),@(1)];
-    trans.keyTimes = times;
-    trans.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
-    
-    trans.duration = 0.8;
-    trans.removedOnCompletion = NO;
-    trans.fillMode = kCAFillModeBackwards;
-    trans.beginTime = CACurrentMediaTime()+0.8;
-    [infoWindow.layer addAnimation:trans forKey:@"entrance"];
     
     
     return infoWindow;

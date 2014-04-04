@@ -752,6 +752,7 @@
 				GCC_PREFIX_HEADER = "portico-incidencias/Pórtico incidencias-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "portico-incidencias/portico-incidencias-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/A",
@@ -759,6 +760,7 @@
 				);
 				PRODUCT_NAME = "Pórtico incidencias";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -778,6 +780,7 @@
 				GCC_PREFIX_HEADER = "portico-incidencias/Pórtico incidencias-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "portico-incidencias/portico-incidencias-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/A",
@@ -785,6 +788,7 @@
 				);
 				PRODUCT_NAME = "Pórtico incidencias";
 				PROVISIONING_PROFILE = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
