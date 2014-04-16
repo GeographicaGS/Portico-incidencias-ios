@@ -20,9 +20,14 @@
 @property (weak, nonatomic) IBOutlet UIView *imgeOrangeInfoWindow;
 @property (weak, nonatomic) IBOutlet UILabel *labelFirstInfoWindow;
 @property (weak, nonatomic) IBOutlet UILabel *labelSecondInfoWindow;
+@property (weak, nonatomic) IBOutlet UIButton *butonGoIncidence;
 
 - (void) afterGetCurrentLocation: (CLLocation*) currentLocation;
-- (void) afterGetGeoJson: (NSDictionary*) json;
+- (void) afterGetAllIncidences: (NSDictionary*) json;
 - (IBAction)goBack:(id)sender;
+
+
+@property (nonatomic) BOOL *navigate;;
+
 
 @end

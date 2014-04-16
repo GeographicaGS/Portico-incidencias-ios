@@ -72,6 +72,8 @@
         cell.municipioIncidencia.text = @"";
     }
     
+    cell.estado = [[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"estado"];
+    cell.idIncidencia = [[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"id_incidencia"];
 
     
     
@@ -195,6 +197,12 @@
     
     return cell;
     
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+
+    [self.tablaDatos deselectRowAtIndexPath:indexPath animated:NO];    
 }
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{

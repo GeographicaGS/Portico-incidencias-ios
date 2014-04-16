@@ -92,9 +92,21 @@
         UITabBarItem *tabBarItem2 = [tabBar.items objectAtIndex:1];
         UITabBarItem *tabBarItem3 = [tabBar.items objectAtIndex:2];
         
-        tabBarItem1.title = NSLocalizedString(@"incidencias", nil);
+        tabBarItem1.title = NSLocalizedString(@"###incidencias###", nil);
         tabBarItem2.title = NSLocalizedString(@"###municipios###", nil);
         tabBarItem3.title = NSLocalizedString(@"###usuario###", nil);
+        
+        [tabBarItem1 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                            [UIColor colorWithRed:247/255.0 green:77/255.0 blue:41/255.0 alpha:1.0], NSForegroundColorAttributeName,
+                                            nil] forState:UIControlStateNormal];
+        
+        [tabBarItem2 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             [UIColor colorWithRed:247/255.0 green:77/255.0 blue:41/255.0 alpha:1.0], NSForegroundColorAttributeName,
+                                             nil] forState:UIControlStateNormal];
+        
+        [tabBarItem3 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
+                                             [UIColor colorWithRed:247/255.0 green:77/255.0 blue:41/255.0 alpha:1.0], NSForegroundColorAttributeName,
+                                             nil] forState:UIControlStateNormal];
        
         [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_OFF.png"]];
         [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_OFF.png"]];

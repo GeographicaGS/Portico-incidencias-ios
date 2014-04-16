@@ -10,9 +10,15 @@
 
 @interface CellIncidenceModel : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
-@property (weak, nonatomic) IBOutlet UILabel *tituloIncidencia;
-@property (weak, nonatomic) IBOutlet UILabel *municipioIncidencia;
+
+
+@property (nonatomic, retain) IBOutlet UILabel *tituloIncidencia;
+@property (nonatomic, retain) IBOutlet UILabel *municipioIncidencia;
+@property (nonatomic, retain) IBOutlet NSNumber *estado;
+@property (nonatomic, retain) IBOutlet NSNumber *idIncidencia;
+
 @property (weak, nonatomic) IBOutlet UILabel *infoIncidencia;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
+
 
 @end

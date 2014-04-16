@@ -13,8 +13,12 @@
 "###comunicarProblema###" = "Comunicar un problema";
 "###nueva###" = "Nueva";
 "###incidencias###" = "Incidencias";
+"###incidencia###" = "Incidencia";
 "###recientes###" = "Recientes";
 "###cercanas###" = "Cercanas";
 "###usuario###" = "Usuario";
 "###municipios###" = "Municipios";
+"###volver###" = "Volver";
+"###enviar###" = "Enviar";
+"###addComentario###" = "Añade un comentario";
 

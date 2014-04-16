@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Documentation.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>portico-incidencias.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -12,6 +17,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>A3223F0018FE7181000104EE</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>A3731AD7189BC198002E0B3E</key>
 		<dict>
 			<key>primary</key>

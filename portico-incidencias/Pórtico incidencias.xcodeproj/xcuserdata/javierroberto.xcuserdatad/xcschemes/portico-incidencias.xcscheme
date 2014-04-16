@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A3731AD7189BC198002E0B3E"
-               BuildableName = "Po&#769;rtico incidencias.app"
-               BlueprintName = "Po&#769;rtico incidencias"
-               ReferencedContainer = "container:Po&#769;rtico incidencias.xcodeproj">
+               BuildableName = "Po&#x301;rtico incidencias.app"
+               BlueprintName = "Po&#x301;rtico incidencias"
+               ReferencedContainer = "container:Po&#x301;rtico incidencias.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "A3731AFB189BC198002E0B3E"
-               BuildableName = "Po&#769;rtico incidenciasTests.xctest"
-               BlueprintName = "Po&#769;rtico incidenciasTests"
-               ReferencedContainer = "container:Po&#769;rtico incidencias.xcodeproj">
+               BuildableName = "Po&#x301;rtico incidenciasTests.xctest"
+               BlueprintName = "Po&#x301;rtico incidenciasTests"
+               ReferencedContainer = "container:Po&#x301;rtico incidencias.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -43,9 +43,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A3731AD7189BC198002E0B3E"
-            BuildableName = "Po&#769;rtico incidencias.app"
-            BlueprintName = "Po&#769;rtico incidencias"
-            ReferencedContainer = "container:Po&#769;rtico incidencias.xcodeproj">
+            BuildableName = "Po&#x301;rtico incidencias.app"
+            BlueprintName = "Po&#x301;rtico incidencias"
+            ReferencedContainer = "container:Po&#x301;rtico incidencias.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A3731AD7189BC198002E0B3E"
-            BuildableName = "Po&#769;rtico incidencias.app"
-            BlueprintName = "Po&#769;rtico incidencias"
-            ReferencedContainer = "container:Po&#769;rtico incidencias.xcodeproj">
+            BuildableName = "Po&#x301;rtico incidencias.app"
+            BlueprintName = "Po&#x301;rtico incidencias"
+            ReferencedContainer = "container:Po&#x301;rtico incidencias.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "A3731AD7189BC198002E0B3E"
-            BuildableName = "Po&#769;rtico incidencias.app"
-            BlueprintName = "Po&#769;rtico incidencias"
-            ReferencedContainer = "container:Po&#769;rtico incidencias.xcodeproj">
+            BuildableName = "Po&#x301;rtico incidencias.app"
+            BlueprintName = "Po&#x301;rtico incidencias"
+            ReferencedContainer = "container:Po&#x301;rtico incidencias.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

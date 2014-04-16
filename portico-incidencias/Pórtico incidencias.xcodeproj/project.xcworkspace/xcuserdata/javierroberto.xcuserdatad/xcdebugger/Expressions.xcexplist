@@ -19,7 +19,32 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[IncidenceViewController viewDidLoad]:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.municipio.frame.origin.y">
+            </PersistentString>
+            <PersistentString
+               value = "self.municipio.text">
+            </PersistentString>
+            <PersistentString
+               value = "self.incidencia">
+            </PersistentString>
+            <PersistentString
+               value = "self.incidencia.idIncidencia">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "__68-[DownloadJsonHelper downloadJson:user:password:funcion:fromObject:]_block_invoke:DownloadJsonHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[IncidenceViewController afterGetComments:]:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.scrollView.contentSize">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[ListIncidencesViewController firstSegmenteSelect:]:ListIncidencesViewController.m">
@@ -95,6 +120,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[MapViewController mapView:markerInfoWindow:]:MapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "marker.userData">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[LogingViewController afterInitSesion:]:LogingViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -115,6 +148,17 @@
          <PersistentStrings>
             <PersistentString
                value = "self.arrayDatos">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[IncidenceViewController prueba:]:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.incidencia">
+            </PersistentString>
+            <PersistentString
+               value = "self.incidencia.tituloIncidencia.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -144,10 +188,10 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "-[MapViewController afterGetGeoJson:]:MapViewController.m">
+         contextName = "__43-[MapViewController afterGetAllIncidences:]_block_invoke:MapViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "[lonstring doubleValue]">
+               value = "marker.userData">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -156,6 +200,14 @@
          <PersistentStrings>
             <PersistentString
                value = "prueba == [NSNull null]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MapViewController afterGetGeoJson:]:MapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[lonstring doubleValue]">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -242,13 +294,49 @@
          contextName = "-[TableHelperMunicipios tableView:numberOfRowsInSection:]:TableHelperMunicipios.m">
       </ContextState>
       <ContextState
+         contextName = "-[MapViewController afterGetAllIncidences:]:MapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[[json objectForKey:@&quot;results&quot;] count]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[DownloadJsonHelper downloadJson:funcion:fromObject:]:DownloadJsonHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[IncidenceViewController prepareForSegue:sender:]:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[segue identifier]">
+            </PersistentString>
+            <PersistentString
+               value = "self.incidencia">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "__68-[DownloadJsonHelper downloadJson:user:password:funcion:fromObject:]_block_invoke43:DownloadJsonHelper.m">
       </ContextState>
       <ContextState
+         contextName = "__46-[IncidenceViewController keyboardWillAppear:]_block_invoke:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "newRect">
+            </PersistentString>
+            <PersistentString
+               value = "keyboardRect">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[CellIncidenceModel init]:CellIncidenceModel.m">
+      </ContextState>
+      <ContextState
          contextName = "__76-[DownloadJsonHelper downloadJson:user:password:llamada:funcion:fromObject:]_block_invoke49:DownloadJsonHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ListIncidencesViewController prepareForSegue:sender:]:ListIncidencesViewController.m">
       </ContextState>
       <ContextState
          contextName = "-[ListIncidencesViewController segmentEvent:]:ListIncidencesViewController.m">
@@ -257,6 +345,9 @@
                value = "[segment selectedSegmentIndex];">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MapViewController mapView:didTapInfoWindowOfMarker:]:MapViewController.m">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

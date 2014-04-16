@@ -10,6 +10,10 @@
 #import "TableHelperIncidencias.h"
 #import "LocationHelper.h"
 #import "Constants.h"
+#import "CellIncidenceModel.h"
+#import "IncidenceViewController.h"
+#import "MapViewController.h"
+#import "IncidenceModel.h"
 
 @interface ListIncidencesViewController ()
 
@@ -135,6 +139,21 @@ TableHelperIncidencias *tablaHelperUsuarios;
     tablaHelperUsuarios.currentLocation = currentLocation;
     tablaHelperUsuarios.tipoListado = INCIDENCIAS_USUARIO_CERCANAS;
     [tablaHelperUsuarios cargarDatos];
+}
+
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([[segue identifier] isEqualToString:@"segueIncidence"])
+    {
+        CellIncidenceModel * cell = sender;
+        IncidenceViewController *incidenceView = [segue destinationViewController];
+        [incidenceView setIncidencia:cell];
+        
+    }else if ([[segue identifier] isEqualToString:@"segueMap"]){
+        MapViewController *map = [segue destinationViewController];
+        [map setNavigate:true];
+        [IncidenceModel getGeoJsonIncidenciasByDist:@selector(afterGetAllIncidences:) fromObject:map];
+    }
 }
 
 @end

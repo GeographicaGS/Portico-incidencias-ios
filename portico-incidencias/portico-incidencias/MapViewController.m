@@ -9,6 +9,8 @@
 #import "MapViewController.h"
 #import "LocationHelper.h"
 #import "IncidenceModel.h"
+#import  "CellIncidenceModel.h"
+#import "IncidenceViewController.h"
 //#import <Mapbox/Mapbox.h>
 
 @interface MapViewController ()
@@ -60,11 +62,21 @@
     mapView = [GMSMapView mapWithFrame:self.mainView.bounds camera:camera];
     mapView.myLocationEnabled = YES;
     
+    if(!self.navigate){
+        [self.butonGoIncidence setHidden:true];
+        nuevaIncidenciaButton.title = NULL;
+        backButton.image = [UIImage imageNamed:@"POR_icon_cab_volver.png"];
+      
+    }
+    /*else{
+        [self.butonGoIncidence setHidden:false];
+    }*/
+    
     mapView.delegate = self;
     
     [self.mainView addSubview:mapView];
     
-    [IncidenceModel getGeoJsonIncidenciasByDist:@selector(afterGetGeoJson:) fromObject:self];
+   // [IncidenceModel getGeoJsonIncidenciasByDist:@selector(afterGetGeoJson:) fromObject:self];
     
 }
 
@@ -75,7 +87,7 @@
 }
 
 
--(void) afterGetGeoJson: (NSDictionary*) json
+-(void) afterGetAllIncidences: (NSDictionary*) json
 {
     
     /*RMMapboxSource *tileSource = [[RMMapboxSource alloc] initWithMapID:@"examples.map-z2effxa8"];
@@ -102,9 +114,12 @@
     
     [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];*/
     
-    [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];
     
     dispatch_queue_t colaEnSerie = dispatch_queue_create("miColaEnSerie", NULL);
+    NSUInteger aux = [[json objectForKey:@"results"] count];
+    if(aux != 1){
+        [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];
+    }
     for (NSDictionary *markers in [json objectForKey:@"results"])
     {
         dispatch_async(colaEnSerie, ^{
@@ -119,6 +134,33 @@
             marker.icon = [GMSMarker markerImageWithColor:[UIColor colorWithRed:(247/255.0) green:(77/255.0) blue:0.0 alpha:1.0]];
             marker.appearAnimation = kGMSMarkerAnimationPop;
             marker.map = mapView;
+            if(aux == 1){
+                
+                [mapView setCamera:([GMSCameraPosition cameraWithLatitude:[latstring doubleValue]
+                                                               longitude:[lonstring doubleValue]
+                                                                    zoom:9])];
+            }
+            
+            //UILabel *aux = [[UILabel alloc]init];
+            //CellIncidenceModel *incidencia = [[CellIncidenceModel alloc]init];
+            
+            //aux.text = marker.title;
+            //[incidencia setTituloIncidencia:aux];
+            //aux.text = marker.snippet;
+            //[incidencia setMunicipioIncidencia:aux];
+            
+            
+            
+            /*[incidencia setTituloIncidencia:[[UILabel alloc] initWithFrame:CGRectMake(40, 70, 300, 100)]];
+            incidencia.tituloIncidencia.text = @"dadwadawdadadawd";
+            NSLog(incidencia.tituloIncidencia.text);
+            [incidencia setMunicipioIncidencia:[[UILabel alloc] init]];
+            incidencia.municipioIncidencia.text = marker.snippet;
+            incidencia.estado = [[markers objectForKey:@"properties"] objectForKey:@"estado"];
+            incidencia.idIncidencia  = [[markers objectForKey:@"properties"] objectForKey:@"id_incidencia"];*/
+
+            
+            marker.userData = markers;
         
         });
     }
@@ -128,6 +170,7 @@
 - (IBAction)goBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 
 
 - (void) afterGetCurrentLocation: (CLLocation*) currentLocation
@@ -167,6 +210,29 @@
     
     return infoWindow;
 }
+
+- (void)mapView:(GMSMapView *)mapView didTapInfoWindowOfMarker:(GMSMarker *)marker {
+    if(self.navigate){
+        IncidenceViewController *incidenceView = [self.storyboard instantiateViewControllerWithIdentifier:@"IncidenceViewController"];
+        
+        CellIncidenceModel *incidencia = [[CellIncidenceModel alloc]init];
+        
+        [incidencia setTituloIncidencia:[[UILabel alloc]init]];
+        [incidencia.tituloIncidencia setText:marker.title];
+        
+        [incidencia setMunicipioIncidencia:[[UILabel alloc]init]];
+        [incidencia.municipioIncidencia setText:marker.snippet];
+        
+        [incidencia setIdIncidencia:[[marker.userData objectForKey:@"properties"] objectForKey:@"id"]];
+        [incidencia setEstado:[[marker.userData objectForKey:@"properties"] objectForKey:@"estado"]];
+        
+        [incidenceView setIncidencia:incidencia];
+        
+        
+        [self.navigationController pushViewController:incidenceView animated:YES];
+    }
+}
+
 
 
 @end

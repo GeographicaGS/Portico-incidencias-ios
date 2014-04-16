@@ -74,5 +74,19 @@
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
 }
 
++ (void) getGeoJsonIncidencia:(SEL)func fromObject:(id) object idIncidencia: (NSNumber*) idIncidencia{
+    [[DownloadJsonHelper getInstance] cleanDownloads];
+    NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@", basePath, @"geoJsonIncidencia/", idIncidencia];
+    
+    [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
+}
+
++ (void) getIncidenceComents:(SEL)func fromObject:(id) object idIncidencia: (NSNumber*) idIncidencia{
+    [[DownloadJsonHelper getInstance] cleanDownloads];
+    NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@", basePath, @"incidence_coments/", idIncidencia];
+    
+    [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
+}
+
 
 @end
