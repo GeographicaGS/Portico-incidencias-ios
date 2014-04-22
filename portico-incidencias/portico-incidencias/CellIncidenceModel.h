@@ -15,10 +15,13 @@
 @property (nonatomic, retain) IBOutlet UILabel *tituloIncidencia;
 @property (nonatomic, retain) IBOutlet UILabel *municipioIncidencia;
 @property (nonatomic, retain) IBOutlet NSNumber *estado;
-@property (nonatomic, retain) IBOutlet NSNumber *idIncidencia;
+@property NSNumber *idIncidencia;
 
 @property (weak, nonatomic) IBOutlet UILabel *infoIncidencia;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
 
+
+@property  NSString *descripcion;
+@property  NSString *user;
 
 @end

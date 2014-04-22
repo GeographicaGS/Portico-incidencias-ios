@@ -20,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *botonIrMapa;
 @property (nonatomic, strong) CellIncidenceModel *incidencia;
 @property (weak, nonatomic) IBOutlet UIView *commentView;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 @property (weak, nonatomic) IBOutlet UILabel *labelComent;
 @property (weak, nonatomic) IBOutlet UILabel *userComment;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
@@ -30,10 +29,20 @@
 @property (weak, nonatomic) IBOutlet UITextField *textFieldComment;
 @property (weak, nonatomic) IBOutlet UIView *miniSeparator;
 @property (weak, nonatomic) IBOutlet UIView *separatorComment;
+@property (weak, nonatomic) IBOutlet UILabel *labelUserDescripcion;
+@property (weak, nonatomic) IBOutlet UILabel *labelDescripcion;
+@property (weak, nonatomic) IBOutlet UIView *spinnerAddComment;
+@property (weak, nonatomic) IBOutlet UIButton *goListButton;
+@property (weak, nonatomic) IBOutlet UILabel *labelNavigationAux;
+
+@property bool ocultarNavigationBar;
 
 - (IBAction)backgroundTouched:(id)sender;
+- (IBAction)addComment:(id)sender;
+- (IBAction)goToList:(id)sender;
 
 - (void) afterGetComments: (NSDictionary*) json;
+-(void) afterAddComment: (NSDictionary*) json;
 
 
 @end

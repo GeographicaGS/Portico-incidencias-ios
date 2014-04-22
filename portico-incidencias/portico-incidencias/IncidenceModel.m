@@ -88,5 +88,24 @@
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
 }
 
++ (void) addComment:(SEL)func fromObject:(id) object comment: (NSString*) comment idIncidencia: (NSNumber*) idIncidencia
+{
+    
+    NSString *url =  [NSMutableString stringWithFormat:@"%@%@", basePath, @"addComment"];
+    NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:comment, @"comment", [[UserHelper getInstance]getUsuario], @"user", idIncidencia, @"idIncidencia", nil];
+    
+    [[DownloadJsonHelper getInstance]uploadJson:url parameters:parameters user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] funcion:func fromObject:object];
+}
+
++ (void) createIncidence:(SEL)func fromObject:(id) object parameters:(NSDictionary*) parameters
+{
+    
+    NSString *url =  [NSMutableString stringWithFormat:@"%@%@", basePath, @"createIncidence"];
+    
+    [[DownloadJsonHelper getInstance]uploadJson:url parameters:parameters user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] funcion:func fromObject:object];
+}
+
+
+
 
 @end

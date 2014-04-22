@@ -223,8 +223,12 @@
         [incidencia setMunicipioIncidencia:[[UILabel alloc]init]];
         [incidencia.municipioIncidencia setText:marker.snippet];
         
+        [incidencia setDescripcion:[[marker.userData objectForKey:@"properties"] objectForKey:@"descripcion"]];
+        [incidencia setUser:[[marker.userData objectForKey:@"properties"] objectForKey:@"id_user"]];
+        
         [incidencia setIdIncidencia:[[marker.userData objectForKey:@"properties"] objectForKey:@"id"]];
         [incidencia setEstado:[[marker.userData objectForKey:@"properties"] objectForKey:@"estado"]];
+        
         
         [incidenceView setIncidencia:incidencia];
         

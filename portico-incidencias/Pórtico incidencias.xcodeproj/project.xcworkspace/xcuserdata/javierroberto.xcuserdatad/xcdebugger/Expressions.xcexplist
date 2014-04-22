@@ -22,29 +22,15 @@
          contextName = "-[IncidenceViewController viewDidLoad]:IncidenceViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.municipio.frame.origin.y">
+               value = "self.municipio.text == nil">
             </PersistentString>
             <PersistentString
-               value = "self.municipio.text">
-            </PersistentString>
-            <PersistentString
-               value = "self.incidencia">
-            </PersistentString>
-            <PersistentString
-               value = "self.incidencia.idIncidencia">
+               value = "self.labelDescripcion.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "__68-[DownloadJsonHelper downloadJson:user:password:funcion:fromObject:]_block_invoke:DownloadJsonHelper.m">
-      </ContextState>
-      <ContextState
-         contextName = "-[IncidenceViewController afterGetComments:]:IncidenceViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "self.scrollView.contentSize">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[ListIncidencesViewController firstSegmenteSelect:]:ListIncidencesViewController.m">
@@ -120,6 +106,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[CreateIncidenceViewController afterCreateIncidence:]:CreateIncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "incidenceView.incidencia.descripcion">
+            </PersistentString>
+            <PersistentString
+               value = "[result objectForKey:@&quot;descripcion&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[MapViewController mapView:markerInfoWindow:]:MapViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -132,6 +129,9 @@
          <PersistentStrings>
             <PersistentString
                value = "[json objectForKey:@&quot;error&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "appdelegate.tabBarController">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -247,16 +247,10 @@
          contextName = "-[TableHelperIncidencias tableView:cellForRowAtIndexPath:]:TableHelperIncidencias.m">
          <PersistentStrings>
             <PersistentString
-               value = "cell.icon.frame">
-            </PersistentString>
-            <PersistentString
-               value = "[format stringFromNumber:[NSNumber numberWithFloat:distancia]]">
-            </PersistentString>
-            <PersistentString
                value = "self.arrayDatos">
             </PersistentString>
             <PersistentString
-               value = "CACurrentMediaTime()">
+               value = "cell.descripcion">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -270,6 +264,14 @@
       </ContextState>
       <ContextState
          contextName = "__76-[DownloadJsonHelper downloadJson:user:password:llamada:funcion:fromObject:]_block_invoke:DownloadJsonHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[IncidenceViewController goToList:]:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "appdelegate.tabBarController">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[ListIncidencesViewController viewDidLoad]:ListIncidencesViewController.m">
@@ -348,6 +350,14 @@
       </ContextState>
       <ContextState
          contextName = "-[MapViewController mapView:didTapInfoWindowOfMarker:]:MapViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "marker.userData">
+            </PersistentString>
+            <PersistentString
+               value = "marker.userData ">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
    </ContextStates>
 </VariablesViewState>

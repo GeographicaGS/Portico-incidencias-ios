@@ -21,4 +21,13 @@
 "###volver###" = "Volver";
 "###enviar###" = "Enviar";
 "###addComentario###" = "Añade un comentario";
+"###newIncidence###" = "Nueva incidencia";
+"###doIt###" = "Hecho";
+"###incidenceTitle###" = "Título de la incidencia";
+"###incidenceDescription###" = "Breve descripción";
+"###addPhoto###" = "  Añadir foto...";
+"###latitude###" = "Latitud";
+"###longitude###" = "Longitud";
+"###currentLocation###" = "  Ubicacion Actual";
+
 

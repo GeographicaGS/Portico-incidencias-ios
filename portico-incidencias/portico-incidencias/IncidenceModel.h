@@ -19,4 +19,7 @@
 + (void) getGeoJsonIncidencia:(SEL)func fromObject:(id) object idIncidencia: (NSNumber*) idIncidencia;
 + (void) getIncidenceComents:(SEL)func fromObject:(id) object idIncidencia: (NSNumber*) idIncidencia;
 
++ (void) addComment:(SEL)func fromObject:(id) object comment: (NSString*) comment idIncidencia: (NSNumber*) idIncidencia;
++ (void) createIncidence:(SEL)func fromObject:(id) object parameters:(NSDictionary*) parameters;
+
 @end

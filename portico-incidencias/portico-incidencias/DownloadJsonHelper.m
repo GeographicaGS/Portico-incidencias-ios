@@ -85,6 +85,38 @@
     
 }
 
+-(void)uploadJson:(NSString *)url parameters:(NSDictionary*)parameters user:(NSString*)user password:(NSString*)password funcion:(SEL)func fromObject:(id) object
+{
+    /*NSURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:url parameters:parameters constructingBodyWithBlock:^(id <AFMultipartFormData>formData) {
+    }];*/
+
+    NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:parameters error:nil];
+                             
+    NSURLCredential *credential = [NSURLCredential credentialWithUser:user password: [DownloadJsonHelper md5:password] persistence:NSURLCredentialPersistenceNone];
+    
+    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
+    [operation setCredential:credential];
+    
+    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSDictionary* json = [NSJSONSerialization
+                              JSONObjectWithData:operation.responseData
+                              options:0
+                              error:nil];
+        
+        [object performSelector:func withObject:json];
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSDictionary *json = [[NSDictionary alloc] initWithObjectsAndKeys:error, @"error", nil];
+        [object performSelector:func withObject:json];
+    }];
+    
+    [self.operationQueue addOperation:operation];
+  
+    
+}
+
 -(void)cancelDownload:(NSString *)url
 {
     for (AFHTTPRequestOperation *op in self.operationQueue.operations) {

@@ -153,6 +153,10 @@ TableHelperIncidencias *tablaHelperUsuarios;
         MapViewController *map = [segue destinationViewController];
         [map setNavigate:true];
         [IncidenceModel getGeoJsonIncidenciasByDist:@selector(afterGetAllIncidences:) fromObject:map];
+        
+    }else if ([[segue identifier] isEqualToString:@"segueNewIncidence"]){
+        
+
     }
 }
 
