@@ -26,10 +26,10 @@
             [IncidenceModel getIncidenciasByDist:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset] latitud:self.currentLocation.coordinate.latitude longitud:self.currentLocation.coordinate.longitude search: self.searchBar.text];
             break;
         case INCIDENCIAS_MUNICIPIOS_RECIENTES:
-            
+            [IncidenceModel getIncidenciasPorFechaPorMunicipio:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset] search:self.searchBar.text municipio:self.idMunicipio];
             break;
         case INCIDENCIAS_MUNICIPIOS_CERCANAS:
-            
+            [IncidenceModel getIncidenciasByDistByTown:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset] latitud:self.currentLocation.coordinate.latitude longitud:self.currentLocation.coordinate.longitude search: self.searchBar.text municipio:self.idMunicipio];
             break;
         case INCIDENCIAS_USUARIO_RECIENTES:
             [IncidenceModel getIncidenciasPorUsuario:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset] search: self.searchBar.text];
@@ -100,54 +100,12 @@
             break;
             
         case INCIDENCIAS_MUNICIPIOS_RECIENTES:
+            cell.icon.image = [UIImage imageNamed:@"POR_icon_hora.png"];
+            cell.infoIncidencia.text= [NSString  stringWithFormat:@"%@%@",  [[[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"dias"]stringValue],@"d"];
             
             break;
         case INCIDENCIAS_MUNICIPIOS_CERCANAS:
-            
-            break;
-        /*case INCIDENCIAS_USUARIO_RECIENTES:
-            frame = cell.tituloIncidencia.frame;
-            frame.size.width = 180;
-            cell.tituloIncidencia.frame = frame;
-            
-            frame = cell.municipioIncidencia.frame;
-            frame.size.width = 180;
-            cell.municipioIncidencia.frame = frame;
-            
-            frame = cell.icon.frame;
-            frame.origin.x = 255;
-            cell.icon.frame = frame;
-            cell.icon.image = [UIImage imageNamed:@"POR_icon_hora.png"];
-            
-            frame = cell.infoIncidencia.frame;
-            frame.origin.x = 270;
-            frame.size.width = 45;
-            cell.infoIncidencia.frame = frame;
-            
-            
-            cell.infoIncidencia.text= [NSString  stringWithFormat:@"%@%@",  [[[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"dias"]stringValue],@"d"];
-            break;
-        case INCIDENCIAS_USUARIO_CERCANAS:
-           
-            frame = cell.tituloIncidencia.frame;
-            frame.size.width = 160;
-            cell.tituloIncidencia.frame = frame;
-            
-            frame = cell.municipioIncidencia.frame;
-            frame.size.width = 160;
-            cell.municipioIncidencia.frame = frame;
-            
-            frame = cell.icon.frame;
-            frame.origin.x = 245;
-            cell.icon.frame = frame;
             cell.icon.image = [UIImage imageNamed:@"POR_icon_ubicacion.png"];
-            
-            frame = cell.infoIncidencia.frame;
-            frame.origin.x = 250;
-            frame.size.width = 65;
-            cell.infoIncidencia.frame = frame;
-            
-            
             distancia = [[[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"distance"]floatValue];
             if(distancia < 1000){
                 cell.infoIncidencia.text= [NSString  stringWithFormat:@"%@%@",  [format stringFromNumber:[NSNumber numberWithFloat:distancia]] ,@"m"];
@@ -156,8 +114,7 @@
                 cell.infoIncidencia.text= [NSString  stringWithFormat:@"%@%@",  [format stringFromNumber:[NSNumber numberWithFloat:distancia]] ,@"km"];
             }
             
-            break;*/
-            
+            break;
         default:
             break;
     }
@@ -174,7 +131,7 @@
     [cell.icon removeFromSuperview];
     [cell.icon setTranslatesAutoresizingMaskIntoConstraints:YES];
     frame = cell.icon.frame;
-    frame.origin.x = cell.infoIncidencia.frame.origin.x - 15;
+    frame.origin.x = cell.infoIncidencia.frame.origin.x - 12;
     cell.icon.frame = frame;
     [cell addSubview:cell.icon];
     

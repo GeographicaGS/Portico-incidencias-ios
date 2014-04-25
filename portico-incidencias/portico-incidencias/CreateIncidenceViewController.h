@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
 
-@interface CreateIncidenceViewController : UIViewController<UITextViewDelegate, UITextFieldDelegate>
+@interface CreateIncidenceViewController : UIViewController<UITextViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *labelNavigation;
 @property (weak, nonatomic) IBOutlet UIView *viewLabelNavigation;
 @property (weak, nonatomic) IBOutlet UIButton *createButtom;
@@ -21,13 +21,36 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *addImageButton;
 @property (weak, nonatomic) IBOutlet UIButton *locateButton;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainScroll;
+@property (weak, nonatomic) IBOutlet UIButton *doPhotoButton;
+@property (weak, nonatomic) IBOutlet UIButton *selectPhotoButton;
+@property (weak, nonatomic) IBOutlet UIButton *cancelButton;
+@property (weak, nonatomic) IBOutlet UIView *photoView;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (weak, nonatomic) IBOutlet UIImageView *imageView;
+@property (weak, nonatomic) IBOutlet UIButton *imageViewButton;
+@property (weak, nonatomic) IBOutlet UIView *imagenContentView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainScrollImages;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainImageContentView;
+@property (weak, nonatomic) IBOutlet UIScrollView *imageViewScroll;
 
 - (IBAction)backgroundTouched:(id)sender;
 - (IBAction)getCurrenLocation:(id)sender;
 - (IBAction)createIncidence:(id)sender;
+- (IBAction)showPhotoPanel:(id)sender;
+- (IBAction)cancelPhotoAnimation:(id)sender;
+- (IBAction)doPhoto:(id)sender;
+- (IBAction)selectPhoto:(id)sender;
+
 
 
 - (void) afterGetCurrentLocation: (CLLocation*) currentLocation;
 - (void) afterCreateIncidence: (NSDictionary*) json;
+
+
+
+
+
+- (void) afterPrueba: (NSDictionary*) json;
 
 @end

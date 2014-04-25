@@ -22,10 +22,13 @@
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinnerCentral;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinnerInferior;
 
+@property NSNumber *idMunicipio;
+
 - (IBAction)segmentEvent:(id)sender;
 - (IBAction)segmentEvenUser:(id)sender;
 - (void) afterGetCurrentLocation: (CLLocation*) currentLocation;
 - (void) afterGetCurrentLocationUser: (CLLocation*) currentLocation;
 
 
+@property (weak, nonatomic) IBOutlet UITabBarItem *prueba;
 @end

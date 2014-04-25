@@ -87,15 +87,20 @@
 
 -(void)uploadJson:(NSString *)url parameters:(NSDictionary*)parameters user:(NSString*)user password:(NSString*)password funcion:(SEL)func fromObject:(id) object
 {
-    /*NSURLRequest *request = [[AFHTTPRequestSerializer serializer] multipartFormRequestWithMethod:@"POST" URLString:url parameters:parameters constructingBodyWithBlock:^(id <AFMultipartFormData>formData) {
-    }];*/
 
-    NSURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:parameters error:nil];
+
+    NSMutableURLRequest *request = [[AFHTTPRequestSerializer serializer] requestWithMethod:@"POST" URLString:url parameters:parameters error:nil];
                              
     NSURLCredential *credential = [NSURLCredential credentialWithUser:user password: [DownloadJsonHelper md5:password] persistence:NSURLCredentialPersistenceNone];
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCredential:credential];
+    
+    [operation setUploadProgressBlock: ^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite){
+        NSLog(@"Espero subir: %lld", totalBytesExpectedToWrite);
+        NSLog(@"He subido: %lld", totalBytesWritten);
+    }];
+
     
     [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
         
@@ -113,8 +118,6 @@
     }];
     
     [self.operationQueue addOperation:operation];
-  
-    
 }
 
 -(void)cancelDownload:(NSString *)url

@@ -29,5 +29,13 @@
 "###latitude###" = "Latitud";
 "###longitude###" = "Longitud";
 "###currentLocation###" = "  Ubicacion Actual";
+"###doPhoto###" = "Hacer foto";
+"###selectFoto###" = "Seleccionar foto existente";
+"###cancel###" = "Cancelar";
+"###userProfile###" = "Perfil de usuario";
+"###open###" = "Abiertas";
+"###resolve###" = "Resueltas";
+"###field###" = "Archivadas";
+"###options###" = "Opciones";
 
 

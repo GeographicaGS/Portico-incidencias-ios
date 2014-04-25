@@ -19,6 +19,7 @@
 
 -(void)downloadJson:(NSString *)url user:(NSString*)user password:(NSString*)password llamada:(NSString*)llamada funcion:(SEL)func fromObject:(id) object;
 -(void)uploadJson:(NSString *)url parameters:(NSDictionary*)parameters user:(NSString*)user password:(NSString*)password funcion:(SEL)func fromObject:(id) object;
+
 -(void)cancelDownload:(NSString *)url;
 -(void)cleanDownloads;
 

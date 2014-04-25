@@ -8,6 +8,8 @@
 
 #import "ListMunicipiosViewController.h"
 #import "TableHelperMunicipios.h"
+#import "ListIncidencesViewController.h"
+#import "CellIncidenceTownModel.h"
 
 @interface ListMunicipiosViewController ()
 
@@ -49,6 +51,20 @@ TableHelperMunicipios *tablaHelperMunicipios;
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender{
+    CellIncidenceTownModel * cell = sender;
+    if([cell.numIncidencias.text isEqualToString:@"0"]){
+        return NO;
+    }
+    return YES;
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    CellIncidenceTownModel * cell = sender;
+    ListIncidencesViewController *list = [segue destinationViewController];
+    [list setIdMunicipio:cell.idMunicipio];
 }
 
 

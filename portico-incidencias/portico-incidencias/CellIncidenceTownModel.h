@@ -12,4 +12,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *nombreMunicipio;
 @property (weak, nonatomic) IBOutlet UILabel *numIncidencias;
 
+@property NSNumber *idMunicipio;
+
 @end

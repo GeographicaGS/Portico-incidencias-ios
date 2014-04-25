@@ -49,6 +49,7 @@ NSMutableArray *numbers;
          for (int i=0; i<indexPath.section; i++) {
             indice += [[numbers objectAtIndex:i]intValue];
         }
+        cell.idMunicipio = [[self.arrayDatos objectAtIndex:indexPath.row + indice]objectForKey:@"id_municipio"];
         cell.nombreMunicipio.text = [[self.arrayDatos objectAtIndex:indexPath.row + indice]objectForKey:@"nombre"];
         cell.numIncidencias.text= [[[self.arrayDatos objectAtIndex:indexPath.row + indice]objectForKey:@"num"]stringValue];
     }
@@ -98,6 +99,11 @@ NSMutableArray *numbers;
     [view addSubview:label];
     return view;
  }
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [self.tablaDatos deselectRowAtIndexPath:indexPath animated:NO];
+}
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
 {

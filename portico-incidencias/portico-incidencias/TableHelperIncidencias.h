@@ -12,6 +12,7 @@
 @interface TableHelperIncidencias : TableHelper
 
 @property int tipoListado;
+@property NSNumber *idMunicipio;
 @property CLLocation* currentLocation;
 
 @end

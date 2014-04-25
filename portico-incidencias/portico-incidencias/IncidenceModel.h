@@ -11,7 +11,9 @@
 @interface IncidenceModel : NSObject
 
 + (void) getIncidenciasPorFecha:(SEL)func fromObject:(id) object offset: (NSString*) offset search: (NSString*) search;
++ (void) getIncidenciasPorFechaPorMunicipio:(SEL)func fromObject:(id) object offset: (NSString*) offset search: (NSString*) search municipio:(NSNumber*)municipio;
 + (void) getIncidenciasByDist:(SEL)func fromObject:(id) object offset: (NSString*) offset latitud:(float) latitud longitud:(float) longitud search: (NSString*) search;
++ (void) getIncidenciasByDistByTown:(SEL)func fromObject:(id) object offset: (NSString*) offset latitud:(float) latitud longitud:(float) longitud search: (NSString*) search municipio:(NSNumber*)municipio;
 + (void) getIncidenciasPorUsuario:(SEL)func fromObject:(id) object offset: (NSString*) offset search: (NSString*) search;
 + (void) getIncidenciasByDistByUser:(SEL)func fromObject:(id) object offset: (NSString*) offset latitud:(float) latitud longitud:(float) longitud search: (NSString*) search;
 + (void) getNumIncidenciasPorMunicipio:(SEL)func fromObject:(id) object offset: (NSString*) offset search: (NSString*) search;
@@ -21,5 +23,6 @@
 
 + (void) addComment:(SEL)func fromObject:(id) object comment: (NSString*) comment idIncidencia: (NSNumber*) idIncidencia;
 + (void) createIncidence:(SEL)func fromObject:(id) object parameters:(NSDictionary*) parameters;
++ (void) addImages:(SEL)func fromObject:(id) object parameters:(NSDictionary*) parameters images:(NSMutableArray *) images;
 
 @end
