@@ -143,6 +143,16 @@
 }
 */
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    [searchBar setHidden:true];
+    [searchBar resignFirstResponder];
+    buscando = 0;
+    [self.tablaDatos deselectRowAtIndexPath:indexPath animated:NO];
+}
+
+
 //Métodos sobre el scroll
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView
@@ -179,7 +189,7 @@
         [searchBar setHidden:true];
         [searchBar resignFirstResponder];
         buscando = 0;
-        [scrollView setContentOffset:CGPointMake(0,0) animated:YES];
+        [scrollView setContentOffset:CGPointMake(0,0) animated:NO];
     }
 }
 

@@ -82,6 +82,8 @@ NSMutableArray  * buttonAuxArray;
     imageAuxArray = [[NSMutableArray alloc]init];
     buttonAuxArray = [[NSMutableArray alloc]init];
     
+     self.library = [[ALAssetsLibrary alloc] init];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -94,6 +96,12 @@ NSMutableArray  * buttonAuxArray;
     
     [center addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
     
+}
+
+- (void)viewDidUnload
+{
+    self.library = nil;
+    [super viewDidUnload];
 }
 
 -(void)keyboardWillAppear:(NSNotification *)notification {
@@ -185,7 +193,6 @@ NSMutableArray  * buttonAuxArray;
                                               otherButtonTitles:nil];
         [alert show];
     }
-    //[IncidenceModel addImages:@selector(afterPrueba:) fromObject:self parameters:[[NSMutableDictionary alloc]initWithObjectsAndKeys:@"Value1",@"Key1",nil] images:imageArray];
 }
 
 - (IBAction)showPhotoPanel:(id)sender {
@@ -235,6 +242,7 @@ NSMutableArray  * buttonAuxArray;
     // Creo el View Controller
     UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
     imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    imagePicker.editing = YES;
     // Nos declaramos su delegado
     imagePicker.delegate = self;
     [self presentViewController:imagePicker animated:YES completion:nil];
@@ -293,8 +301,48 @@ NSMutableArray  * buttonAuxArray;
        // self.constrainScrollImages.constant += self.imageView.frame.size.width + self.imageViewButton.frame.size.width + 15;
         self.constrainImageContentView.constant += self.imageView.frame.size.width + self.imageViewButton.frame.size.width + 15;
     }
+    
+    //Guardo la imagen en el album
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+        NSString *albumName=@"Pórtico";
+        
+        __block ALAssetsGroup* groupToAddTo;
+        
+        [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum
+                                    usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+                                        if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:albumName]) {
+                                            groupToAddTo = group;
+                                        }
+                                    }
+                                  failureBlock:^(NSError* error) {
+                                  }];
+        CGImageRef img = [imagenCapturada CGImage];
+        
+        
+        [self.library writeImageToSavedPhotosAlbum:img
+                                       orientation:((ALAssetOrientation)imagenCapturada.imageOrientation)
+                                   completionBlock:^(NSURL* assetURL, NSError* error) {
+                                       if (error.code == 0) {
+                                           
+                                           // try to get the asset
+                                           [self.library assetForURL:assetURL
+                                                         resultBlock:^(ALAsset *asset) {
+                                                             // assign the photo to the album
+                                                             [groupToAddTo addAsset:asset];
+                                                         }
+                                                        failureBlock:^(NSError* error) {
+                                                        }];
+                                       }
+                                       else {
+                                       }
+                                   }];
+    }
+    
+    
     [self dismissViewControllerAnimated:NO completion:nil];
 }
+
 
 
 - (void) deleteImage: (UIButton*)sender {
@@ -381,12 +429,10 @@ NSMutableArray  * buttonAuxArray;
     [incidenceView setIncidencia:incidencia];
 
     incidenceView.ocultarNavigationBar = true;
+    
+    [IncidenceModel addImages:@selector(loadImages) fromObject:incidenceView parameters:[[NSMutableDictionary alloc]initWithObjectsAndKeys:incidencia.idIncidencia,@"id",nil] images:imageArray];
+    
     [self.navigationController pushViewController:incidenceView animated:YES];
-}
-
-- (void) afterPrueba: (NSDictionary*) json
-{
-    int a = 8;
 }
 
 /*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

@@ -11,8 +11,10 @@
 #import "IncidenceModel.h"
 #import "CellIncidenceModel.h"
 #import "Constants.h"
+#import "UIImageView+AFNetworking.h"
 
 @implementation TableHelperIncidencias
+
 - (void) cargarDatos
 {
     [super cargarDatos];
@@ -32,10 +34,10 @@
             [IncidenceModel getIncidenciasByDistByTown:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset] latitud:self.currentLocation.coordinate.latitude longitud:self.currentLocation.coordinate.longitude search: self.searchBar.text municipio:self.idMunicipio];
             break;
         case INCIDENCIAS_USUARIO_RECIENTES:
-            [IncidenceModel getIncidenciasPorUsuario:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset] search: self.searchBar.text];
+            [IncidenceModel getIncidenciasPorUsuario:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset] search: self.searchBar.text estado:self.estado];
             break;
         case INCIDENCIAS_USUARIO_CERCANAS:
-            [IncidenceModel getIncidenciasByDistByUser:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset] latitud:self.currentLocation.coordinate.latitude longitud:self.currentLocation.coordinate.longitude search: self.searchBar.text];
+            [IncidenceModel getIncidenciasByDistByUser:@selector(afterGetIncidencias:) fromObject:self offset:[NSString stringWithFormat:@"%d", self.offset] latitud:self.currentLocation.coordinate.latitude longitud:self.currentLocation.coordinate.longitude search: self.searchBar.text estado:self.estado];
             break;
             
         default:
@@ -115,6 +117,26 @@
             }
             
             break;
+            
+        case INCIDENCIAS_USUARIO_RECIENTES:
+            cell.icon.image = [UIImage imageNamed:@"POR_icon_hora.png"];
+            cell.infoIncidencia.text= [NSString  stringWithFormat:@"%@%@",  [[[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"dias"]stringValue],@"d"];
+            
+            break;
+            
+        case INCIDENCIAS_USUARIO_CERCANAS:
+            
+            cell.icon.image = [UIImage imageNamed:@"POR_icon_ubicacion.png"];
+            distancia = [[[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"distance"]floatValue];
+            if(distancia < 1000){
+                cell.infoIncidencia.text= [NSString  stringWithFormat:@"%@%@",  [format stringFromNumber:[NSNumber numberWithFloat:distancia]] ,@"m"];
+            }else{
+                distancia /= 1000;
+                cell.infoIncidencia.text= [NSString  stringWithFormat:@"%@%@",  [format stringFromNumber:[NSNumber numberWithFloat:distancia]] ,@"km"];
+            }
+            
+            break;
+            
         default:
             break;
     }
@@ -142,15 +164,50 @@
     cell.tituloIncidencia.frame = frame;
     [cell addSubview:cell.tituloIncidencia];
     
+    
+    /*NSString *url = [[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"thumbnail"];
+    if([url length] > 0)
+    {
+        // NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
+        //cell.thumbnail.image = [UIImage imageWithData:data];
+        
+       
+        cell.tag = indexPath.row;
+        dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+        
+        
+       dispatch_async(queue, ^(void) {
+            
+            NSData *data = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:url]];
+            UIImage *thumbnail = [UIImage imageWithData:data];
+            
+           if (thumbnail) {
+               dispatch_async(dispatch_get_main_queue(), ^{
+                   if (cell.tag == indexPath.row) {
+                       cell.thumbnail.image = thumbnail;
+                       [cell setNeedsLayout];
+                   }
+               });
+           }
+           
+        });
+    }
+    else
+    {
+        cell.thumbnail.image = [UIImage imageNamed:@"POR_icon_bg_thumbnail.png"];
+    }*/
+
+
+    [cell.thumbnail setImageWithURL:[NSURL URLWithString:[[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"thumbnail"]] placeholderImage:[UIImage imageNamed:@"POR_icon_bg_thumbnail.png"]];
+    
     return cell;
     
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-    [self.tablaDatos deselectRowAtIndexPath:indexPath animated:NO];    
-}
+/*- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self.tablaDatos deselectRowAtIndexPath:indexPath animated:NO];
+}*/
 
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     [self.arrayDatos removeAllObjects];
@@ -160,6 +217,7 @@
     self.offset = 0;
     [[TimerHelper getInstance]start:1 funcion:@selector(cargarDatos) fromObject:self];
 }
+
 
 
 @end

@@ -11,6 +11,9 @@
 #import "IncidenceModel.h"
 #import "UserHelper.h"
 #import "ListIncidencesViewController.h"
+#import "CellImageGallery.h"
+#import "AFHTTPRequestOperation.h"
+#import "Constants.h"
 
 @interface IncidenceViewController ()
 
@@ -22,6 +25,8 @@ CGRect frameUserComment;
 CGRect frameComment;
 CGRect frameSeparator;
 int commentHeight;
+
+NSMutableArray *imagesArray;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -102,14 +107,18 @@ int commentHeight;
     self.miniSeparator.frame = frame;
     [self.mainView addSubview:self.miniSeparator];
     
-    [self.labelUserDescripcion removeFromSuperview];
-    [self.labelUserDescripcion setTranslatesAutoresizingMaskIntoConstraints:YES];
-    self.labelUserDescripcion.text = self.incidencia.user;
-    [self.labelUserDescripcion sizeToFit];
-    frame = self.labelUserDescripcion.frame;
-    frame.origin.y = self.miniSeparator.frame.origin.y + self.miniSeparator.frame.size.height + 10;
-    self.labelUserDescripcion.frame = frame;
-    [self.mainView addSubview:self.labelUserDescripcion];
+    if(![self.incidencia.user isKindOfClass:[NSNull class]])
+    {
+        [self.labelUserDescripcion removeFromSuperview];
+        [self.labelUserDescripcion setTranslatesAutoresizingMaskIntoConstraints:YES];
+        self.labelUserDescripcion.text = self.incidencia.user;
+        [self.labelUserDescripcion sizeToFit];
+        frame = self.labelUserDescripcion.frame;
+        frame.origin.y = self.miniSeparator.frame.origin.y + self.miniSeparator.frame.size.height + 10;
+        self.labelUserDescripcion.frame = frame;
+        [self.mainView addSubview:self.labelUserDescripcion];
+    }
+    
     
     [self.labelDescripcion removeFromSuperview];
     [self.labelDescripcion setTranslatesAutoresizingMaskIntoConstraints:YES];
@@ -127,13 +136,34 @@ int commentHeight;
     self.commentView.frame = frame;
     [self.mainView addSubview:self.commentView];
     
-    self.constrainScroll.constant = self.labelDescripcion.frame.origin.y + self.labelDescripcion.frame.size.height + self.actionView.frame.size.height  - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
+    //self.constrainScroll.constant = self.labelDescripcion.frame.origin.y + self.labelDescripcion.frame.size.height + self.actionView.frame.size.height  - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
+
+    
+    self.constrainScroll.constant = self.labelDescripcion.frame.origin.y + self.labelDescripcion.frame.size.height - self.scrollView.frame.size.height ;
     
     [self.spinnerAddComment setHidden:false];
-    self.constrainScroll.constant += self.spinnerAddComment.frame.size.height;
+   // self.constrainScroll.constant += self.spinnerAddComment.frame.size.height;
+    
+    [self.doPhotoButton setTitle:NSLocalizedString(@"###doPhoto###", nil) forState:UIControlStateNormal];
+    [self.selectPhotoButton setTitle:NSLocalizedString(@"###selectFoto###", nil) forState:UIControlStateNormal];
+    [self.cancelButton setTitle:NSLocalizedString(@"###cancel###", nil) forState:UIControlStateNormal];
+   
+    
+    //[self.collectionView registerClass:[CellImageGallery class] forCellWithReuseIdentifier:@"cellImageGallery"];
+    imagesArray = [[NSMutableArray alloc] init];
+    
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    [flowLayout setScrollDirection:UICollectionViewScrollDirectionHorizontal];
+    [flowLayout setMinimumInteritemSpacing:0.0f];
+    [flowLayout setMinimumLineSpacing:0.0f];
+    [self.collectionView setPagingEnabled:YES];
+    [self.collectionView setCollectionViewLayout:flowLayout];
+
+    self.library = [[ALAssetsLibrary alloc] init];
     
     [IncidenceModel getIncidenceComents:@selector(afterGetComments:) fromObject:self idIncidencia:self.incidencia.idIncidencia];
-
+    [self loadImages];
+    
 }
 
 
@@ -171,6 +201,17 @@ int commentHeight;
     
 }
 
+- (void)viewDidUnload
+{
+    self.library = nil;
+    [super viewDidUnload];
+}
+
+-(void) loadImages
+{
+    [IncidenceModel getIncidenceImages:@selector(afterGetImages:) fromObject:self idIncidencia:self.incidencia.idIncidencia];
+}
+
 -(void)keyboardWillAppear:(NSNotification *)notification {
     
     // Verificamos si el UITextField 2 es el responder
@@ -192,11 +233,21 @@ int commentHeight;
         [UIView animateWithDuration:seconds animations:^{
             
             // Cambiamos el frame del TextView para adaptarla al teclado que aparece
-           // self.view.frame = newRect;
             
+            //CGRect frame = self.actionView.frame;
+            //frame.origin.y -= keyboardRect.size.height;
+            //self.actionView.frame = frame;
+            //self.constrainActionView.constant = keyboardRect.size.height + 45;
+            
+            [self.actionView removeFromSuperview];
+            [self.actionView setTranslatesAutoresizingMaskIntoConstraints:YES];
             CGRect frame = self.actionView.frame;
             frame.origin.y -= keyboardRect.size.height;
             self.actionView.frame = frame;
+            [self.view addSubview:self.actionView];
+            [self.textFieldComment becomeFirstResponder];
+            
+            self.constrainScroll.constant += keyboardRect.size.height;
             
         }];
     }
@@ -219,10 +270,14 @@ int commentHeight;
     // Dejamos la altura de la textview en su valor original
     [UIView animateWithDuration:seconds animations:^{
         
-        //self.view.frame = oldFrame;
+        [self.actionView removeFromSuperview];
+        [self.actionView setTranslatesAutoresizingMaskIntoConstraints:YES];
         CGRect frame = self.actionView.frame;
         frame.origin.y += keyboardRect.size.height;
         self.actionView.frame = frame;
+        [self.view addSubview:self.actionView];
+        
+        self.constrainScroll.constant -= keyboardRect.size.height;
 
         
     }];
@@ -256,7 +311,9 @@ int commentHeight;
     {
         [self addCommentToView:[comentario objectForKey:@"contenido"] fromUser:[comentario objectForKey:@"email"]];
     }
-    self.constrainScroll.constant = commentHeight + self.actionView.frame.size.height - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
+    //self.constrainScroll.constant = commentHeight + self.actionView.frame.size.height - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
+
+    self.constrainScroll.constant = commentHeight - (self.scrollView.frame.size.height - self.commentView.frame.origin.y) - self.actionView.frame.size.height;
     
     [self.commentView removeFromSuperview];
     [self.commentView setTranslatesAutoresizingMaskIntoConstraints:YES];
@@ -318,7 +375,8 @@ int commentHeight;
     self.constrainScroll.constant -= self.spinnerAddComment.frame.size.height;
     
     [self addCommentToView:[[json objectForKey:@"result"]objectForKey:@"contenido"] fromUser:[[json objectForKey:@"result"]objectForKey:@"id_user"]];
-    self.constrainScroll.constant = commentHeight + self.actionView.frame.size.height - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
+    //self.constrainScroll.constant = commentHeight + self.actionView.frame.size.height - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
+    self.constrainScroll.constant = commentHeight - (self.scrollView.frame.size.height - self.commentView.frame.origin.y) - self.actionView.frame.size.height;
 
     CGPoint bottomOffset = CGPointMake(0, self.constrainScroll.constant);
     [self.scrollView setContentOffset:bottomOffset];
@@ -333,6 +391,162 @@ int commentHeight;
     }
     self.commentView.frame = frame;
     [self.mainView addSubview:self.commentView];
+}
+
+- (IBAction)showAddPhoto:(id)sender
+{
+    
+    [self backgroundTouched:sender];
+    
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelay:0.0];
+    
+    [self.photoView removeFromSuperview];
+    [self.photoView setTranslatesAutoresizingMaskIntoConstraints:YES];
+    CGRect frame = self.photoView.frame;
+    frame.origin.y = 400;
+    self.photoView.frame = frame;
+    [self.view addSubview:self.photoView];
+    
+    [self.mainView setAlpha:0.2];
+    
+    [UIView commitAnimations];
+    
+}
+
+- (IBAction)doPhoto:(id)sender
+{
+    // Creo el View Controller
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    // Nos declaramos su delegado
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+    
+    [self cancelPhoto];
+}
+
+- (IBAction)selectPhoto:(id)sender
+{
+    // Creo el View Controller
+    UIImagePickerController *imagePicker = [[UIImagePickerController alloc] init];
+    imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    // Nos declaramos su delegado
+    imagePicker.delegate = self;
+    [self presentViewController:imagePicker animated:YES completion:nil];
+    
+    [self cancelPhoto];
+
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [imagesArray addObject:image];
+    
+    [IncidenceModel addImages:@selector(reloadImages) fromObject:self parameters:[[NSMutableDictionary alloc]initWithObjectsAndKeys:self.incidencia.idIncidencia,@"id",nil] images:[[NSMutableArray alloc]initWithObjects:image, nil]];
+    
+    
+    
+    
+    //Guardo la imagen en el album
+    if (picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+        NSString *albumName=@"Pórtico";
+        __block ALAssetsGroup* groupToAddTo;
+        
+        [self.library enumerateGroupsWithTypes:ALAssetsGroupAlbum
+                                    usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+                                        if ([[group valueForProperty:ALAssetsGroupPropertyName] isEqualToString:albumName]) {
+                                            groupToAddTo = group;
+                                        }
+                                    }
+                                  failureBlock:^(NSError* error) {
+                                  }];
+        CGImageRef img = [image CGImage];
+        
+        [self.library writeImageToSavedPhotosAlbum:img
+                                       orientation:((ALAssetOrientation)image.imageOrientation)
+                                   completionBlock:^(NSURL* assetURL, NSError* error) {
+                                       if (error.code == 0) {
+                                           
+                                           // try to get the asset
+                                           [self.library assetForURL:assetURL
+                                                         resultBlock:^(ALAsset *asset) {
+                                                             // assign the photo to the album
+                                                             [groupToAddTo addAsset:asset];
+                                                         }
+                                                        failureBlock:^(NSError* error) {
+                                                        }];
+                                       }
+                                       else {
+                                       }
+                                   }];
+
+    }
+    
+    
+
+    [self dismissViewControllerAnimated:NO completion:nil];
+    
+    self.constrainTopMainView.constant = -132;
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    
+    [self dismissViewControllerAnimated:NO completion:nil];
+    self.constrainTopMainView.constant = -132;
+}
+
+- (void) reloadImages
+{
+    [self.collectionView reloadData];
+    [self.spinnerImage setHidden:true];
+}
+
+- (void) afterGetImages: (NSDictionary*) json
+{
+    imagesArray = [[NSMutableArray alloc] init];
+    for (NSDictionary *imagen in [json objectForKey:@"result"])
+    {
+        AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[imagen objectForKey:@"url"]]]];
+        requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
+        [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+            [imagesArray addObject:responseObject];
+            [self reloadImages];
+            
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+           
+        }];
+        [requestOperation start];
+    }
+    
+    
+    
+    
+}
+
+- (IBAction)cancelPhoto:(id)sender
+{
+    [UIView beginAnimations:nil context:nil];
+    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDelay:0.0];
+    [self cancelPhoto];
+    [UIView commitAnimations];
+}
+
+- (void) cancelPhoto{
+    
+    [self.photoView removeFromSuperview];
+    [self.photoView setTranslatesAutoresizingMaskIntoConstraints:YES];
+    CGRect frame = self.photoView.frame;
+    frame.origin.y = [[UIScreen mainScreen]bounds].size.height;
+    self.photoView.frame = frame;
+    [self.view addSubview:self.photoView];
+    
+    [self.mainView setAlpha:1.0];
 }
 
 -(IBAction)backgroundTouched:(id)sender
@@ -374,5 +588,35 @@ int commentHeight;
 
 }
 
+
+
+
+-(NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
+    return 1;
+}
+
+-(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
+    return [imagesArray count];
+}
+
+-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
+    CellImageGallery *cell = (CellImageGallery *)[collectionView dequeueReusableCellWithReuseIdentifier:@"cellImageGallery" forIndexPath:indexPath];
+    cell.image.image = [imagesArray objectAtIndex:indexPath.row];
+    
+    return cell;
+}
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
+{
+
+}
+- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+
+}
+
+-(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(320, 240);
+}
 
 @end

@@ -11,6 +11,6 @@
 @interface UserModel : NSObject
 
 + (BOOL)initSesion:(NSString*)user password:(NSString*)password funcion:(SEL)func fromObject:(id) object;
-
++ (void) getUserInfo:(SEL)func fromObject:(id) object;
 
 @end

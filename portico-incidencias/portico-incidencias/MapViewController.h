@@ -21,6 +21,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelFirstInfoWindow;
 @property (weak, nonatomic) IBOutlet UILabel *labelSecondInfoWindow;
 @property (weak, nonatomic) IBOutlet UIButton *butonGoIncidence;
+@property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
 
 - (void) afterGetCurrentLocation: (CLLocation*) currentLocation;
 - (void) afterGetAllIncidences: (NSDictionary*) json;

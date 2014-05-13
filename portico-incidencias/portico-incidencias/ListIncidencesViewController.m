@@ -43,6 +43,7 @@ TableHelperIncidencias *tablaHelperUsuarios;
 }
 
 -(void)viewWillAppear:(BOOL)animated {
+    
     [super viewWillAppear:animated];
     
     [tablaIncidencias setHidden:false];
@@ -90,16 +91,16 @@ TableHelperIncidencias *tablaHelperUsuarios;
     }
     else
     {
-        /*[tablaIncidencias setHidden:false];
-         [tablaIncidenciaUsuario setHidden:false];
-         
-         tablaHelperUsuarios = [self inicializaTablaHelper];
-         tablaHelperUsuarios.tipoListado = INCIDENCIAS_USUARIO_RECIENTES;
-         tablaHelperUsuarios.tablaDatos = tablaIncidenciaUsuario;
-         tablaIncidenciaUsuario.delegate = tablaHelperUsuarios;
-         tablaIncidenciaUsuario.dataSource = tablaHelperUsuarios;
-         searchBar.delegate = tablaHelperUsuarios;
-         [tablaHelperUsuarios cargarDatos];*/
+        tablaHelperIncidencias.estado = self.estado;
+        tablaHelperIncidencias.idMunicipio = self.idMunicipio;
+        if([segment selectedSegmentIndex] == 0)
+        {
+            tablaHelperIncidencias.tipoListado = INCIDENCIAS_USUARIO_RECIENTES;
+        }
+        else
+        {
+            [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];
+        }
     }
     
     [self.spinnerCentral setHidden:false];
@@ -137,8 +138,14 @@ TableHelperIncidencias *tablaHelperUsuarios;
         {
             tablaHelperIncidencias.tipoListado = INCIDENCIAS_RECIENTES;
             
-        }else if(selectedIndex == 1){
+        }
+        else if(selectedIndex == 1)
+        {
             tablaHelperIncidencias.tipoListado = INCIDENCIAS_MUNICIPIOS_RECIENTES;
+        }
+        else
+        {
+            tablaHelperIncidencias.tipoListado = INCIDENCIAS_USUARIO_RECIENTES;
         }
         [tablaHelperIncidencias cargarDatos];
         
@@ -181,6 +188,10 @@ TableHelperIncidencias *tablaHelperUsuarios;
         
     }else if(selectedIndex == 1){
         tablaHelperIncidencias.tipoListado = INCIDENCIAS_MUNICIPIOS_CERCANAS;
+    }
+    else
+    {
+        tablaHelperIncidencias.tipoListado = INCIDENCIAS_USUARIO_CERCANAS;
     }
     
     tablaHelperIncidencias.currentLocation = currentLocation;

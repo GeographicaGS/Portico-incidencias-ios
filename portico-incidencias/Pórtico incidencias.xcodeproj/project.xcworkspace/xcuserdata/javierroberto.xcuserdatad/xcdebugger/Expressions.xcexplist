@@ -35,6 +35,9 @@
             <PersistentString
                value = "selectedIndexGlobal != selectedIndex">
             </PersistentString>
+            <PersistentString
+               value = "self.estado">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
@@ -68,6 +71,9 @@
             <PersistentString
                value = "keyboardRect">
             </PersistentString>
+            <PersistentString
+               value = "frame.origin.y">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
@@ -85,6 +91,14 @@
          contextName = "-[TableHelperMunicipios tableView:numberOfRowsInSection:]:TableHelperMunicipios.m">
       </ContextState>
       <ContextState
+         contextName = "-[IncidenceViewController afterGetComments:]:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.constrainScroll.constant">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "__68-[DownloadJsonHelper downloadJson:user:password:funcion:fromObject:]_block_invoke:DownloadJsonHelper.m">
       </ContextState>
       <ContextState
@@ -99,10 +113,21 @@
          contextName = "__84-[DownloadJsonHelper uploadImage:parameters:image:user:password:funcion:fromObject:]_block_invoke88:DownloadJsonHelper.m">
       </ContextState>
       <ContextState
+         contextName = "-[LogingViewController login:]:LogingViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "userPassword.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "+[IncidenceModel addImages:fromObject:parameters:images:]:IncidenceModel.m">
          <PersistentStrings>
             <PersistentString
                value = "image.size">
+            </PersistentString>
+            <PersistentString
+               value = "UIImageJPEGRepresentation(image, 03.f)">
             </PersistentString>
             <PersistentString
                value = "[strEncoded length]">
@@ -140,6 +165,17 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[DownloadJsonHelper uploadJson:parameters:user:password:funcion:fromObject:]:DownloadJsonHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "url">
+            </PersistentString>
+            <PersistentString
+               value = "parameters">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[ListIncidencesViewController tableView:cellForRowAtIndexPath:]:ListIncidencesViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -171,6 +207,14 @@
             </PersistentString>
             <PersistentString
                value = "self.incidencia.tituloIncidencia.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[IncidenceViewController collectionView:cellForItemAtIndexPath:]:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "imagesArray">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -230,6 +274,14 @@
       </ContextState>
       <ContextState
          contextName = "__68-[DownloadJsonHelper downloadJson:user:password:funcion:fromObject:]_block_invoke43:DownloadJsonHelper.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[ListIncidencesViewController viewWillAppear:]:ListIncidencesViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.estado">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[MapViewController afterGetGeoJson:]:MapViewController.m">
@@ -295,10 +347,13 @@
          contextName = "-[IncidenceViewController viewDidLoad]:IncidenceViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.municipio.text == nil">
+               value = "self.labelUserDescripcion.text">
             </PersistentString>
             <PersistentString
-               value = "self.labelDescripcion.text">
+               value = "self.incidencia.user">
+            </PersistentString>
+            <PersistentString
+               value = "self.commentView.frame">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -312,6 +367,14 @@
       </ContextState>
       <ContextState
          contextName = "-[CellIncidenceModel init]:CellIncidenceModel.m">
+      </ContextState>
+      <ContextState
+         contextName = "__49-[IncidenceViewController keyboardWillDisappear:]_block_invoke:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "frame.origin.y">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[CreateIncidenceViewController afterCreateIncidence:]:CreateIncidenceViewController.m">
@@ -336,10 +399,7 @@
          contextName = "-[TableHelperIncidencias tableView:cellForRowAtIndexPath:]:TableHelperIncidencias.m">
          <PersistentStrings>
             <PersistentString
-               value = "self.arrayDatos">
-            </PersistentString>
-            <PersistentString
-               value = "cell.descripcion">
+               value = "arrayDatos">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

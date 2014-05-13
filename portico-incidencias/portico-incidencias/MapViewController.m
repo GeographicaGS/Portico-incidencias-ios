@@ -11,6 +11,7 @@
 #import "IncidenceModel.h"
 #import  "CellIncidenceModel.h"
 #import "IncidenceViewController.h"
+#import "AFHTTPRequestOperation.h"
 //#import <Mapbox/Mapbox.h>
 
 @interface MapViewController ()
@@ -21,7 +22,7 @@
  GMSMapView *mapView;
 
 @implementation MapViewController
-@synthesize mainView, navigationItem, backButton, labelNavigationBar, nuevaIncidenciaButton, infoWindow, imgeOrangeInfoWindow, labelFirstInfoWindow, labelSecondInfoWindow;
+@synthesize mainView, navigationItem, backButton, labelNavigationBar, nuevaIncidenciaButton, infoWindow, imgeOrangeInfoWindow, labelFirstInfoWindow, labelSecondInfoWindow, thumbnail;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -199,6 +200,30 @@
     
     labelFirstInfoWindow.text = marker.title;
     labelSecondInfoWindow.text = marker.snippet;
+    
+    CGRect frame = thumbnail.frame;
+    if([[[marker.userData objectForKey:@"properties"] objectForKey:@"thumbnail"] isEqualToString:@""])
+    {
+        frame.size.height = 17;
+        frame.size.width = 20;
+        frame.origin.x = 12;
+        frame.origin.y = 14;
+        thumbnail.image = [UIImage imageNamed:@"POR_icon_bg_thumbnail.png"];
+    }
+    else
+    {
+        NSData *data = [NSData dataWithContentsOfURL : [NSURL URLWithString:[[marker.userData objectForKey:@"properties"] objectForKey:@"thumbnail"]]];
+        frame.size.height = 50;
+        frame.size.width = 50;
+        frame.origin.x = 0;
+        frame.origin.y = 0;
+        thumbnail.image = [UIImage imageWithData: data];
+        
+        
+    }
+    
+    thumbnail.frame = frame;
+    
     
     
     /*[CATransaction begin];

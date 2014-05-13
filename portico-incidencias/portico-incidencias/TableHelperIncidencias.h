@@ -13,6 +13,7 @@
 
 @property int tipoListado;
 @property NSNumber *idMunicipio;
+@property int estado;
 @property CLLocation* currentLocation;
 
 @end

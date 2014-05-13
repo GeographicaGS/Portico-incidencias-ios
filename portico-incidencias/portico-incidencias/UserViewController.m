@@ -7,6 +7,8 @@
 //
 
 #import "UserViewController.h"
+#import "UserModel.h"
+#import "ListIncidencesViewController.h"
 
 @interface UserViewController ()
 
@@ -30,7 +32,10 @@
     [self.openLabel setText:NSLocalizedString(@"###open###", nil)];
     [self.resolvelLabel setText:NSLocalizedString(@"###resolve###", nil)];
     [self.fieldLabel setText:NSLocalizedString(@"###field###", nil)];
-    [self.optionLabel setTitle:NSLocalizedString(@"###options###", nil) forState:UIControlStateNormal];
+    [self.closeSessionButon setTitle:NSLocalizedString(@"###cerrarSesion###", nil) forState:UIControlStateNormal];
+    [self.labelPhone setText:NSLocalizedString(@"###telefono###", nil)];
+    
+    [UserModel getUserInfo:@selector(afterGetUserInfo:) fromObject:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -39,15 +44,40 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void) afterGetUserInfo: (NSDictionary*) json
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    self.username.text = [NSMutableString stringWithFormat:@"%@%@%@", [json objectForKey:@"name"], @" ", [json objectForKey:@"surname"]];
+    self.userAvatar.text = [json objectForKey:@"email"];
+    self.numAbiertas.text = [[json objectForKey:@"abiertas"]stringValue];
+    self.numResueltas.text = [[json objectForKey:@"resueltas"] stringValue];
+    self.numCerradas.text = [[json objectForKey:@"archivadas"] stringValue];
+    self.userPhone.text = [json objectForKey:@"telefono"];
 }
-*/
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    ListIncidencesViewController *listIncidencesViewController = [segue destinationViewController];
+    [listIncidencesViewController setEstado:(int)[sender tag]];
+}
+
+- (BOOL)shouldPerformSegueWithIdentifier:(NSString *)identifier sender:(id)sender
+{
+    int tag = (int)[sender tag];
+    if(tag == 0 && [self.numAbiertas.text isEqual:@"0"]){
+        return NO;
+    }else if(tag == 1 && [self.numResueltas.text isEqual:@"0"]){
+        return NO;
+    }else if(tag == 2 && [self.numCerradas.text isEqual:@"0"]){
+        return NO;
+    }
+    return YES;
+}
+
+- (IBAction)closeSession:(id)sender
+{
+    NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+    [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

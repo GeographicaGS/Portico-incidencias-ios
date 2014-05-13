@@ -13,6 +13,8 @@
 @interface DownloadJsonHelper : NSObject
 
 @property (strong, nonatomic) NSOperationQueue *operationQueue;
+@property (strong, nonatomic) NSOperationQueue *operationUpload;
+-(void)uploadImage:(NSString *)url parameters:(NSDictionary*)parameters user:(NSString*)user password:(NSString*)password funcion:(SEL)func fromObject:(id) object lastImage:(bool)lastImage;
 @property (nonatomic) BOOL allTasksPaused;
 
 + (id)getInstance;
@@ -27,5 +29,6 @@
 -(void)resumeDownloads;
 
 + (NSString *)md5:(NSString *) string;
+
 
 @end

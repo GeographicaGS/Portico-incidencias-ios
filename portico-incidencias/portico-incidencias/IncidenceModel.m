@@ -63,10 +63,10 @@
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
 }
 
-+ (void) getIncidenciasPorUsuario:(SEL)func fromObject:(id) object offset: (NSString*) offset search: (NSString*) search
++ (void) getIncidenciasPorUsuario:(SEL)func fromObject:(id) object offset: (NSString*) offset search: (NSString*) search estado: (int) estado
 {
     [[DownloadJsonHelper getInstance] cleanDownloads];
-    NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@%@%@%@%@", basePath, @"incidencias_by_user/" , [[UserHelper getInstance] getUsuario] , @"/", [NSString stringWithFormat:@"%d", LIMIT] , @"/" , offset];
+    NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@%@%d%@%@%@%@", basePath, @"incidencias_by_user/" , [[UserHelper getInstance] getUsuario] , @"/", estado, @"/", [NSString stringWithFormat:@"%d", LIMIT] , @"/" , offset];
     if([search length] != 0)
     {
         url = [url stringByAppendingString:[NSMutableString stringWithFormat:@"%@%@", @"/", search]];
@@ -74,10 +74,10 @@
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
 }
 
-+ (void) getIncidenciasByDistByUser:(SEL)func fromObject:(id) object offset: (NSString*) offset latitud:(float) latitud longitud:(float) longitud search: (NSString*) search
++ (void) getIncidenciasByDistByUser:(SEL)func fromObject:(id) object offset: (NSString*) offset latitud:(float) latitud longitud:(float) longitud search: (NSString*) search estado: (int) estado
 {
     [[DownloadJsonHelper getInstance] cleanDownloads];
-    NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@", basePath, @"incidenciasByDistByUser/" , [NSString stringWithFormat:@"%d", LIMIT] , @"/" , offset, @"/", [NSString stringWithFormat:@"%f", latitud], @"/", [NSString stringWithFormat:@"%f", longitud], @"/", [[UserHelper getInstance] getUsuario]];
+    NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@%d", basePath, @"incidenciasByDistByUser/" , [NSString stringWithFormat:@"%d", LIMIT] , @"/" , offset, @"/", [NSString stringWithFormat:@"%f", latitud], @"/", [NSString stringWithFormat:@"%f", longitud], @"/", [[UserHelper getInstance] getUsuario],@"/",estado];
     if([search length] != 0)
     {
         url = [url stringByAppendingString:[NSMutableString stringWithFormat:@"%@%@", @"/", search]];
@@ -110,6 +110,22 @@
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
 }
 
++ (void) getIncidenceImages:(SEL)func fromObject:(id) object idIncidencia: (NSNumber*) idIncidencia
+{
+   // [[DownloadJsonHelper getInstance] cleanDownloads];
+    NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@", basePath, @"incidence_images/", idIncidencia];
+    
+    [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
+}
+
++(void) getThumbnail:(SEL)func fromObject:(id) object idIncidencia: (NSNumber*) idIncidencia
+{
+    [[DownloadJsonHelper getInstance] cleanDownloads];
+    NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@", basePath, @"thumbnail/", idIncidencia];
+    
+    [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
+}
+
 + (void) addComment:(SEL)func fromObject:(id) object comment: (NSString*) comment idIncidencia: (NSNumber*) idIncidencia
 {
     
@@ -127,7 +143,7 @@
     [[DownloadJsonHelper getInstance]uploadJson:url parameters:parameters user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] funcion:func fromObject:object];
 }
 
-+ (void) addImages:(SEL)func fromObject:(id) object parameters:(NSMutableDictionary*) parameters images:(NSMutableArray *) images
++ (void) addImages:(SEL)func fromObject:(id) object parameters:(NSMutableDictionary*) parameters images:(NSMutableArray *) images 
 {
     UIImage *image;
     NSString *url =  [NSMutableString stringWithFormat:@"%@%@", basePath, @"addIncidenceImage"];
@@ -137,6 +153,7 @@
     CGFloat newHeight;
     CGFloat newWidth;
     CGSize newSize;
+    bool lastImage = false;
     
     for (int i=0; i<[images count]; i++) {
         
@@ -155,11 +172,16 @@
             UIGraphicsEndImageContext();
         }
         
-        NSString *strEncoded = [UIImageJPEGRepresentation(image, 0.3f) base64EncodedStringWithOptions:(kNilOptions)];
+        NSString *strEncoded = [UIImageJPEGRepresentation(image, 0.1f) base64EncodedStringWithOptions:(kNilOptions)];
+        strEncoded = [strEncoded stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
         [parameters setObject:strEncoded forKey:@"image"];
+
+        if(i == ([images count] -1))
+        {
+            lastImage = true;
+        }
         
-        [[DownloadJsonHelper getInstance]uploadJson:url parameters:parameters user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] funcion:func fromObject:object];
-        
+        [[DownloadJsonHelper getInstance]uploadImage:url parameters:parameters user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] funcion:func fromObject:object lastImage:lastImage];
     }
 }
 

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface CreateIncidenceViewController : UIViewController<UITextViewDelegate, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *labelNavigation;
@@ -34,6 +35,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainImageContentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *imageViewScroll;
 
+@property (strong, atomic) ALAssetsLibrary* library;
+
 - (IBAction)backgroundTouched:(id)sender;
 - (IBAction)getCurrenLocation:(id)sender;
 - (IBAction)createIncidence:(id)sender;
@@ -47,10 +50,5 @@
 - (void) afterGetCurrentLocation: (CLLocation*) currentLocation;
 - (void) afterCreateIncidence: (NSDictionary*) json;
 
-
-
-
-
-- (void) afterPrueba: (NSDictionary*) json;
 
 @end

@@ -22,4 +22,19 @@
     return TRUE;
 }
 
++ (void) getUserInfo:(NSString*)user password:(NSString*)password funcion:(SEL)func fromObject:(id) object
+{
+    [[DownloadJsonHelper getInstance]downloadJson:[basePath stringByAppendingString:@"user/login"] user:user password:password llamada:@"POST" funcion:func fromObject:object];
+    
+}
+
+
++ (void) getUserInfo:(SEL)func fromObject:(id) object
+{
+    [[DownloadJsonHelper getInstance] cleanDownloads];
+    NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@%@", basePath, @"infoUser", @"/", [[UserHelper getInstance]getUsuario]];
+    
+    [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
+}
+
 @end

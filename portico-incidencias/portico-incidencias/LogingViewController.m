@@ -29,6 +29,22 @@
 
 -(void)viewDidLoad
 {
+    
+    NSString * userNameAux = [[NSUserDefaults standardUserDefaults] stringForKey:@"username"];
+    NSString * passwordAux = [[NSUserDefaults standardUserDefaults] stringForKey:@"password"];
+    
+    if(userNameAux!=nil && passwordAux!=nil)
+    {
+        [[UserHelper getInstance]setUsuario:userNameAux];
+        [[UserHelper getInstance]setContrasenia:passwordAux];
+        [UserModel initSesion:userNameAux password:passwordAux funcion:@selector(afterInitSesion:) fromObject:self];
+    }
+}
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
     self.view.backgroundColor = [[UIColor alloc]initWithRed:(74/255.0) green:(60/255.0) blue:(49/255.0) alpha:1.0];
     [userName setPlaceholder:NSLocalizedString(@"###correoElectronico###", nil)];
     userName.delegate = self;
@@ -82,6 +98,9 @@
     {
         userName.text = @"";
         userPassword.text = @"";
+        
+        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
     }
     else
     {
@@ -111,6 +130,11 @@
         [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_OFF.png"]];
         [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_OFF.png"]];
         [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_OFF.png"]];
+        
+        
+        [[NSUserDefaults standardUserDefaults] setValue:[[UserHelper getInstance]getUsuario]forKey:@"username"];
+        [[NSUserDefaults standardUserDefaults] setValue:[[UserHelper getInstance]getContrasenia] forKey:@"password"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
        
         [self presentViewController:tabBarController animated:YES completion:nil];
         
