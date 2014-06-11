@@ -22,10 +22,29 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[DownloadJsonHelper uploadImage:parameters:user:password:funcion:fromObject:lastImage:]:DownloadJsonHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "    a.length">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[ListIncidencesViewController scrollViewDidScroll:]:ListIncidencesViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "scrollView.contentOffset">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[IncidenceViewController afterAddComment:]:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "aux">
+            </PersistentString>
+            <PersistentString
+               value = "self.constrainScroll.constant ">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -110,15 +129,15 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
-         contextName = "__84-[DownloadJsonHelper uploadImage:parameters:image:user:password:funcion:fromObject:]_block_invoke88:DownloadJsonHelper.m">
-      </ContextState>
-      <ContextState
          contextName = "-[LogingViewController login:]:LogingViewController.m">
          <PersistentStrings>
             <PersistentString
                value = "userPassword.text">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__84-[DownloadJsonHelper uploadImage:parameters:image:user:password:funcion:fromObject:]_block_invoke88:DownloadJsonHelper.m">
       </ContextState>
       <ContextState
          contextName = "+[IncidenceModel addImages:fromObject:parameters:images:]:IncidenceModel.m">
@@ -200,6 +219,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "__88-[DownloadJsonHelper uploadImage:parameters:user:password:funcion:fromObject:lastImage:]_block_invoke:DownloadJsonHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.progreso">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[IncidenceViewController prueba:]:IncidenceViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -212,11 +239,6 @@
       </ContextState>
       <ContextState
          contextName = "-[IncidenceViewController collectionView:cellForItemAtIndexPath:]:IncidenceViewController.m">
-         <PersistentStrings>
-            <PersistentString
-               value = "imagesArray">
-            </PersistentString>
-         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[ListIncidencesViewController tableView:willDisplayCell:forRowAtIndexPath:]:ListIncidencesViewController.m">
@@ -269,6 +291,17 @@
          <PersistentStrings>
             <PersistentString
                value = "[[locations lastObject]coordinate]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[IncidenceViewController viewWillAppear:]:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.constrainScroll.constant">
+            </PersistentString>
+            <PersistentString
+               value = "self.mainView.frame.size.height">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -411,6 +444,22 @@
          <PersistentStrings>
             <PersistentString
                value = "currentLocation.coordinate.longitude">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__88-[DownloadJsonHelper uploadImage:parameters:user:password:funcion:fromObject:lastImage:]_block_invoke104:DownloadJsonHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.progreso">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TableHelperMunicipios sectionIndexTitlesForTableView:]:TableHelperMunicipios.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "number == $18">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

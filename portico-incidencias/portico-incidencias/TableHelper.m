@@ -59,9 +59,9 @@
             finLista = true;
         }
         [tablaDatos reloadData];
-        if(![self.searchBar isHidden]){
+        /*if(![self.searchBar isHidden]){
             [self.tablaDatos setContentOffset:CGPointMake(0,-45) animated:YES];
-        }
+        }*/
     }
 }
 
@@ -146,10 +146,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [searchBar setHidden:true];
+    //[searchBar setHidden:true];
     [searchBar resignFirstResponder];
     buscando = 0;
-    [self.tablaDatos deselectRowAtIndexPath:indexPath animated:NO];
+    //[self.tablaDatos deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 
@@ -175,8 +175,8 @@
     
     if (scrollView.contentOffset.y < 0 && !buscando)
     {
-        [tablaDatos setContentOffset:CGPointMake(0,-45) animated:YES];
-        [searchBar setHidden:false];
+        //[tablaDatos setContentOffset:CGPointMake(0,-45) animated:YES];
+        //[searchBar setHidden:false];
         buscando = true;
     }
 }
@@ -184,13 +184,14 @@
 //- (void)scrollViewDidScroll:(UIScrollView *)scrollView
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset NS_AVAILABLE_IOS(5_0)
 {
-    if ((buscando) && (scrollView.contentOffset.y>=0))
-    {
-        [searchBar setHidden:true];
+    //if ((buscando) && (scrollView.contentOffset.y>=0))
+    //{
+        //[searchBar setHidden:true];
         [searchBar resignFirstResponder];
         buscando = 0;
-        [scrollView setContentOffset:CGPointMake(0,0) animated:NO];
-    }
+        //[scrollView setContentOffset:CGPointMake(0,0) animated:NO];
+    //}
 }
+
 
 @end

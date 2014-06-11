@@ -14,6 +14,9 @@
 
 @property (strong, nonatomic) NSOperationQueue *operationQueue;
 @property (strong, nonatomic) NSOperationQueue *operationUpload;
+@property NSMutableDictionary* progreso;
+
+
 -(void)uploadImage:(NSString *)url parameters:(NSDictionary*)parameters user:(NSString*)user password:(NSString*)password funcion:(SEL)func fromObject:(id) object lastImage:(bool)lastImage;
 @property (nonatomic) BOOL allTasksPaused;
 
@@ -29,6 +32,5 @@
 -(void)resumeDownloads;
 
 + (NSString *)md5:(NSString *) string;
-
 
 @end

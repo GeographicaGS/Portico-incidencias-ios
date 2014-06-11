@@ -41,6 +41,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *cancelButton;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainTopMainView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *spinnerImage;
+@property (weak, nonatomic) IBOutlet UIImageView *imgenPorDefecto;
+@property (weak, nonatomic) IBOutlet UIProgressView *progressBar;
+@property (weak, nonatomic) IBOutlet UILabel *contadorImages;
+
 
 
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
@@ -57,6 +61,7 @@
 - (void) afterGetImages: (NSDictionary*) json;
 -(void) loadImages;
 - (void) reloadImages;
+-(void) actualizaProgressBar;
 
 - (IBAction)showAddPhoto:(id)sender;
 - (IBAction)doPhoto:(id)sender;

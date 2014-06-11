@@ -34,7 +34,7 @@ TableHelperIncidencias *tablaHelperUsuarios;
     [botonNuevaIncidencia setTitle:NSLocalizedString(@"###nueva###", nil)];
     [segment setTitle:NSLocalizedString(@"###recientes###", nil) forSegmentAtIndex:0];
     [segment setTitle:NSLocalizedString(@"###cercanas###", nil) forSegmentAtIndex:1 ];
-
+    self.recargaListado = true;
     
     [self.navigationController.navigationBar setShadowImage:[[UIImage alloc] init]];
     [self.navigationController.navigationBar setBackgroundImage:[[UIImage alloc]init] forBarMetrics:UIBarMetricsDefault];
@@ -46,14 +46,20 @@ TableHelperIncidencias *tablaHelperUsuarios;
     
     [super viewWillAppear:animated];
     
-    [tablaIncidencias setHidden:false];
-    [tablaIncidenciaUsuario setHidden:true];
+    if(self.recargaListado){
+        [self.tablaIncidencias setContentOffset:CGPointMake(0,44) animated:YES];
+        [self.tablaIncidenciasMunicipios setContentOffset:CGPointMake(0,44) animated:YES];
+        [self.tablaIncidenciaUsuario setContentOffset:CGPointMake(0,44) animated:YES];
+        
+        [tablaIncidencias setHidden:false];
+        [tablaIncidenciaUsuario setHidden:true];
 
-    tablaHelperIncidencias = [self inicializaTablaHelper];
-    tablaHelperIncidencias.tablaDatos = tablaIncidencias;
-    tablaIncidencias.delegate = tablaHelperIncidencias;
-    searchBar.delegate = tablaHelperIncidencias;
-    tablaIncidencias.dataSource = tablaHelperIncidencias;
+        tablaHelperIncidencias = [self inicializaTablaHelper];
+        tablaHelperIncidencias.tablaDatos = tablaIncidencias;
+        tablaIncidencias.delegate = tablaHelperIncidencias;
+        searchBar.delegate = tablaHelperIncidencias;
+        tablaIncidencias.dataSource = tablaHelperIncidencias;
+    }
     
 }
 
@@ -61,50 +67,57 @@ TableHelperIncidencias *tablaHelperUsuarios;
 -(void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     
-    NSUInteger selectedIndex = self.tabBarController.selectedIndex;
+    if(self.recargaListado){
     
-    if(selectedIndex == 0)
-    {
-        if([segment selectedSegmentIndex] == 0)
+        NSUInteger selectedIndex = self.tabBarController.selectedIndex;
+        
+        if(selectedIndex == 0)
         {
-            tablaHelperIncidencias.tipoListado = INCIDENCIAS_RECIENTES;
+            if([segment selectedSegmentIndex] == 0)
+            {
+                tablaHelperIncidencias.tipoListado = INCIDENCIAS_RECIENTES;
+            }
+            else
+            {
+                [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];
+            }
+            
+        }
+        else if (selectedIndex == 1)
+        {
+            tablaHelperIncidencias.idMunicipio = self.idMunicipio;
+            if([segment selectedSegmentIndex] == 0)
+            {
+                tablaHelperIncidencias.tipoListado = INCIDENCIAS_MUNICIPIOS_RECIENTES;
+            }
+            else
+            {
+                [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];
+            }
+            
+            
         }
         else
         {
-            [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];
+            tablaHelperIncidencias.estado = self.estado;
+            tablaHelperIncidencias.idMunicipio = self.idMunicipio;
+            if([segment selectedSegmentIndex] == 0)
+            {
+                tablaHelperIncidencias.tipoListado = INCIDENCIAS_USUARIO_RECIENTES;
+            }
+            else
+            {
+                [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];
+            }
         }
         
-    }
-    else if (selectedIndex == 1)
-    {
-        tablaHelperIncidencias.idMunicipio = self.idMunicipio;
-        if([segment selectedSegmentIndex] == 0)
-        {
-            tablaHelperIncidencias.tipoListado = INCIDENCIAS_MUNICIPIOS_RECIENTES;
-        }
-        else
-        {
-            [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];
-        }
-        
-        
+        [self.spinnerCentral setHidden:false];
+        [tablaHelperIncidencias cargarDatos];
     }
     else
     {
-        tablaHelperIncidencias.estado = self.estado;
-        tablaHelperIncidencias.idMunicipio = self.idMunicipio;
-        if([segment selectedSegmentIndex] == 0)
-        {
-            tablaHelperIncidencias.tipoListado = INCIDENCIAS_USUARIO_RECIENTES;
-        }
-        else
-        {
-            [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];
-        }
+        self.recargaListado = true;
     }
-    
-    [self.spinnerCentral setHidden:false];
-    [tablaHelperIncidencias cargarDatos];
     
 }
 
@@ -222,11 +235,13 @@ TableHelperIncidencias *tablaHelperUsuarios;
         CellIncidenceModel * cell = sender;
         IncidenceViewController *incidenceView = [segue destinationViewController];
         [incidenceView setIncidencia:cell];
+        self.recargaListado = false;
         
     }else if ([[segue identifier] isEqualToString:@"segueMap"]){
         MapViewController *map = [segue destinationViewController];
         [map setNavigate:true];
         [IncidenceModel getGeoJsonIncidenciasByDist:@selector(afterGetAllIncidences:) fromObject:map];
+        self.recargaListado = false;
         
     }else if ([[segue identifier] isEqualToString:@"segueNewIncidence"]){
         

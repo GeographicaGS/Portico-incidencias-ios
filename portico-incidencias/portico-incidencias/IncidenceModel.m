@@ -17,6 +17,7 @@
     NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@%@%@", basePath, @"incidencias/" , [NSString stringWithFormat:@"%d", LIMIT] , @"/" , offset];
     if([search length] != 0)
     {
+        search = [self createSearch:search];
         url = [url stringByAppendingString:[NSMutableString stringWithFormat:@"%@%@", @"/", search]];
     }
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
@@ -28,6 +29,7 @@
     NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@%@%@%@%@", basePath, @"incidenciasByMunicipio/" , municipio, @"/" ,[NSString stringWithFormat:@"%d", LIMIT] , @"/" , offset];
     if([search length] != 0)
     {
+        search = [self createSearch:search];
         url = [url stringByAppendingString:[NSMutableString stringWithFormat:@"%@%@", @"/", search]];
     }
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
@@ -39,6 +41,7 @@
     NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@%@%@%@%@%@%@", basePath, @"incidenciasByDist/" , [NSString stringWithFormat:@"%d", LIMIT] , @"/" , offset, @"/", [NSString stringWithFormat:@"%f", latitud], @"/", [NSString stringWithFormat:@"%f", longitud]];
     if([search length] != 0)
     {
+        search = [self createSearch:search];
         url = [url stringByAppendingString:[NSMutableString stringWithFormat:@"%@%@", @"/", search]];
     }
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
@@ -50,6 +53,7 @@
     NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@", basePath, @"incidenciasByDistByTown/", municipio, @"/" , [NSString stringWithFormat:@"%d", LIMIT] , @"/" , offset, @"/", [NSString stringWithFormat:@"%f", latitud], @"/", [NSString stringWithFormat:@"%f", longitud]];
     if([search length] != 0)
     {
+        search = [self createSearch:search];
         url = [url stringByAppendingString:[NSMutableString stringWithFormat:@"%@%@", @"/", search]];
     }
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
@@ -69,6 +73,7 @@
     NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@%@%d%@%@%@%@", basePath, @"incidencias_by_user/" , [[UserHelper getInstance] getUsuario] , @"/", estado, @"/", [NSString stringWithFormat:@"%d", LIMIT] , @"/" , offset];
     if([search length] != 0)
     {
+        search = [self createSearch:search];
         url = [url stringByAppendingString:[NSMutableString stringWithFormat:@"%@%@", @"/", search]];
     }
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
@@ -80,6 +85,7 @@
     NSString *url =  [NSMutableString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@%@%@%d", basePath, @"incidenciasByDistByUser/" , [NSString stringWithFormat:@"%d", LIMIT] , @"/" , offset, @"/", [NSString stringWithFormat:@"%f", latitud], @"/", [NSString stringWithFormat:@"%f", longitud], @"/", [[UserHelper getInstance] getUsuario],@"/",estado];
     if([search length] != 0)
     {
+        search = [self createSearch:search];
         url = [url stringByAppendingString:[NSMutableString stringWithFormat:@"%@%@", @"/", search]];
     }
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
@@ -91,6 +97,7 @@
     NSString *url =  [NSMutableString stringWithFormat:@"%@%@", basePath, @"num_incidencias_by_town"];
     if([search length] != 0)
     {
+        search = [self createSearch:search];
         url = [url stringByAppendingString:[NSMutableString stringWithFormat:@"%@%@", @"/", search]];
     }
     [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
@@ -155,6 +162,10 @@
     CGSize newSize;
     bool lastImage = false;
     
+    if([images count] > 0){
+        [[[DownloadJsonHelper getInstance]progreso] setObject:[NSMutableArray arrayWithObjects: @"0",@"0", nil] forKey:[[parameters objectForKey:@"id"]stringValue]];
+    }
+    
     for (int i=0; i<[images count]; i++) {
         
         image = [images objectAtIndex:i];
@@ -172,7 +183,7 @@
             UIGraphicsEndImageContext();
         }
         
-        NSString *strEncoded = [UIImageJPEGRepresentation(image, 0.1f) base64EncodedStringWithOptions:(kNilOptions)];
+        NSString *strEncoded = [UIImageJPEGRepresentation(image, 0.6f) base64EncodedStringWithOptions:(kNilOptions)];
         strEncoded = [strEncoded stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
         [parameters setObject:strEncoded forKey:@"image"];
 
@@ -183,6 +194,14 @@
         
         [[DownloadJsonHelper getInstance]uploadImage:url parameters:parameters user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] funcion:func fromObject:object lastImage:lastImage];
     }
+}
+
++ (NSString*) createSearch: (NSString*) search
+{
+    NSData *data = [search dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];
+    search = [[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding];
+    
+    return [search stringByAddingPercentEscapesUsingEncoding:NSASCIIStringEncoding];
 }
 
 

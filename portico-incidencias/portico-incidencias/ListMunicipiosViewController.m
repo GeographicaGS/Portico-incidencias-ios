@@ -47,6 +47,11 @@ TableHelperMunicipios *tablaHelperMunicipios;
     [tablaHelperMunicipios cargarDatos];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.tablaMunicipios setContentOffset:CGPointMake(0,44) animated:YES];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

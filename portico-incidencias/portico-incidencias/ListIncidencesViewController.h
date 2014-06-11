@@ -25,6 +25,8 @@
 @property NSNumber *idMunicipio;
 @property int estado;
 
+@property bool recargaListado;
+
 - (IBAction)segmentEvent:(id)sender;
 - (IBAction)segmentEvenUser:(id)sender;
 - (void) afterGetCurrentLocation: (CLLocation*) currentLocation;

@@ -11,6 +11,7 @@
 
 @implementation DownloadJsonHelper
 
+
 + (id)getInstance
 {
     
@@ -32,6 +33,7 @@
         _operationQueue = [[NSOperationQueue alloc] init];
         _operationUpload = [[NSOperationQueue alloc] init];
         _allTasksPaused = NO;
+        _progreso = [[NSMutableDictionary alloc]init];
     }
     return self;
 }
@@ -99,8 +101,6 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCredential:credential];
-    
-    
 
     [operation setUploadProgressBlock: ^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite){
         NSLog(@"Espero subir: %lld", totalBytesExpectedToWrite);
@@ -135,9 +135,15 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCredential:credential];
-    
-    
     [operation setUploadProgressBlock: ^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite){
+        
+        NSString* idIncidencia =  [[parameters objectForKey:@"id"]stringValue];
+        totalBytesWritten += [[[self.progreso objectForKey:idIncidencia]objectAtIndex:0]floatValue];
+        totalBytesExpectedToWrite += [[[self.progreso objectForKey:idIncidencia]objectAtIndex:1]floatValue];
+        
+        [[self.progreso objectForKey:idIncidencia]replaceObjectAtIndex:0 withObject:[NSString stringWithFormat:@"%lld", totalBytesWritten]];
+        [[self.progreso objectForKey:idIncidencia]replaceObjectAtIndex:1 withObject:[NSString stringWithFormat:@"%lld", totalBytesExpectedToWrite]];
+        
         NSLog(@"Espero subir: %lld", totalBytesExpectedToWrite);
         NSLog(@"He subido: %lld", totalBytesWritten);
         
@@ -150,11 +156,13 @@
                               options:0
                               error:nil];
         if(lastImage){
+            [self.progreso removeObjectForKey:[[parameters objectForKey:@"id"]stringValue]];
             [object performSelector:func withObject:json];
         }
         
         
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        [self.progreso removeObjectForKey:[[parameters objectForKey:@"id"]stringValue]];
         NSDictionary *json = [[NSDictionary alloc] initWithObjectsAndKeys:error, @"error", nil];
         [object performSelector:func withObject:json];
     }];

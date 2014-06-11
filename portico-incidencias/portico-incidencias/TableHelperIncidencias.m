@@ -75,6 +75,13 @@
     }
     
     cell.estado = [[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"estado"];
+    if([cell.estado intValue] == 0){
+        cell.thumbnail.backgroundColor = [[UIColor alloc]initWithRed:(255/255.0) green:(217/255.0) blue:(191/255.0) alpha:1.0];
+    }else if([cell.estado intValue] == 1){
+        cell.thumbnail.backgroundColor = [[UIColor alloc]initWithRed:(202/255.0) green:(224/255.0) blue:(243/255.0) alpha:1.0];
+    }else{
+        cell.thumbnail.backgroundColor = [[UIColor alloc]initWithRed:(110/255.0) green:(90/255.0) blue:(99/255.0) alpha:1.0];
+    }
     cell.idIncidencia = [[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"id_incidencia"];
     
     cell.descripcion = [[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"descripcion"];

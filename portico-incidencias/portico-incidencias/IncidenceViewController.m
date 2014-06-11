@@ -14,6 +14,7 @@
 #import "CellImageGallery.h"
 #import "AFHTTPRequestOperation.h"
 #import "Constants.h"
+#import "DownloadJsonHelper.h"
 
 @interface IncidenceViewController ()
 
@@ -59,10 +60,14 @@ NSMutableArray *imagesArray;
         self.imgEstado.image = [UIImage imageNamed:@"POR_icon_incidencias_abiertas.png"];
     }else if([self.incidencia.estado intValue] == 1){
         self.estado.text = @"Cerrada";
+        self.estado.textColor = [[UIColor alloc]initWithRed:(43/255.0) green:(133/255.0) blue:(208/255.0) alpha:1.0];
         self.imgEstado.image = [UIImage imageNamed:@"POR_icon_incidencias_cerradas.png"];
+        self.imgenPorDefecto.backgroundColor = [[UIColor alloc]initWithRed:(202/255.0) green:(224/255.0) blue:(243/255.0) alpha:1.0];
     }else{
         self.estado.text = @"Congelada";
+        self.estado.textColor = [[UIColor alloc]initWithRed:(110/255.0) green:(90/255.0) blue:(99/255.0) alpha:1.0];
         self.imgEstado.image = [UIImage imageNamed:@"POR_icon_incidencias_congeladas.png"];
+        self.imgenPorDefecto.backgroundColor = [[UIColor alloc]initWithRed:(110/255.0) green:(90/255.0) blue:(99/255.0) alpha:1.0];
     }
     [self.estado sizeToFit];
     
@@ -139,7 +144,9 @@ NSMutableArray *imagesArray;
     //self.constrainScroll.constant = self.labelDescripcion.frame.origin.y + self.labelDescripcion.frame.size.height + self.actionView.frame.size.height  - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
 
     
-    self.constrainScroll.constant = self.labelDescripcion.frame.origin.y + self.labelDescripcion.frame.size.height - self.scrollView.frame.size.height ;
+    //self.constrainScroll.constant = self.labelDescripcion.frame.origin.y + self.labelDescripcion.frame.size.height - self.scrollView.frame.size.height ;
+    
+    self.constrainScroll.constant = (self.mainView.frame.size.height - [[UIScreen mainScreen] bounds].size.height) + 22;
     
     [self.spinnerAddComment setHidden:false];
    // self.constrainScroll.constant += self.spinnerAddComment.frame.size.height;
@@ -158,11 +165,17 @@ NSMutableArray *imagesArray;
     [flowLayout setMinimumLineSpacing:0.0f];
     [self.collectionView setPagingEnabled:YES];
     [self.collectionView setCollectionViewLayout:flowLayout];
+    
+    self.photoView.layer.borderColor = [[UIColor alloc]initWithRed:(181/255.0) green:(180/255.0) blue:(179/255.0) alpha:1.0].CGColor;
+    self.photoView.layer.borderWidth = 1.0f;
 
     self.library = [[ALAssetsLibrary alloc] init];
     
     [IncidenceModel getIncidenceComents:@selector(afterGetComments:) fromObject:self idIncidencia:self.incidencia.idIncidencia];
     [self loadImages];
+    
+    [self.progressBar setHidden:true];
+    self.progressBar.progress = 0.0;
     
 }
 
@@ -185,8 +198,14 @@ NSMutableArray *imagesArray;
         [self.goListButton setHidden:true];
         self.navigationController.navigationBar.hidden = NO;
     }
+    
+    //self.constrainScroll.constant = (self.mainView.frame.size.height - [[UIScreen mainScreen] bounds].size.height) + 22;
 }
 
+
+- (void)viewDidAppear:(BOOL)animated{
+    [self actualizaProgressBar];
+}
 
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -300,7 +319,7 @@ NSMutableArray *imagesArray;
 - (void) afterGetComments: (NSDictionary*) json
 {
     [self.spinnerAddComment setHidden:true];
-    self.constrainScroll.constant -= self.spinnerAddComment.frame.size.height;
+    //self.constrainScroll.constant -= self.spinnerAddComment.frame.size.height;
     
     frameUserComment = self.userComment.frame;
     frameComment = self.labelComent.frame;
@@ -313,7 +332,11 @@ NSMutableArray *imagesArray;
     }
     //self.constrainScroll.constant = commentHeight + self.actionView.frame.size.height - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
 
-    self.constrainScroll.constant = commentHeight - (self.scrollView.frame.size.height - self.commentView.frame.origin.y) - self.actionView.frame.size.height;
+    int aux = commentHeight - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
+    if(aux > 0)
+    {
+        self.constrainScroll.constant += aux;
+    }
     
     [self.commentView removeFromSuperview];
     [self.commentView setTranslatesAutoresizingMaskIntoConstraints:YES];
@@ -376,7 +399,10 @@ NSMutableArray *imagesArray;
     
     [self addCommentToView:[[json objectForKey:@"result"]objectForKey:@"contenido"] fromUser:[[json objectForKey:@"result"]objectForKey:@"id_user"]];
     //self.constrainScroll.constant = commentHeight + self.actionView.frame.size.height - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
-    self.constrainScroll.constant = commentHeight - (self.scrollView.frame.size.height - self.commentView.frame.origin.y) - self.actionView.frame.size.height;
+    self.constrainScroll.constant = (self.mainView.frame.size.height - [[UIScreen mainScreen] bounds].size.height) + 22;
+    self.constrainScroll.constant += commentHeight - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
+
+
 
     CGPoint bottomOffset = CGPointMake(0, self.constrainScroll.constant);
     [self.scrollView setContentOffset:bottomOffset];
@@ -405,7 +431,7 @@ NSMutableArray *imagesArray;
     [self.photoView removeFromSuperview];
     [self.photoView setTranslatesAutoresizingMaskIntoConstraints:YES];
     CGRect frame = self.photoView.frame;
-    frame.origin.y = 400;
+    frame.origin.y = [[UIScreen mainScreen] bounds].size.height - frame.size.height - self.actionView.frame.size.height - 10;;
     self.photoView.frame = frame;
     [self.view addSubview:self.photoView];
     
@@ -443,10 +469,28 @@ NSMutableArray *imagesArray;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    [imagesArray addObject:image];
     
+    [self.progressBar setHidden:false];
+
     [IncidenceModel addImages:@selector(reloadImages) fromObject:self parameters:[[NSMutableDictionary alloc]initWithObjectsAndKeys:self.incidencia.idIncidencia,@"id",nil] images:[[NSMutableArray alloc]initWithObjects:image, nil]];
     
+    if(image.size.width != self.collectionView.frame.size.width || image.size.height != self.collectionView.frame.size.height){
+        CGFloat oldWidth = image.size.width;
+        CGFloat oldHeight = image.size.height;
+        CGFloat scaleFactor = (oldWidth > oldHeight) ? self.collectionView.frame.size.width / oldWidth : self.collectionView.frame.size.height / oldHeight;
+        CGFloat newHeight = oldHeight * scaleFactor;
+        CGFloat newWidth = oldWidth * scaleFactor;
+        CGSize newSize = CGSizeMake(newWidth, newHeight);
+        
+        UIGraphicsBeginImageContext(newSize);
+        [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+        image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    }
+    
+    [imagesArray addObject:image];
+
+    [self actualizaProgressBar];
     
     
     
@@ -491,6 +535,8 @@ NSMutableArray *imagesArray;
     [self dismissViewControllerAnimated:NO completion:nil];
     
     self.constrainTopMainView.constant = -132;
+    self.constrainScroll.constant = (self.mainView.frame.size.height - [[UIScreen mainScreen] bounds].size.height) + 22;
+    self.constrainScroll.constant += commentHeight - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
@@ -498,23 +544,51 @@ NSMutableArray *imagesArray;
     
     [self dismissViewControllerAnimated:NO completion:nil];
     self.constrainTopMainView.constant = -132;
+    self.constrainScroll.constant = (self.mainView.frame.size.height - [[UIScreen mainScreen] bounds].size.height) + 22;
+    self.constrainScroll.constant += commentHeight - (self.scrollView.frame.size.height - self.commentView.frame.origin.y);
 }
 
 - (void) reloadImages
 {
     [self.collectionView reloadData];
     [self.spinnerImage setHidden:true];
+    [self.imgenPorDefecto setHidden:true];
+    self.contadorImages.text = [NSString stringWithFormat:@"%lu", (unsigned long)[imagesArray count]];
 }
 
 - (void) afterGetImages: (NSDictionary*) json
 {
     imagesArray = [[NSMutableArray alloc] init];
+    
+    if([[json objectForKey:@"result"] count] == 0)
+    {
+        [self.spinnerImage setHidden:true];
+        [self.imgenPorDefecto setHidden:false];
+    }
+    
     for (NSDictionary *imagen in [json objectForKey:@"result"])
     {
         AFHTTPRequestOperation *requestOperation = [[AFHTTPRequestOperation alloc] initWithRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:[imagen objectForKey:@"url"]]]];
         requestOperation.responseSerializer = [AFImageResponseSerializer serializer];
         [requestOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-            [imagesArray addObject:responseObject];
+            
+            UIImage *image = (UIImage*)responseObject;
+
+            if(image.size.width != self.collectionView.frame.size.width || image.size.height != self.collectionView.frame.size.height){
+               CGFloat oldWidth = image.size.width;
+               CGFloat oldHeight = image.size.height;
+               CGFloat scaleFactor = (oldWidth > oldHeight) ? self.collectionView.frame.size.width / oldWidth : self.collectionView.frame.size.height / oldHeight;
+               CGFloat newHeight = oldHeight * scaleFactor;
+               CGFloat newWidth = oldWidth * scaleFactor;
+               CGSize newSize = CGSizeMake(newWidth, newHeight);
+                
+                UIGraphicsBeginImageContext(newSize);
+                [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
+                image = UIGraphicsGetImageFromCurrentImageContext();
+                UIGraphicsEndImageContext();
+            }
+            
+            [imagesArray addObject:image];
             [self reloadImages];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
@@ -569,15 +643,15 @@ NSMutableArray *imagesArray;
     
     [tabBarItem1 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                          [UIColor colorWithRed:247/255.0 green:77/255.0 blue:41/255.0 alpha:1.0], NSForegroundColorAttributeName,
-                                         nil] forState:UIControlStateNormal];
+                                         nil] forState:UIControlStateSelected];
     
     [tabBarItem2 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                          [UIColor colorWithRed:247/255.0 green:77/255.0 blue:41/255.0 alpha:1.0], NSForegroundColorAttributeName,
-                                         nil] forState:UIControlStateNormal];
+                                         nil] forState:UIControlStateSelected];
     
     [tabBarItem3 setTitleTextAttributes:[NSDictionary dictionaryWithObjectsAndKeys:
                                          [UIColor colorWithRed:247/255.0 green:77/255.0 blue:41/255.0 alpha:1.0], NSForegroundColorAttributeName,
-                                         nil] forState:UIControlStateNormal];
+                                         nil] forState:UIControlStateSelected];
     
     [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_OFF.png"]];
     [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_OFF.png"]];
@@ -587,6 +661,29 @@ NSMutableArray *imagesArray;
     [self presentViewController:tabBarController animated:YES completion:nil];
 
 }
+
+
+-(void) actualizaProgressBar{
+    
+    NSMutableArray *arrayProgress = [[[DownloadJsonHelper getInstance]progreso]objectForKey:[self.incidencia.idIncidencia stringValue]];
+    
+    if(arrayProgress != nil){
+        [self.progressBar setHidden:false];
+        float bytes = [[arrayProgress objectAtIndex:0]floatValue];
+        float totalVytes = [[arrayProgress objectAtIndex:1]floatValue];
+        //if(self.progressBar.progress < 1.0){
+        if(totalVytes != 0){
+            [self.progressBar setProgress:bytes/totalVytes animated:NO];
+            //NSLog(@"Espero subir: %f", self.progressBar.progress);
+        }
+        [NSTimer scheduledTimerWithTimeInterval:0.3 target:self selector:@selector(actualizaProgressBar) userInfo:nil repeats:NO];
+    }
+    else{
+        [self.progressBar setHidden:true];
+    }
+    
+}
+
 
 
 
@@ -617,6 +714,7 @@ NSMutableArray *imagesArray;
 -(CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     return CGSizeMake(320, 240);
+    //return ((UIImage *)[imagesArray objectAtIndex:indexPath.row]).size;
 }
 
 @end

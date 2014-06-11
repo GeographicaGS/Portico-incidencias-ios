@@ -76,6 +76,8 @@ NSMutableArray  * buttonAuxArray;
     CGRect frame = self.photoView.frame;
     frame.origin.y = [[UIScreen mainScreen]bounds].size.height;
     self.photoView.frame = frame;
+    self.photoView.layer.borderColor = [[UIColor alloc]initWithRed:(181/255.0) green:(180/255.0) blue:(179/255.0) alpha:1.0].CGColor;
+    self.photoView.layer.borderWidth = 1.0f;
     [self.view addSubview:self.photoView];
     
     imageArray = [[NSMutableArray alloc]init];
@@ -95,7 +97,11 @@ NSMutableArray  * buttonAuxArray;
     [center addObserver:self selector:@selector(keyboardWillAppear:) name:UIKeyboardWillShowNotification object:nil];
     
     [center addObserver:self selector:@selector(keyboardWillDisappear:) name:UIKeyboardWillHideNotification object:nil];
-    
+
+    if(self.mainView.frame.size.height > [[UIScreen mainScreen] bounds].size.height)
+    {
+        self.constrainScroll.constant = (self.mainView.frame.size.height - [[UIScreen mainScreen] bounds].size.height) + 50;
+    }
 }
 
 - (void)viewDidUnload
@@ -109,14 +115,19 @@ NSMutableArray  * buttonAuxArray;
     //if ([self.latitud isFirstResponder] || [self.longitud isFirstResponder]) {
     [self.mainView setAlpha:1.0];
     CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    self.constrainScroll.constant += keyboardRect.size.height;
+    self.constrainScroll.constant = keyboardRect.size.height + 50;
     
     //}
 }
 
 -(void)keyboardWillDisappear:(NSNotification *)notification {
-    CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
-    self.constrainScroll.constant -= keyboardRect.size.height;
+    //CGRect keyboardRect = [[notification.userInfo objectForKey:UIKeyboardFrameEndUserInfoKey] CGRectValue];
+    self.constrainScroll.constant = 0;
+    
+    if(self.mainView.frame.size.height > [[UIScreen mainScreen] bounds].size.height)
+    {
+        self.constrainScroll.constant = (self.mainView.frame.size.height - [[UIScreen mainScreen] bounds].size.height) + 50;
+    }
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView
@@ -206,7 +217,7 @@ NSMutableArray  * buttonAuxArray;
     [self.photoView removeFromSuperview];
     [self.photoView setTranslatesAutoresizingMaskIntoConstraints:YES];
     CGRect frame = self.photoView.frame;
-    frame.origin.y = 435;
+    frame.origin.y = [[UIScreen mainScreen] bounds].size.height - frame.size.height - 10;
     self.photoView.frame = frame;
     [self.view addSubview:self.photoView];
     
@@ -267,12 +278,6 @@ NSMutableArray  * buttonAuxArray;
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     CGRect frame;
-    /*[self.addImageButton removeFromSuperview];
-    [self.addImageButton setTranslatesAutoresizingMaskIntoConstraints:YES];
-    frame = self.addImageButton.frame;
-    frame.size.width = 35;
-    self.addImageButton.frame = frame;
-    [self.imagenContentView addSubview:self.addImageButton];*/
     
     [self.imageViewScroll setHidden:false];
     
@@ -298,7 +303,6 @@ NSMutableArray  * buttonAuxArray;
     [buttonAuxArray addObject:imageViewButton];
     
     if([imageArray count] > 3){
-       // self.constrainScrollImages.constant += self.imageView.frame.size.width + self.imageViewButton.frame.size.width + 15;
         self.constrainImageContentView.constant += self.imageView.frame.size.width + self.imageViewButton.frame.size.width + 15;
     }
     
@@ -339,7 +343,7 @@ NSMutableArray  * buttonAuxArray;
                                    }];
     }
     
-    
+    //self.constrainScroll.constant = -200;
     [self dismissViewControllerAnimated:NO completion:nil];
 }
 
@@ -423,7 +427,7 @@ NSMutableArray  * buttonAuxArray;
     [incidencia setDescripcion:[result objectForKey:@"descripcion"]];
     [incidencia setUser:[result objectForKey:@"id_user"]];
     
-    [incidencia setIdIncidencia:[NSNumber numberWithInt:[[result objectForKey:@"id_incidencia"] intValue]]];
+    //[incidencia setIdIncidencia:[NSNumber numberWithInt:[[result objectForKey:@"id_incidencia"] intValue]]];
     [incidencia setEstado:[result objectForKey:[result objectForKey:@"estado"]]];
     
     [incidenceView setIncidencia:incidencia];
@@ -433,6 +437,9 @@ NSMutableArray  * buttonAuxArray;
     [IncidenceModel addImages:@selector(loadImages) fromObject:incidenceView parameters:[[NSMutableDictionary alloc]initWithObjectsAndKeys:incidencia.idIncidencia,@"id",nil] images:imageArray];
     
     [self.navigationController pushViewController:incidenceView animated:YES];
+    
+    
+    
 }
 
 /*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
