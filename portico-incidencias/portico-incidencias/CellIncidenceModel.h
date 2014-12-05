@@ -19,6 +19,7 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *infoIncidencia;
 @property (weak, nonatomic) IBOutlet UIImageView *icon;
+@property (weak, nonatomic) IBOutlet UIImageView *separator;
 
 
 @property  NSString *descripcion;

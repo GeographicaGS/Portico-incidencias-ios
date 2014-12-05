@@ -127,9 +127,20 @@
                                              [UIColor colorWithRed:247/255.0 green:77/255.0 blue:41/255.0 alpha:1.0], NSForegroundColorAttributeName,
                                              nil] forState:UIControlStateSelected];
        
-        [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_OFF.png"]];
-        [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_OFF.png"]];
-        [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_OFF.png"]];
+
+        [tabBarItem1 setSelectedImage:[[UIImage imageNamed:@"POR_menu_icon_incidencias_ON.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        [tabBarItem1 setImage:[[UIImage imageNamed:@"POR_menu_icon_incidencias_OFF.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        
+        [tabBarItem2 setSelectedImage:[[UIImage imageNamed:@"POR_menu_icon_municipios_ON.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        [tabBarItem2 setImage:[[UIImage imageNamed:@"POR_menu_icon_municipios_OFF.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        
+        [tabBarItem3 setSelectedImage:[[UIImage imageNamed:@"POR_menu_icon_usuario_ON.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        [tabBarItem3 setImage:[[UIImage imageNamed:@"POR_menu_icon_usuario_OFF.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+        
+        
+//        [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_OFF.png"]];
+//        [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_OFF.png"]];
+//        [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_OFF.png"]];
         
         
         [[NSUserDefaults standardUserDefaults] setValue:[[UserHelper getInstance]getUsuario]forKey:@"username"];

@@ -47,9 +47,9 @@ TableHelperIncidencias *tablaHelperUsuarios;
     [super viewWillAppear:animated];
     
     if(self.recargaListado){
-        [self.tablaIncidencias setContentOffset:CGPointMake(0,44) animated:YES];
-        [self.tablaIncidenciasMunicipios setContentOffset:CGPointMake(0,44) animated:YES];
-        [self.tablaIncidenciaUsuario setContentOffset:CGPointMake(0,44) animated:YES];
+//        [self.tablaIncidencias setContentOffset:CGPointMake(0,44) animated:YES];
+//        [self.tablaIncidenciasMunicipios setContentOffset:CGPointMake(0,44) animated:YES];
+//        [self.tablaIncidenciaUsuario setContentOffset:CGPointMake(0,44) animated:YES];
         
         [tablaIncidencias setHidden:false];
         [tablaIncidenciaUsuario setHidden:true];

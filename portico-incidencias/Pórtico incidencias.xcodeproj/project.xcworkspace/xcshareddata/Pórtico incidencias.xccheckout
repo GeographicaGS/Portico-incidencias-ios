@@ -10,29 +10,29 @@
 	<string>Pórtico incidencias</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>817B1537-CDEF-4531-99DA-5A643805879D</key>
+		<key>0B5705C5D175395B16CB48E073811DB5D46E0DCC</key>
 		<string>https://github.com/GeographicaGS/portico-incidencias-ios.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>portico-incidencias/Pórtico incidencias.xcodeproj/project.xcworkspace</string>
+	<string>portico-incidencias/Pórtico incidencias.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>817B1537-CDEF-4531-99DA-5A643805879D</key>
+		<key>0B5705C5D175395B16CB48E073811DB5D46E0DCC</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/GeographicaGS/portico-incidencias-ios.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>817B1537-CDEF-4531-99DA-5A643805879D</string>
+	<string>0B5705C5D175395B16CB48E073811DB5D46E0DCC</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>817B1537-CDEF-4531-99DA-5A643805879D</string>
+			<string>0B5705C5D175395B16CB48E073811DB5D46E0DCC</string>
 			<key>IDESourceControlWCCName</key>
 			<string>portico-incidencias</string>
 		</dict>

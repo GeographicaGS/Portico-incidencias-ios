@@ -196,6 +196,13 @@
     }
 }
 
++ (void) getTypologies:(SEL)func fromObject:(id) object{
+    [[DownloadJsonHelper getInstance] cleanDownloads];
+    NSString *url =  [NSMutableString stringWithFormat:@"%@%@", basePath, @"typologies"];
+    
+    [[DownloadJsonHelper getInstance]downloadJson: url user:[[UserHelper getInstance]getUsuario] password:[[UserHelper getInstance]getContrasenia] llamada:@"GET" funcion:func fromObject:object];
+}
+
 + (NSString*) createSearch: (NSString*) search
 {
     NSData *data = [search dataUsingEncoding:NSASCIIStringEncoding allowLossyConversion:YES];

@@ -12,6 +12,7 @@
 #import "UserHelper.h"
 #import "IncidenceViewController.h"
 #import "ListIncidencesViewController.h"
+#import "ListTypologyViewController.h"
 
 @interface CreateIncidenceViewController ()
 
@@ -85,6 +86,8 @@ NSMutableArray  * buttonAuxArray;
     buttonAuxArray = [[NSMutableArray alloc]init];
     
      self.library = [[ALAssetsLibrary alloc] init];
+    
+    [self.typology setText:NSLocalizedString(@"###Tipologia###", nil)];
     
 }
 
@@ -175,12 +178,12 @@ NSMutableArray  * buttonAuxArray;
 }
 
 - (IBAction)createIncidence:(id)sender {
-    if(![self.incidenceTitle.text isEqualToString:@""] && (![self.incidenceDescription.text isEqualToString:@""] || [self.incidenceDescription.text isEqualToString:NSLocalizedString(@"###incidenceDescription###", nil)]) && ![self.latitud.text isEqualToString:@""] && ![self.longitud.text isEqualToString:@""]){
+    if(![self.incidenceTitle.text isEqualToString:@""] && (![self.incidenceDescription.text isEqualToString:@""] || [self.incidenceDescription.text isEqualToString:NSLocalizedString(@"###incidenceDescription###", nil)]) && ![self.latitud.text isEqualToString:@""] && ![self.longitud.text isEqualToString:@""] && self.idTypology != nil){
 
         [self.spinner setHidden:false];
         [self backgroundTouched:sender];
         
-          NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:self.incidenceTitle.text, @"titulo", self.incidenceDescription.text, @"descripcion", @"0", @"estado", [[UserHelper getInstance]getUsuario], @"id_user", self.latitud.text, @"latitud", self.longitud.text, @"longitud", nil];
+          NSDictionary *parameters = [NSDictionary dictionaryWithObjectsAndKeys:self.incidenceTitle.text, @"titulo", self.incidenceDescription.text, @"descripcion", @"0", @"estado", [[UserHelper getInstance]getUsuario], @"id_user", self.latitud.text, @"latitud", self.longitud.text, @"longitud", self.idTypology, @"idTypology", nil];
         
         [IncidenceModel createIncidence:@selector(afterCreateIncidence:) fromObject:self parameters:parameters];
 
@@ -191,6 +194,11 @@ NSMutableArray  * buttonAuxArray;
             
         }else if([self.incidenceDescription.text isEqualToString:@""] || [self.incidenceDescription.text isEqualToString:NSLocalizedString(@"###incidenceDescription###", nil)]){
             error = @"La incidencia debe tener una descripción.";
+            
+            
+        }else if(self.idTypology == nil){
+            
+            error = @"La incidencia debe tener una tipología.";
             
         }else{
            error = @"La incidencia debe estar localizada. Complete los campos latitud y longitud.";
@@ -439,12 +447,19 @@ NSMutableArray  * buttonAuxArray;
     [self.navigationController pushViewController:incidenceView animated:YES];
     
     
-    
 }
 
 /*- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
   
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"awdadwa" style:UIBarButtonItemStylePlain target:nil action:nil];
 }*/
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+
+    ListTypologyViewController *controller = [segue destinationViewController];
+    controller.delegate = self;
+}
+
+
 
 @end

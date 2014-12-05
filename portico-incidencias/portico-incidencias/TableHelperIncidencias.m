@@ -80,13 +80,12 @@
     }else if([cell.estado intValue] == 1){
         cell.thumbnail.backgroundColor = [[UIColor alloc]initWithRed:(202/255.0) green:(224/255.0) blue:(243/255.0) alpha:1.0];
     }else{
-        cell.thumbnail.backgroundColor = [[UIColor alloc]initWithRed:(110/255.0) green:(90/255.0) blue:(99/255.0) alpha:1.0];
+        cell.thumbnail.backgroundColor = [[UIColor alloc]initWithRed:(213/255.0) green:(210/255.0) blue:(208/255.0) alpha:1.0];
     }
     cell.idIncidencia = [[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"id_incidencia"];
     
     cell.descripcion = [[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"descripcion"];
     cell.user = [[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"id_user"];
-    
     
     switch (_tipoListado) {
             
@@ -206,6 +205,8 @@
 
 
     [cell.thumbnail setImageWithURL:[NSURL URLWithString:[[self.arrayDatos objectAtIndex:indexPath.row]objectForKey:@"thumbnail"]] placeholderImage:[UIImage imageNamed:@"POR_icon_bg_thumbnail.png"]];
+    
+     [cell.separator setHidden:false];
     
     return cell;
     

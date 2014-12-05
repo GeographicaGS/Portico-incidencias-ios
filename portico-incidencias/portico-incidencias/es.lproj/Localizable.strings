@@ -39,6 +39,12 @@
 "###options###" = "Opciones";
 "###telefono###" = "Teléfono";
 "###cerrarSesion###" = "Cerrar sesión";
+"###Normal###" = "Normal";
+"###Satélite###" = "Satélite";
+"###Híbrido###" = "Híbrido";
+"###Tipologia###" = "Tipología";
+"###Tipologias###" = "Tipologías";
+
 
 
 

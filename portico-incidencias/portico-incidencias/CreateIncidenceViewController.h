@@ -36,6 +36,8 @@
 @property (weak, nonatomic) IBOutlet UIScrollView *imageViewScroll;
 
 @property (strong, atomic) ALAssetsLibrary* library;
+@property (weak, nonatomic) IBOutlet UILabel *typology;
+@property NSNumber *idTypology;
 
 - (IBAction)backgroundTouched:(id)sender;
 - (IBAction)getCurrenLocation:(id)sender;

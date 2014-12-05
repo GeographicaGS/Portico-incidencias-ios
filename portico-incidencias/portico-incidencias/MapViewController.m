@@ -45,6 +45,10 @@
     self.navigationItem.titleView = label;
     [label sizeToFit];
     
+    [self.segment setTitle:NSLocalizedString(@"###Normal###", nil) forSegmentAtIndex:0];
+    [self.segment setTitle:NSLocalizedString(@"###Satélite###", nil) forSegmentAtIndex:1];
+    [self.segment setTitle:NSLocalizedString(@"###Híbrido###", nil) forSegmentAtIndex:2];
+    
     UIBezierPath *maskPath;
     maskPath = [UIBezierPath bezierPathWithRoundedRect:imgeOrangeInfoWindow.bounds byRoundingCorners:(UIRectCornerBottomLeft | UIRectCornerTopLeft) cornerRadii:CGSizeMake(6.0, 6.0)];
     
@@ -172,6 +176,23 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+- (IBAction)changeMapType:(id)sender {
+    switch(self.segment.selectedSegmentIndex){
+    case 0:
+        mapView.mapType = kGMSTypeNormal;
+        break;
+    case 1:
+        mapView.mapType = kGMSTypeSatellite;
+        break;
+    case 2:
+        mapView.mapType = kGMSTypeHybrid;
+        break;
+    default:
+        mapView.mapType = mapView.mapType;
+        break;
+    }
+}
+
 
 
 - (void) afterGetCurrentLocation: (CLLocation*) currentLocation
@@ -261,6 +282,7 @@
         [self.navigationController pushViewController:incidenceView animated:YES];
     }
 }
+
 
 
 

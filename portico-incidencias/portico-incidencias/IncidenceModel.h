@@ -27,6 +27,8 @@
 + (void) createIncidence:(SEL)func fromObject:(id) object parameters:(NSDictionary*) parameters;
 + (void) addImages:(SEL)func fromObject:(id) object parameters:(NSDictionary*) parameters images:(NSMutableArray *) images;
 
++ (void) getTypologies:(SEL)func fromObject:(id) object;
+
 
 + (NSString*) createSearch: (NSString*) search;
 

@@ -22,10 +22,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *labelSecondInfoWindow;
 @property (weak, nonatomic) IBOutlet UIButton *butonGoIncidence;
 @property (weak, nonatomic) IBOutlet UIImageView *thumbnail;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segment;
 
 - (void) afterGetCurrentLocation: (CLLocation*) currentLocation;
 - (void) afterGetAllIncidences: (NSDictionary*) json;
 - (IBAction)goBack:(id)sender;
+- (IBAction)changeMapType:(id)sender;
 
 
 @property (nonatomic) BOOL *navigate;;

@@ -64,10 +64,10 @@ NSMutableArray *imagesArray;
         self.imgEstado.image = [UIImage imageNamed:@"POR_icon_incidencias_cerradas.png"];
         self.imgenPorDefecto.backgroundColor = [[UIColor alloc]initWithRed:(202/255.0) green:(224/255.0) blue:(243/255.0) alpha:1.0];
     }else{
-        self.estado.text = @"Congelada";
+        self.estado.text = @"Archivada";
         self.estado.textColor = [[UIColor alloc]initWithRed:(110/255.0) green:(90/255.0) blue:(99/255.0) alpha:1.0];
         self.imgEstado.image = [UIImage imageNamed:@"POR_icon_incidencias_congeladas.png"];
-        self.imgenPorDefecto.backgroundColor = [[UIColor alloc]initWithRed:(110/255.0) green:(90/255.0) blue:(99/255.0) alpha:1.0];
+        self.imgenPorDefecto.backgroundColor = [[UIColor alloc]initWithRed:(213/255.0) green:(210/255.0) blue:(208/255.0) alpha:1.0];
     }
     [self.estado sizeToFit];
     
@@ -592,7 +592,8 @@ NSMutableArray *imagesArray;
             [self reloadImages];
             
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-           
+             [self.spinnerImage setHidden:true];
+            [self.imgenPorDefecto setHidden:false];
         }];
         [requestOperation start];
     }
@@ -653,10 +654,21 @@ NSMutableArray *imagesArray;
                                          [UIColor colorWithRed:247/255.0 green:77/255.0 blue:41/255.0 alpha:1.0], NSForegroundColorAttributeName,
                                          nil] forState:UIControlStateSelected];
     
-    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_OFF.png"]];
-    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_OFF.png"]];
-    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_OFF.png"]];
     
+    [tabBarItem1 setSelectedImage:[[UIImage imageNamed:@"POR_menu_icon_incidencias_ON.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [tabBarItem1 setImage:[[UIImage imageNamed:@"POR_menu_icon_incidencias_OFF.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
+    [tabBarItem2 setSelectedImage:[[UIImage imageNamed:@"POR_menu_icon_municipios_ON.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [tabBarItem2 setImage:[[UIImage imageNamed:@"POR_menu_icon_municipios_OFF.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
+    [tabBarItem3 setSelectedImage:[[UIImage imageNamed:@"POR_menu_icon_usuario_ON.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    [tabBarItem3 setImage:[[UIImage imageNamed:@"POR_menu_icon_usuario_OFF.png"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
+    
+    
+//    [tabBarItem1 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_incidencias_OFF.png"]];
+//    [tabBarItem2 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_municipios_OFF.png"]];
+//    [tabBarItem3 setFinishedSelectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_ON.png"] withFinishedUnselectedImage:[UIImage imageNamed:@"POR_menu_icon_usuario_OFF.png"]];
+//    
     
     [self presentViewController:tabBarController animated:YES completion:nil];
 

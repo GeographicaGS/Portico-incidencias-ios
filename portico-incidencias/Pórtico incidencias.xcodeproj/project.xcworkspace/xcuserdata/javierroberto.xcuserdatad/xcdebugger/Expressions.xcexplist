@@ -82,6 +82,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[ListTypologyViewController tableView:numberOfRowsInSection:]:ListTypologyViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.arrayDatos">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "__46-[IncidenceViewController keyboardWillAppear:]_block_invoke:IncidenceViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -154,6 +162,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[ListTypologyViewController tableView:cellForRowAtIndexPath:]:ListTypologyViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[self.arrayDatos objectAtIndex:indexPath.row]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[MapViewController mapView:didTapInfoWindowOfMarker:]:MapViewController.m">
          <PersistentStrings>
             <PersistentString
@@ -219,6 +235,14 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[IncidenceViewController afterGetImages:]:IncidenceViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[imagen objectForKey:@&quot;url&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "__88-[DownloadJsonHelper uploadImage:parameters:user:password:funcion:fromObject:lastImage:]_block_invoke:DownloadJsonHelper.m">
          <PersistentStrings>
             <PersistentString
@@ -238,7 +262,23 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "-[ListTypologyViewController tableView:didSelectRowAtIndexPath:]:ListTypologyViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.delegate">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "-[IncidenceViewController collectionView:cellForItemAtIndexPath:]:IncidenceViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[LocationHelper getCurrentLocation:fromObject:]:LocationHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "floor(NSFoundationVersionNumber)">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[ListIncidencesViewController tableView:willDisplayCell:forRowAtIndexPath:]:ListIncidencesViewController.m">
@@ -285,6 +325,11 @@
       </ContextState>
       <ContextState
          contextName = "-[DownloadJsonHelper downloadJson:user:password:llamada:funcion:fromObject:]:DownloadJsonHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "json">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[LocationHelper locationManager:didUpdateLocations:]:LocationHelper.m">
@@ -465,6 +510,14 @@
       </ContextState>
       <ContextState
          contextName = "-[TableHelperMunicipios tableView:cellForRowAtIndexPath:]:TableHelperMunicipios.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[CellIncidenceModel setSelected:animated:]:CellIncidenceModel.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "separator.layer.borderWidth">
+            </PersistentString>
+         </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "-[DownloadJsonHelper cancelDownload:]:DownloadJsonHelper.m">

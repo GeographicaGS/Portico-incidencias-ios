@@ -95,6 +95,8 @@
 		A39913A318E9805900CC63F2 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A39913A218E9805900CC63F2 /* QuartzCore.framework */; };
 		A39913A518E9806800CC63F2 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A39913A418E9806800CC63F2 /* libsqlite3.dylib */; };
 		A39913A618E9807200CC63F2 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = A3F824CC18A2BB1F002B6A9C /* libz.dylib */; };
+		A3AAD2761A12271B0017713E /* ListTypologyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AAD2751A12271B0017713E /* ListTypologyViewController.m */; };
+		A3AAD2791A1232A40017713E /* CellTypologyModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A3AAD2781A1232A40017713E /* CellTypologyModel.m */; };
 		A3B35EE518C4A0DF00B412FC /* TimerHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B35EE418C4A0DF00B412FC /* TimerHelper.m */; };
 		A3B35EE718C4D88300B412FC /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3B35EE618C4D88300B412FC /* CoreLocation.framework */; };
 		A3B35EEA18C4D8A200B412FC /* LocationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A3B35EE918C4D8A200B412FC /* LocationHelper.m */; };
@@ -232,6 +234,10 @@
 		A399139F18E97D1A00CC63F2 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
 		A39913A218E9805900CC63F2 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A39913A418E9806800CC63F2 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		A3AAD2741A12271B0017713E /* ListTypologyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTypologyViewController.h; sourceTree = "<group>"; };
+		A3AAD2751A12271B0017713E /* ListTypologyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTypologyViewController.m; sourceTree = "<group>"; };
+		A3AAD2771A1232A40017713E /* CellTypologyModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CellTypologyModel.h; sourceTree = "<group>"; };
+		A3AAD2781A1232A40017713E /* CellTypologyModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CellTypologyModel.m; sourceTree = "<group>"; };
 		A3B35EE318C4A0DF00B412FC /* TimerHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerHelper.h; sourceTree = "<group>"; };
 		A3B35EE418C4A0DF00B412FC /* TimerHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerHelper.m; sourceTree = "<group>"; };
 		A3B35EE618C4D88300B412FC /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -435,6 +441,8 @@
 				A30FC1121905665700AD8932 /* CreateIncidenceViewController.m */,
 				A312EB7D190A84B000FC1B1D /* UserViewController.h */,
 				A312EB7E190A84B000FC1B1D /* UserViewController.m */,
+				A3AAD2741A12271B0017713E /* ListTypologyViewController.h */,
+				A3AAD2751A12271B0017713E /* ListTypologyViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -505,6 +513,8 @@
 				A3E8BF5F18AE53A200C397B8 /* CellIncidenceTownModel.m */,
 				A320FE30191A42D10006389E /* CellImageGallery.h */,
 				A320FE31191A42D10006389E /* CellImageGallery.m */,
+				A3AAD2771A1232A40017713E /* CellTypologyModel.h */,
+				A3AAD2781A1232A40017713E /* CellTypologyModel.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -658,6 +668,7 @@
 				A3534B4018ACD9B9005846AD /* CellIncidenceModel.m in Sources */,
 				A3C2B42C189FC957001E69D8 /* LogingViewController.m in Sources */,
 				A32A51B51921FC7F008E57C4 /* UIRefreshControl+AFNetworking.m in Sources */,
+				A3AAD2761A12271B0017713E /* ListTypologyViewController.m in Sources */,
 				A3E8BF5A18AE221F00C397B8 /* TableHelper.m in Sources */,
 				A3E8BF5D18AE32FB00C397B8 /* TableHelperIncidencias.m in Sources */,
 				A39913A018E97D1A00CC63F2 /* MapViewController.m in Sources */,
@@ -671,6 +682,7 @@
 				A32A51B11921FC7F008E57C4 /* UIAlertView+AFNetworking.m in Sources */,
 				A3D0ABA418A947A600C721AE /* ListIncidencesViewController.m in Sources */,
 				A3534B4618ACF201005846AD /* UserHelper.m in Sources */,
+				A3AAD2791A1232A40017713E /* CellTypologyModel.m in Sources */,
 				A315635F18A3CC210052D9E7 /* AFHTTPSessionManager.m in Sources */,
 				A315636018A3CC210052D9E7 /* AFNetworkReachabilityManager.m in Sources */,
 				A3979F7E18B21167005F5F96 /* ListMunicipiosViewController.m in Sources */,

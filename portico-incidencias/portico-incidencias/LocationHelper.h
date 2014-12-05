@@ -11,6 +11,8 @@
 
 @interface LocationHelper : NSObject <CLLocationManagerDelegate>
 
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
 + (id)getInstance;
 
 - (void) getCurrentLocation: (SEL)func fromObject:(id) object;;

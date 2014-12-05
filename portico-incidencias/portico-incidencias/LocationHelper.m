@@ -11,7 +11,7 @@
 
 @implementation LocationHelper
 
-CLLocationManager *locationManager;
+//CLLocationManager *locationManager;
 SEL funcion;
 id clase;
 
@@ -22,7 +22,7 @@ id clase;
     static dispatch_once_t pred;
     
     dispatch_once(&pred, ^{
-        locationManager = [[CLLocationManager alloc]init];
+//        locationManager = [[CLLocationManager alloc]init];
         instance = [[LocationHelper alloc] init];
     });
     
@@ -32,11 +32,49 @@ id clase;
 
 - (void) getCurrentLocation: (SEL)func fromObject:(id) object
 {
+    
+    if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+    {
+        [self.locationManager requestWhenInUseAuthorization];
+    }
+
+//    [self.locationManager requestAlwaysAuthorization];
+    
     funcion = func;
     clase = object;
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    [locationManager startUpdatingLocation];
+    self.locationManager = [[CLLocationManager alloc] init];
+    self.locationManager.delegate = self;
+    self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    self.locationManager.distanceFilter = kCLDistanceFilterNone;
+    [self.locationManager startUpdatingLocation];
+    [self.locationManager requestWhenInUseAuthorization];
+    
+    
+    
+//    if([CLLocationManager locationServicesEnabled]) {
+//        // Location Services Are Enabled
+//        switch([CLLocationManager authorizationStatus]) {
+//            case kCLAuthorizationStatusNotDetermined:
+//                // User has not yet made a choice with regards to this application
+////                [self.locationManager requestWhenInUseAuthorization];
+//                break;
+//            case kCLAuthorizationStatusRestricted:
+//                // This application is not authorized to use location services.  Due
+//                // to active restrictions on location services, the user cannot change
+//                // this status, and may not have personally denied authorization
+//                break;
+//            case kCLAuthorizationStatusDenied:
+//                // User has explicitly denied authorization for this application, or
+//                // location services are disabled in Settings
+//                break;
+//            case kCLAuthorizationStatusAuthorized:
+//                // User has authorized this application to use location services
+//                break;
+//        }
+//    } else {
+//        // Location Services Disabled
+//    }
+    
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
@@ -53,9 +91,9 @@ id clase;
     if(currentLocation != nil)
     {
         [clase performSelector:funcion withObject:currentLocation];
-        [locationManager stopUpdatingLocation];
-        [locationManager stopUpdatingHeading];
-        [locationManager stopMonitoringSignificantLocationChanges];
+        [self.locationManager stopUpdatingLocation];
+        [self.locationManager stopUpdatingHeading];
+        [self.locationManager stopMonitoringSignificantLocationChanges];
     }
     
 }
