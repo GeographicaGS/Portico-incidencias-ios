@@ -7,7 +7,7 @@
 //
 
 
-//static NSString *basePath = @"http://10.30.102.56:5000/";
+//static NSString *basePath = @"http://10.30.102.187:5000/";
 static NSString *basePath = @"http://mirador.dipusevilla.es/api-incidencias/";
 #define LIMIT  15
 #define INCIDENCIAS_RECIENTES  1

@@ -47,7 +47,7 @@ id clase;
     self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     [self.locationManager startUpdatingLocation];
-    [self.locationManager requestWhenInUseAuthorization];
+//    [self.locationManager requestWhenInUseAuthorization];
     
     
     

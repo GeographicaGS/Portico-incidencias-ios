@@ -31,7 +31,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIButton *imageViewButton;
 @property (weak, nonatomic) IBOutlet UIView *imagenContentView;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainScrollImages;
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainScrollImages;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constrainImageContentView;
 @property (weak, nonatomic) IBOutlet UIScrollView *imageViewScroll;
 
