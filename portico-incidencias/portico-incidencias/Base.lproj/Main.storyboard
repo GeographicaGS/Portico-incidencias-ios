@@ -444,7 +444,7 @@
                                         <sections/>
                                     </tableView>
                                     <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-s2-jRX">
-                                        <rect key="frame" x="0.0" y="236" width="320" height="50"/>
+                                        <rect key="frame" x="0.0" y="356" width="320" height="50"/>
                                         <subviews>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="IKI-g5-mgr">
                                                 <rect key="frame" x="150" y="12" width="20" height="20"/>
@@ -461,8 +461,8 @@
                                     <constraint firstItem="u1p-ny-qOY" firstAttribute="leading" secondItem="3X1-eB-IOv" secondAttribute="leading" id="1cW-o8-Swd"/>
                                     <constraint firstAttribute="bottom" secondItem="u1p-ny-qOY" secondAttribute="bottom" id="6dx-H0-Utz"/>
                                     <constraint firstItem="u1p-ny-qOY" firstAttribute="top" secondItem="3X1-eB-IOv" secondAttribute="top" id="9Ue-Gj-MVS"/>
+                                    <constraint firstAttribute="bottom" secondItem="SPh-s2-jRX" secondAttribute="bottom" id="OR2-Tm-eYv"/>
                                     <constraint firstAttribute="trailing" secondItem="u1p-ny-qOY" secondAttribute="trailing" id="UxM-mC-mkb"/>
-                                    <constraint firstAttribute="bottom" secondItem="SPh-s2-jRX" secondAttribute="bottom" id="sXg-8N-QXK"/>
                                 </constraints>
                             </view>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Vca-vI-jbE">
@@ -633,7 +633,7 @@
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                             </view>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G9Y-2R-dHq">
+                                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="G9Y-2R-dHq">
                                                 <rect key="frame" x="0.0" y="431" width="320" height="80"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QbS-wZ-OLt">
@@ -647,10 +647,10 @@
                                                             <action selector="showPhotoPanel:" destination="lX9-2z-6so" eventType="touchUpInside" id="VvQ-8a-smu"/>
                                                         </connections>
                                                     </button>
-                                                    <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SAj-JA-Nrr">
+                                                    <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SAj-JA-Nrr">
                                                         <rect key="frame" x="46" y="0.0" width="274" height="80"/>
                                                         <subviews>
-                                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIG-qb-Y3k">
+                                                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIG-qb-Y3k">
                                                                 <rect key="frame" x="0.0" y="0.0" width="274" height="80"/>
                                                                 <subviews>
                                                                     <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vKG-Hk-9p8">
@@ -1315,7 +1315,7 @@
                                     <constraint firstItem="RNo-me-WPI" firstAttribute="top" secondItem="fDG-Y1-X7P" secondAttribute="top" constant="-66" id="wdL-er-JVR"/>
                                 </constraints>
                             </scrollView>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SEC-xw-ANo">
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SEC-xw-ANo">
                                 <rect key="frame" x="0.0" y="480" width="320" height="44"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="yah-Ug-0b0">
@@ -1531,7 +1531,7 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6d-TA-H0F">
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6d-TA-H0F">
                                 <rect key="frame" x="0.0" y="64" width="320" height="50"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="s9v-02-61r">
@@ -1632,9 +1632,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="m1V-9K-142"/>
+        <segue reference="r9w-Qj-SZ5"/>
+        <segue reference="K7S-EF-GBG"/>
         <segue reference="Eyc-jn-nGT"/>
-        <segue reference="xLu-qC-Oxv"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96862745100000003" green="0.30196078430000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>

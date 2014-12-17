@@ -29,9 +29,9 @@
 //    separator.layer.borderColor =  [separator.backgroundColor CGColor];
 //    separator.layer.borderWidth = (1.0 / [UIScreen mainScreen].scale) / 2;
 //
-    CGRect frame = separator.frame;
-    frame.size.height = (1.0 / [UIScreen mainScreen].scale) / 2;
-    separator.frame = frame;
+//    CGRect frame = separator.frame;
+//    frame.size.height = (1.0 / [UIScreen mainScreen].scale) / 2;
+//    separator.frame = frame;
 }
 
 @end

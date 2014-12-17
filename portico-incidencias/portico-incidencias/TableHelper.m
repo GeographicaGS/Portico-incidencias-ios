@@ -37,7 +37,7 @@
     bool recarga = false;
     [spinnerCentral setHidden:true];
     [spinnerViewInferior setHidden:true];
-    [spinnerInferior setHidden:true];
+//    [spinnerInferior setHidden:true];
     if([json objectForKey:@"error"])
     {
         
