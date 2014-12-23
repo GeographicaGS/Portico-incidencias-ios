@@ -62,7 +62,7 @@
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField
 {
-    [scrollView setContentOffset:CGPointMake(0,85) animated:YES] ;
+    [scrollView setContentOffset:CGPointMake(0,210) animated:YES] ;
 }
 
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
@@ -86,6 +86,10 @@
     [scrollView setAlpha:0.1];
     [spinner setHidden:FALSE];
     [UserModel initSesion:userName.text password:userPassword.text funcion:@selector(afterInitSesion:) fromObject:self];
+}
+
+- (IBAction)sendProblem:(id)sender {
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://portico.geographica.gs/support"]];
 }
 
 -(void) afterInitSesion: (NSDictionary*) json

@@ -89,8 +89,6 @@ NSMutableArray  * buttonAuxArray;
     
     [self.typology setText:NSLocalizedString(@"###Tipologia###", nil)];
     
-    [self.imageViewScroll setHidden:true];
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated {

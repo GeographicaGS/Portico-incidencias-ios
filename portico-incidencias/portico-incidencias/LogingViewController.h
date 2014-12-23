@@ -24,6 +24,7 @@
 
 - (IBAction)backgroundTouched:(id)sender;
 - (IBAction)login:(id)sender;
+- (IBAction)sendProblem:(id)sender;
 
 -(void) afterInitSesion: (NSDictionary*) json;
 
