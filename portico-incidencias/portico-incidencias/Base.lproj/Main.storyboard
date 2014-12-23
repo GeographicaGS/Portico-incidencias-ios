@@ -369,6 +369,18 @@
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </searchBar>
+                                        <view key="tableFooterView" hidden="YES" contentMode="scaleToFill" id="SPh-s2-jRX">
+                                            <rect key="frame" x="0.0" y="352" width="320" height="54"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="IKI-g5-mgr">
+                                                    <rect key="frame" x="150" y="16" width="20" height="20"/>
+                                                    <color key="color" red="0.96862745100000003" green="0.30196078430000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="tintColor" red="0.96862745100000003" green="0.30196078430000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </view>
                                         <prototypes>
                                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdaIncidencia" rowHeight="50" id="97C-nN-tvv" customClass="CellIncidenceModel">
                                                 <rect key="frame" x="0.0" y="66" width="320" height="50"/>
@@ -443,17 +455,6 @@
                                         </prototypes>
                                         <sections/>
                                     </tableView>
-                                    <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SPh-s2-jRX">
-                                        <rect key="frame" x="0.0" y="356" width="320" height="50"/>
-                                        <subviews>
-                                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="IKI-g5-mgr">
-                                                <rect key="frame" x="150" y="12" width="20" height="20"/>
-                                                <color key="color" red="0.96862745100000003" green="0.30196078430000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            </activityIndicatorView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <color key="tintColor" red="0.96862745100000003" green="0.30196078430000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
@@ -461,7 +462,6 @@
                                     <constraint firstItem="u1p-ny-qOY" firstAttribute="leading" secondItem="3X1-eB-IOv" secondAttribute="leading" id="1cW-o8-Swd"/>
                                     <constraint firstAttribute="bottom" secondItem="u1p-ny-qOY" secondAttribute="bottom" id="6dx-H0-Utz"/>
                                     <constraint firstItem="u1p-ny-qOY" firstAttribute="top" secondItem="3X1-eB-IOv" secondAttribute="top" id="9Ue-Gj-MVS"/>
-                                    <constraint firstAttribute="bottom" secondItem="SPh-s2-jRX" secondAttribute="bottom" id="OR2-Tm-eYv"/>
                                     <constraint firstAttribute="trailing" secondItem="u1p-ny-qOY" secondAttribute="trailing" id="UxM-mC-mkb"/>
                                 </constraints>
                             </view>
@@ -647,7 +647,7 @@
                                                             <action selector="showPhotoPanel:" destination="lX9-2z-6so" eventType="touchUpInside" id="VvQ-8a-smu"/>
                                                         </connections>
                                                     </button>
-                                                    <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SAj-JA-Nrr">
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SAj-JA-Nrr">
                                                         <rect key="frame" x="46" y="0.0" width="274" height="80"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gIG-qb-Y3k">
@@ -737,7 +737,7 @@
                                     <constraint firstItem="OwD-SQ-ndJ" firstAttribute="centerX" secondItem="t9o-3H-uOF" secondAttribute="centerX" id="qlH-60-IgL"/>
                                 </constraints>
                             </scrollView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gyM-ad-EC2">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gyM-ad-EC2">
                                 <rect key="frame" x="10" y="435" width="300" height="120"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aVi-Fx-g4l">
@@ -1531,7 +1531,7 @@
                                 </prototypes>
                                 <sections/>
                             </tableView>
-                            <view hidden="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6d-TA-H0F">
+                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I6d-TA-H0F">
                                 <rect key="frame" x="0.0" y="64" width="320" height="50"/>
                                 <subviews>
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="s9v-02-61r">
@@ -1632,9 +1632,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="r9w-Qj-SZ5"/>
-        <segue reference="K7S-EF-GBG"/>
+        <segue reference="yoz-YT-AjI"/>
         <segue reference="Eyc-jn-nGT"/>
+        <segue reference="K7S-EF-GBG"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" red="0.96862745100000003" green="0.30196078430000001" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
 </document>
