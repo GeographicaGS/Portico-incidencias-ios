@@ -1,7 +1,50 @@
-/* 
-  Localizable.strings
-  Pórtico incidencias
+/*
+ Localizable.strings
+ Pórtico incidencias
+ 
+ Created by Javier Aragón on 04/02/14.
+ Copyright (c) 2014 Javier Aragón. All rights reserved.
+ */
 
-  Created by Javier Aragón on 04/02/14.
-  Copyright (c) 2014 Javier Aragón. All rights reserved.
-*/
+
+"###correoElectronico###" = "Correo electrónico";
+"###contraseña###" = "contraseña";
+"###inciarSesion###" = "Iniciar sesión";
+"###comunicarProblema###" = "Comunicar un problema";
+"###nueva###" = "Nueva";
+"###incidencias###" = "Incidencias";
+"###incidencia###" = "Incidencia";
+"###recientes###" = "Recientes";
+"###cercanas###" = "Cercanas";
+"###usuario###" = "Usuario";
+"###municipios###" = "Municipios";
+"###volver###" = "Volver";
+"###enviar###" = "Enviar";
+"###addComentario###" = "Añade un comentario";
+"###newIncidence###" = "Nueva incidencia";
+"###doIt###" = "Hecho";
+"###incidenceTitle###" = "Título de la incidencia";
+"###incidenceDescription###" = "Breve descripción";
+"###addPhoto###" = "  Añadir foto...";
+"###latitude###" = "Latitud";
+"###longitude###" = "Longitud";
+"###currentLocation###" = "  Ubicacion Actual";
+"###doPhoto###" = "Hacer foto";
+"###selectFoto###" = "Seleccionar foto existente";
+"###cancel###" = "Cancelar";
+"###userProfile###" = "Perfil de usuario";
+"###open###" = "Abiertas";
+"###resolve###" = "Resueltas";
+"###field###" = "Archivadas";
+"###options###" = "Opciones";
+"###telefono###" = "Teléfono";
+"###cerrarSesion###" = "Cerrar sesión";
+"###Normal###" = "Normal";
+"###Satélite###" = "Satélite";
+"###Híbrido###" = "Híbrido";
+"###Tipologia###" = "Tipología";
+"###Tipologias###" = "Tipologías";
+
+
+
+
