@@ -458,10 +458,16 @@
          contextName = "-[CreateIncidenceViewController afterCreateIncidence:]:CreateIncidenceViewController.m">
          <PersistentStrings>
             <PersistentString
-               value = "incidenceView.incidencia.descripcion">
+               value = "[result objectForKey:@&quot;descripcion&quot;]">
             </PersistentString>
             <PersistentString
-               value = "[result objectForKey:@&quot;descripcion&quot;]">
+               value = "incidencia.idIncidencia">
+            </PersistentString>
+            <PersistentString
+               value = "json">
+            </PersistentString>
+            <PersistentString
+               value = "incidenceView.incidencia.descripcion">
             </PersistentString>
          </PersistentStrings>
       </ContextState>
@@ -505,6 +511,14 @@
          <PersistentStrings>
             <PersistentString
                value = "number == $18">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[TableHelperMunicipios numberOfSectionsInTableView:]:TableHelperMunicipios.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.arrayDatos">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

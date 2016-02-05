@@ -818,9 +818,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias",
+					"/Users/javier/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "portico-incidencias/Pórtico incidencias-Prefix.pch";
@@ -829,8 +830,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/A",
-					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/Current",
+					"/Users/javier/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/A",
+					"/Users/javier/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/Current",
 				);
 				PRODUCT_NAME = "Pórtico incidencias";
 				PROVISIONING_PROFILE = "";
@@ -847,9 +848,10 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias",
+					"/Users/javier/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "portico-incidencias/Pórtico incidencias-Prefix.pch";
@@ -858,8 +860,8 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/A",
-					"/Users/javierroberto/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/Current",
+					"/Users/javier/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/A",
+					"/Users/javier/Proyectos/portico-incidencias/portico-incidencias/portico-incidencias/GoogleMaps.framework/Versions/Current",
 				);
 				PRODUCT_NAME = "Pórtico incidencias";
 				PROVISIONING_PROFILE = "";

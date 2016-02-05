@@ -160,7 +160,7 @@ NSMutableArray *myArrayHeader;
 - (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText{
     [self.arrayDatos removeAllObjects];
     [self.tablaDatos reloadData];
-    //[self.spinnerCentral setHidden:false];
+    [self.spinnerCentral setHidden:false];
     [[TimerHelper getInstance]start:1 funcion:@selector(cargarDatos) fromObject:self];
 }
 

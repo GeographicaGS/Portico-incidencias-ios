@@ -68,6 +68,8 @@
         AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
         [operation setCredential:credential];
         
+        operation.securityPolicy.allowInvalidCertificates = YES;
+        
         [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
             
             NSDictionary* json = [NSJSONSerialization
@@ -101,6 +103,8 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCredential:credential];
+    
+    operation.securityPolicy.allowInvalidCertificates = YES;
 
     [operation setUploadProgressBlock: ^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite){
         NSLog(@"Espero subir: %lld", totalBytesExpectedToWrite);
@@ -135,6 +139,9 @@
     
     AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
     [operation setCredential:credential];
+    
+    operation.securityPolicy.allowInvalidCertificates = YES;
+    
     [operation setUploadProgressBlock: ^(NSUInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite){
         
         NSString* idIncidencia =  [[parameters objectForKey:@"id"]stringValue];

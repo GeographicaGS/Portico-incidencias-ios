@@ -79,6 +79,8 @@
     
     mapView.delegate = self;
     
+    [mainView setHidden:true];
+    
     [self.mainView addSubview:mapView];
     
    // [IncidenceModel getGeoJsonIncidenciasByDist:@selector(afterGetGeoJson:) fromObject:self];
@@ -120,14 +122,15 @@
     [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];*/
     
     
-    dispatch_queue_t colaEnSerie = dispatch_queue_create("miColaEnSerie", NULL);
+//    dispatch_queue_t colaEnSerie = dispatch_queue_create("miColaEnSerie", NULL);
     NSUInteger aux = [[json objectForKey:@"results"] count];
     if(aux != 1){
         [[LocationHelper getInstance]getCurrentLocation:@selector(afterGetCurrentLocation:) fromObject:self];
     }
+    UIImage *imageMarker = [GMSMarker markerImageWithColor:[UIColor colorWithRed:(247/255.0) green:(77/255.0) blue:0.0 alpha:1.0]];
     for (NSDictionary *markers in [json objectForKey:@"results"])
     {
-        dispatch_async(colaEnSerie, ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
         
             NSString *latstring = [[[markers objectForKey:@"geometry"] objectForKey:@"coordinates"] objectAtIndex:1];
             NSString *lonstring = [[[markers objectForKey:@"geometry"] objectForKey:@"coordinates"] objectAtIndex:0];
@@ -136,7 +139,7 @@
             marker.position = CLLocationCoordinate2DMake([latstring doubleValue], [lonstring doubleValue]);
             marker.title = [[markers objectForKey:@"properties"] objectForKey:@"titulo"];
             marker.snippet = [[markers objectForKey:@"properties"] objectForKey:@"nombre_municipio"];
-            marker.icon = [GMSMarker markerImageWithColor:[UIColor colorWithRed:(247/255.0) green:(77/255.0) blue:0.0 alpha:1.0]];
+            marker.icon = imageMarker;
             marker.appearAnimation = kGMSMarkerAnimationPop;
             marker.map = mapView;
             if(aux == 1){
@@ -146,29 +149,11 @@
                                                                     zoom:9])];
             }
             
-            //UILabel *aux = [[UILabel alloc]init];
-            //CellIncidenceModel *incidencia = [[CellIncidenceModel alloc]init];
-            
-            //aux.text = marker.title;
-            //[incidencia setTituloIncidencia:aux];
-            //aux.text = marker.snippet;
-            //[incidencia setMunicipioIncidencia:aux];
-            
-            
-            
-            /*[incidencia setTituloIncidencia:[[UILabel alloc] initWithFrame:CGRectMake(40, 70, 300, 100)]];
-            incidencia.tituloIncidencia.text = @"dadwadawdadadawd";
-            NSLog(incidencia.tituloIncidencia.text);
-            [incidencia setMunicipioIncidencia:[[UILabel alloc] init]];
-            incidencia.municipioIncidencia.text = marker.snippet;
-            incidencia.estado = [[markers objectForKey:@"properties"] objectForKey:@"estado"];
-            incidencia.idIncidencia  = [[markers objectForKey:@"properties"] objectForKey:@"id_incidencia"];*/
-
-            
             marker.userData = markers;
         
         });
     }
+    [mainView setHidden:false];
 
 }
 

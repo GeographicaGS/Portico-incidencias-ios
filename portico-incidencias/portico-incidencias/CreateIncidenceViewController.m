@@ -426,6 +426,7 @@ NSMutableArray  * buttonAuxArray;
     
     CellIncidenceModel *incidencia = [[CellIncidenceModel alloc]init];
     
+    [incidencia setIdIncidencia:[result objectForKey:@"id_incidencia"]];
     [incidencia setTituloIncidencia:[[UILabel alloc]init]];
     [incidencia.tituloIncidencia setText:[result objectForKey:@"titulo"]];
     

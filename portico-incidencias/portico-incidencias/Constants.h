@@ -8,7 +8,8 @@
 
 
 //static NSString *basePath = @"http://10.30.102.187:5000/";
-static NSString *basePath = @"http://mirador.dipusevilla.es/api-incidencias/";
+static NSString *basePath = @"https://mirador.dipusevilla.es/api-incidencias/";
+//static NSString *basePath = @"http://portico.geographica.gs/api/";
 #define LIMIT  15
 #define INCIDENCIAS_RECIENTES  1
 #define INDICENCIAS_CERCANAS  2

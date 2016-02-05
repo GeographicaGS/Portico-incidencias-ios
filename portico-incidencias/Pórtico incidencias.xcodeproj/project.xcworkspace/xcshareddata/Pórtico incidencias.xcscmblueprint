@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "0B5705C5D175395B16CB48E073811DB5D46E0DCC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9C143382704DC6FF433CFA5F2382A382EC1C67F1" : 0,
+    "0B5705C5D175395B16CB48E073811DB5D46E0DCC" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2FC2F75C-C8F4-403C-A82A-BA025FC68FF3",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9C143382704DC6FF433CFA5F2382A382EC1C67F1" : "",
+    "0B5705C5D175395B16CB48E073811DB5D46E0DCC" : "portico-incidencias"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Pórtico incidencias",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "portico-incidencias\/Pórtico incidencias.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/GeographicaGS\/portico-incidencias-ios.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0B5705C5D175395B16CB48E073811DB5D46E0DCC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/GeographicaGS\/rucosa-api.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9C143382704DC6FF433CFA5F2382A382EC1C67F1"
+    }
+  ]
+}
